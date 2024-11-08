@@ -1,0 +1,8 @@
+.banner {
+  @apply absolute top-0 left-0 w-full h-full opacity-0
+   transition-all duration-700;
+}
+
+.active {
+  @apply opacity-100;
+}

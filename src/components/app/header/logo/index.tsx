@@ -1,0 +1,13 @@
+import logo from "@src/assets/logo.png";
+
+import styles from "./styles.module.css";
+import { Link } from "react-router-dom";
+
+function AppLogo() {
+  return (
+    <Link to="/">
+      <img src={logo} alt="Netflix Clone App" className={styles.logo} />
+    </Link>
+  );
+}
+export default AppLogo;

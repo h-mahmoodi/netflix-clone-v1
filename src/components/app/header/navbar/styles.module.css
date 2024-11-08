@@ -1,0 +1,10 @@
+.navbar {
+  @apply flex justify-between items-center flex-1;
+}
+
+.mainMenu {
+  @apply flex items-center gap-2 flex-1;
+}
+.sideMenu {
+  @apply flex items-center gap-4;
+}

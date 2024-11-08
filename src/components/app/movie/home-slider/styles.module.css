@@ -1,0 +1,40 @@
+.slider {
+  animation: animation 0.3s linear;
+  @apply h-[800px] relative overflow-hidden;
+}
+
+@keyframes animation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.inner {
+  @apply h-full relative;
+}
+
+.bannerList {
+  @apply h-full relative;
+}
+
+.navigation {
+  @apply opacity-0 absolute top-1/2 -translate-y-1/2
+   w-full transition-all px-1;
+}
+
+.bullets {
+  @apply absolute bottom-5 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 
+  gap-1 transition-all opacity-0;
+}
+
+.timeBar {
+  @apply absolute top-0 h-1 z-20 w-full;
+}
+
+.slider:hover .navigation,
+.slider:hover .bullets {
+  @apply opacity-100;
+}

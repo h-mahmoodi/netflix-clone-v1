@@ -1,0 +1,31 @@
+.container {
+  @apply relative;
+}
+
+.navLink {
+  @apply flex items-center gap-2 p-3
+   rounded-md transition-all border-none
+   text-zinc-50 cursor-pointer no-underline bg-zinc-900;
+}
+
+.navLink:hover {
+  @apply bg-zinc-800;
+}
+
+.navLink p {
+  @apply text-xl;
+}
+
+.navLink i {
+  @apply flex text-2xl;
+}
+
+.badge {
+  @apply absolute -top-2 -right-2 bg-red-700 rounded-full
+   leading-none flex items-center justify-center h-5 w-5
+   text-xs text-zinc-200 font-semibold;
+}
+
+.badge span {
+  @apply -mt-0.5;
+}

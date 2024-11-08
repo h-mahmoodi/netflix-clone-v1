@@ -1,0 +1,6 @@
+.details {
+  @apply flex items-center gap-3;
+}
+.rate {
+  @apply text-lg bg-yellow-500 py-0.5 px-2 rounded-md text-zinc-900 font-bold;
+}

@@ -1,0 +1,25 @@
+.link {
+  @apply flex items-center justify-between bg-transparent border-none
+     text-zinc-50 p-2 w-full rounded-md;
+}
+
+.link:hover {
+  @apply bg-zinc-800;
+}
+
+.flexBox {
+  @apply flex items-center gap-4;
+}
+
+.icon {
+  @apply text-lg;
+}
+
+.title {
+  font-size: 1.8rem;
+  @apply text-lg;
+}
+
+.count {
+  @apply text-sm rounded-full w-6 h-6 flex items-center justify-center bg-zinc-900;
+}

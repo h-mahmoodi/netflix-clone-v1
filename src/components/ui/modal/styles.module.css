@@ -1,0 +1,23 @@
+.modal {
+  @apply fixed h-full w-full top-0 left-0 flex items-center justify-center
+  z-30;
+}
+
+@keyframes animation {
+  from {
+    opacity: 0.1;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.content {
+  @apply relative bg-zinc-50 p-5 rounded-md z-40;
+}
+
+.overlay {
+  @apply absolute top-0 left-0 z-30 h-full w-full  
+  backdrop-filter backdrop-blur;
+  animation: animation 0.3s;
+}

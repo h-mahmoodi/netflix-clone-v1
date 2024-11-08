@@ -1,0 +1,13 @@
+.layout {
+  animation: animation 0.3s linear;
+  @apply bg-zinc-950 min-h-dvh;
+}
+
+@keyframes animation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

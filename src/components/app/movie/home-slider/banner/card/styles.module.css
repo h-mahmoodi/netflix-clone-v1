@@ -1,0 +1,6 @@
+.card {
+  @apply relative w-[270px] h-[400px];
+}
+.image {
+  @apply relative w-full h-full bg-cover bg-top shadow-xl rounded-md;
+}

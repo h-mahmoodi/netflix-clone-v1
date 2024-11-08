@@ -1,0 +1,11 @@
+.info {
+  @apply relative flex flex-col gap-5 justify-start items-start w-[850px];
+}
+
+.title {
+  @apply text-zinc-50 text-6xl font-bold;
+}
+
+.description {
+  @apply text-zinc-50 text-2xl;
+}

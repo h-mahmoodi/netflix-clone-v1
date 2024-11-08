@@ -1,0 +1,15 @@
+.bullets {
+  @apply flex gap-1;
+}
+
+.bullets span {
+  @apply w-5 h-5 rounded-full border-2 border-zinc-50 p-1 cursor-pointer;
+}
+
+.bullets span:hover {
+  @apply bg-red-700;
+}
+
+.bullets span.active {
+  @apply bg-zinc-50;
+}

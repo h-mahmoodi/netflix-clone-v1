@@ -1,0 +1,42 @@
+.banner {
+  animation: bannerBackground 50s linear infinite;
+  @apply h-full relative object-contain flex items-center
+   justify-start pt-20 p-10;
+}
+
+@keyframes bannerBackground {
+  0% {
+    background-size: 150%;
+    background-position: 50% 50%;
+  }
+  50% {
+    background-size: 100%;
+    background-position: 50% 20%;
+  }
+  100% {
+    background-size: 150%;
+    background-position: 50% 50%;
+  }
+}
+
+.overlay {
+  background: linear-gradient(
+    180deg,
+    rgba(9, 9, 11, 0.9) 20%,
+    rgba(9, 9, 11, 0.8) 80%,
+    rgba(9, 9, 11, 1) 100%
+  );
+  @apply absolute top-0 left-0 right-0 bottom-0;
+}
+
+.containerBox {
+  @apply container mx-auto h-full flex  gap-6 justify-start items-center px-5;
+}
+
+.content {
+  @apply relative flex gap-8 justify-start items-center;
+}
+
+.details {
+  @apply relative flex flex-col gap-10 justify-start items-start w-[850px];
+}

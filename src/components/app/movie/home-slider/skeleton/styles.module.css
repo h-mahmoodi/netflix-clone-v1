@@ -1,0 +1,96 @@
+.skeleton {
+  @apply relative h-[800px];
+}
+
+.banner {
+  animation: bannerBackground 50s linear infinite;
+  background: linear-gradient(-45deg, #18181b 40%, #212124 50%, #18181b 60%);
+  @apply h-full object-contain flex items-center justify-center p-10 absolute
+  top-0 left-0 right-0 bottom-0;
+}
+
+@keyframes bannerBackground {
+  0% {
+    background-size: 150%;
+    background-position: 50% 50%;
+    background-position-x: 100%;
+  }
+  50% {
+    background-size: 100%;
+    background-position: 50% 20%;
+  }
+  100% {
+    background-size: 150%;
+    background-position: 50% 50%;
+    background-position-x: 0%;
+  }
+}
+
+.containerBox {
+  @apply container mx-auto h-full flex  gap-6 justify-start items-center px-5;
+}
+
+.content {
+  @apply flex gap-8 justify-start items-center z-20;
+}
+
+.details {
+  @apply flex flex-col gap-10 justify-start items-start w-[850px];
+}
+
+.image {
+  background: linear-gradient(-45deg, #18181b 40%, #212124 50%, #18181b 60%);
+  animation: shimmer 1s infinite ease-in-out;
+  @apply bg-zinc-800 w-[270px] h-[420px] rounded-md;
+}
+.statistics {
+  background: linear-gradient(-45deg, #18181b 40%, #212124 50%, #18181b 60%);
+  animation: shimmer 1s infinite ease-in-out;
+  @apply bg-zinc-800 w-24 h-8 rounded-md;
+}
+.titleContainer {
+  @apply flex flex-col gap-5 w-full;
+}
+.title {
+  background: linear-gradient(-45deg, #18181b 40%, #212124 50%, #18181b 60%);
+  animation: shimmer 1s infinite ease-in-out;
+  @apply bg-zinc-800 w-96 h-16 rounded-md;
+}
+.description {
+  background: linear-gradient(-45deg, #18181b 40%, #212124 50%, #18181b 60%);
+  animation: shimmer 1s infinite ease-in-out;
+  @apply bg-zinc-800 w-full h-24 rounded-md;
+}
+.buttonContainer {
+  @apply flex gap-5 w-full;
+}
+.button {
+  background: linear-gradient(-45deg, #18181b 40%, #212124 50%, #18181b 60%);
+  animation: shimmer 1s infinite ease-in-out;
+  @apply bg-zinc-800 w-44 h-16 rounded-md;
+}
+
+.overlay {
+  content: "";
+  background: linear-gradient(
+    180deg,
+    rgba(9, 9, 11, 0.9) 10%,
+    rgba(9, 9, 11, 0.8) 20%,
+    rgba(9, 9, 11, 0.8) 40%,
+    rgba(9, 9, 11, 0.8) 60%,
+    rgba(9, 9, 11, 0.8) 80%,
+    rgba(9, 9, 11, 1) 95%
+  );
+  @apply absolute left-0 right-0 top-0 bottom-0;
+}
+
+@keyframes shimmer {
+  from {
+    background-position-x: 100%;
+    background-size: 400%;
+  }
+  to {
+    background-position-x: 0%;
+    background-size: 400%;
+  }
+}

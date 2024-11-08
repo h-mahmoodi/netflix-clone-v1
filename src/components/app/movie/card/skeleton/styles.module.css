@@ -1,0 +1,18 @@
+.card {
+  background: linear-gradient(-45deg, #18181b 40%, #212124 50%, #18181b 60%);
+
+  animation: shimmer 1s infinite ease-in-out;
+  @apply relative h-[380px] max-h-[420px]  shrink-0 rounded-md
+    overflow-hidden cursor-pointer;
+}
+
+@keyframes shimmer {
+  from {
+    background-position-x: 100%;
+    background-size: 400%;
+  }
+  to {
+    background-position-x: 0%;
+    background-size: 400%;
+  }
+}

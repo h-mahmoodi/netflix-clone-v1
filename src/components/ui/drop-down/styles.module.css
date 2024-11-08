@@ -1,0 +1,29 @@
+.dropDown {
+  @apply relative;
+}
+
+.button {
+  @apply flex items-center gap-2 py-2 px-4 rounded-md transition-all border-none
+  bg-transparent text-zinc-50 cursor-pointer no-underline;
+}
+
+.isActive {
+  @apply bg-zinc-800;
+}
+
+.button:hover {
+  @apply bg-zinc-800;
+}
+
+.button p {
+  @apply text-xl;
+}
+
+.button i {
+  @apply flex text-2xl;
+}
+
+.box {
+  @apply absolute bg-zinc-950 w-72 p-2 rounded-md top-14 mt-1 right-0 flex
+  flex-col gap-1;
+}

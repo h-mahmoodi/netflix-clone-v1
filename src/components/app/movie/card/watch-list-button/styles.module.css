@@ -1,0 +1,7 @@
+.action {
+  @apply bg-zinc-50 p-2 rounded-md;
+}
+
+.action i {
+  @apply flex text-xl;
+}

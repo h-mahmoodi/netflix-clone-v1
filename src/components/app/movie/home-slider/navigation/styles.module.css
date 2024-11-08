@@ -1,0 +1,14 @@
+.navigation {
+  @apply flex justify-between w-full relative;
+}
+
+.left,
+.right {
+  @apply border-2 border-zinc-50 w-12 h-12 rounded-full text-xl flex
+  items-center justify-center leading-none cursor-pointer bg-zinc-50
+  text-zinc-950 transition-all;
+}
+
+.navigation button:hover {
+  @apply bg-red-700 text-zinc-50 border-red-700;
+}
