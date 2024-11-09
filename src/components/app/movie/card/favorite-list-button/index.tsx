@@ -37,10 +37,12 @@ const MovieCardFavoriteListButton = ({ movie }: MovieCardFavoriteListProps) => {
 
   const handleWatchList = () => {
     if (isInFavoriteList) {
-      return dispatch(removeFromFavoriteList(movie.id));
+      dispatch(removeFromFavoriteList(movie));
+      return;
     }
     if (!isInFavoriteList) {
-      return dispatch(addToFavoriteList(movie));
+      dispatch(addToFavoriteList(movie));
+      return;
     }
   };
   return (

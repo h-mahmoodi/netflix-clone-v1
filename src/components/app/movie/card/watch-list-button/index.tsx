@@ -37,7 +37,7 @@ const MovieCardWatchListButton = ({ movie }: MovieCardWatchListButtonProps) => {
 
   const handleWatchList = () => {
     if (isInWatchList) {
-      return dispatch(removeFromWatchList(movie.id));
+      return dispatch(removeFromWatchList(movie));
     }
     if (!isInWatchList) {
       return dispatch(addToWatchList(movie));

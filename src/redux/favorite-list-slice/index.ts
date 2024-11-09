@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Movie } from "@src/types/movie";
 import { RootState } from "../store";
+import { addToast } from "../toast-slice";
 
 type FavoriteListState = {
   movies: Movie[];
@@ -18,7 +19,7 @@ export const addToFavoriteList = createAsyncThunk<
   Movie,
   Movie,
   { rejectValue: { id: number; error: string } }
->("favoriteList/add", async (movie: Movie, { rejectWithValue }) => {
+>("favoriteList/add", async (movie: Movie, { dispatch, rejectWithValue }) => {
   try {
     await new Promise((resolve) => setTimeout(resolve, 1000));
     const favoriteList = JSON.parse(
@@ -26,6 +27,7 @@ export const addToFavoriteList = createAsyncThunk<
     );
     const newFavoriteList = [...favoriteList, movie];
     localStorage.setItem("favorite-list", JSON.stringify(newFavoriteList));
+    dispatch(addToast(`${movie.title || movie.name} Added to Favorites`));
     return movie;
   } catch (error) {
     return rejectWithValue({
@@ -40,27 +42,31 @@ export const addToFavoriteList = createAsyncThunk<
 
 export const removeFromFavoriteList = createAsyncThunk<
   number,
-  number,
+  Movie,
   { rejectValue: string }
->("favoriteList/remove", async (movieId: number, { rejectWithValue }) => {
-  try {
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    const favoriteList = JSON.parse(
-      localStorage.getItem("favorite-list") || "[]"
-    );
-    const newFavoriteList = favoriteList.filter(
-      (item: Movie) => item.id !== movieId
-    );
-    localStorage.setItem("favorite-list", JSON.stringify(newFavoriteList));
-    return movieId;
-  } catch (error) {
-    return rejectWithValue(
-      error instanceof Error
-        ? error.message
-        : "Error removing from favorite list"
-    );
+>(
+  "favoriteList/remove",
+  async (movie: Movie, { dispatch, rejectWithValue }) => {
+    try {
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      const favoriteList = JSON.parse(
+        localStorage.getItem("favorite-list") || "[]"
+      );
+      const newFavoriteList = favoriteList.filter(
+        (item: Movie) => item.id !== movie.id
+      );
+      localStorage.setItem("favorite-list", JSON.stringify(newFavoriteList));
+      dispatch(addToast(`${movie.title || movie.name} Removed from Favorites`));
+      return movie.id;
+    } catch (error) {
+      return rejectWithValue(
+        error instanceof Error
+          ? error.message
+          : "Error removing from favorite list"
+      );
+    }
   }
-});
+);
 
 const favoriteListSlice = createSlice({
   name: "favoriteList",
@@ -92,7 +98,7 @@ const favoriteListSlice = createSlice({
 
     builder
       .addCase(removeFromFavoriteList.pending, (state, action) => {
-        state.loading.push(action.meta.arg);
+        state.loading.push(action.meta.arg.id);
         state.error = null;
       })
       .addCase(
@@ -108,7 +114,7 @@ const favoriteListSlice = createSlice({
         }
       )
       .addCase(removeFromFavoriteList.rejected, (state, action) => {
-        const movieId = action.meta.arg;
+        const movieId = action.meta.arg.id;
         state.loading = state.loading.filter((id) => id !== movieId); // Remove from loading
         state.error =
           action.payload || "Failed to remove movie from watch list";

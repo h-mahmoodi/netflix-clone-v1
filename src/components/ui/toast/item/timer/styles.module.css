@@ -1,0 +1,7 @@
+.timeBar {
+  @apply absolute top-0 left-0 w-full h-1;
+}
+
+.bar {
+  @apply h-full bg-green-600;
+}
