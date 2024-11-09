@@ -28,7 +28,7 @@ const MovieCardFavoriteListButton = ({ movie }: MovieCardFavoriteListProps) => {
       return <i className="fi fi-rr-spinner animate-spin"></i>;
     }
     if (isInFavoriteList) {
-      return <i className="fi fi-rr-heart text-red-700"></i>;
+      return <i className="fi fi-sr-heart text-red-700"></i>;
     }
     if (!isInFavoriteList) {
       return <i className="fi fi-rr-heart text-zinc-900"></i>;

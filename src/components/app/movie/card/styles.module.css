@@ -27,7 +27,7 @@
 }
 
 .card:hover .image {
-  @apply blur-sm brightness-50;
+  @apply blur-sm brightness-[50%];
 }
 
 .overlay {

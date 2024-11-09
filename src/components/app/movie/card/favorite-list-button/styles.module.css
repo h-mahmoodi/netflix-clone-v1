@@ -1,5 +1,5 @@
 .action {
-  @apply bg-zinc-50 p-2 rounded-md;
+  @apply bg-zinc-100 p-2 rounded-md;
 }
 
 .action i {
