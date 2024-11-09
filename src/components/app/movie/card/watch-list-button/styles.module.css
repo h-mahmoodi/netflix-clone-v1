@@ -3,5 +3,9 @@
 }
 
 .action i {
-  @apply flex text-xl;
+  @apply flex text-2xl;
+}
+
+.action span {
+  @apply text-sm;
 }

@@ -20,6 +20,7 @@ function AppNavbar() {
         <NavLink icon="fi fi-rr-apps" title="Explore" to="explore" />
       </div>
       <div className={styles.sideMenu}>
+        <NavLink icon="fi fi-rr-search" to="explore" />
         <NavLink
           icon="fi fi-rr-heart"
           to="explore"
@@ -30,7 +31,7 @@ function AppNavbar() {
           }
         />
         <NavLink
-          icon="fi fi-rr-clapperboard-play"
+          icon="fi fi-rr-overview"
           to="explore"
           badge={
             watchListMovies.length > 0 ? watchListMovies.length : undefined

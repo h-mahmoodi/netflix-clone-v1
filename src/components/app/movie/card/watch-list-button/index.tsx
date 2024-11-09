@@ -28,10 +28,10 @@ const MovieCardWatchListButton = ({ movie }: MovieCardWatchListButtonProps) => {
       return <i className="fi fi-rr-spinner animate-spin"></i>;
     }
     if (isInWatchList) {
-      return <i className="fi fi-sr-clapperboard-play text-red-700"></i>;
+      return <i className="fi fi-sr-overview text-red-700"></i>;
     }
     if (!isInWatchList) {
-      return <i className="fi fi-rr-clapperboard-play text-zinc-900"></i>;
+      return <i className="fi fi-rr-overview text-zinc-900"></i>;
     }
   };
 

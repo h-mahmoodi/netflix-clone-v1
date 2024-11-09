@@ -30,7 +30,7 @@ function MovieCard({ movie }: MovieCardProps) {
             </div>
           </div>
           <div className={styles.overlayPlay}>
-            <i className="fi fi-tr-play-circle"></i>
+            <i className="fi fi-sr-play-circle"></i>
           </div>
         </div>
       </div>
