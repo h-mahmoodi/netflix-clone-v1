@@ -2,6 +2,7 @@ import styles from "./styles.module.css";
 import { Movie } from "@src/types/movie";
 import { TMDB_CONFIGS } from "@src/constants";
 import { truncateText } from "@src/utils/helpers";
+import { Link } from "react-router-dom";
 
 type NavSearchMovieProps = {
   movie: Movie;
@@ -9,7 +10,7 @@ type NavSearchMovieProps = {
 
 const NavSearchMovie = ({ movie }: NavSearchMovieProps) => {
   return (
-    <div className={styles.movie}>
+    <Link className={styles.movie} to={`movies/${movie.id}`}>
       <img src={`${TMDB_CONFIGS.imageUrl}${movie?.poster_path}`} alt="" />
       <div className={styles.movieDetails}>
         <div>
@@ -21,7 +22,7 @@ const NavSearchMovie = ({ movie }: NavSearchMovieProps) => {
           <span>IMDb {movie.vote_average?.toFixed(1)}</span>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 export default NavSearchMovie;
