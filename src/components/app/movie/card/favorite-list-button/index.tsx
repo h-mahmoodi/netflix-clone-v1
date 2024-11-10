@@ -8,6 +8,7 @@ import {
   removeFromFavoriteList,
   selectFavoriteList,
 } from "@src/redux/favorite-list-slice";
+import { MouseEvent } from "react";
 
 type MovieCardFavoriteListProps = {
   movie: Movie;
@@ -25,7 +26,7 @@ const MovieCardFavoriteListButton = ({ movie }: MovieCardFavoriteListProps) => {
       return <i className="fi fi-br-exclamation text-red-700"></i>;
     }
     if (isLoading) {
-      return <i className="fi fi-rr-spinner animate-spin"></i>;
+      return <i className="fi fi-rr-spinner animate-spin text-zinc-900"></i>;
     }
     if (isInFavoriteList) {
       return <i className="fi fi-sr-heart text-red-700"></i>;
@@ -35,7 +36,11 @@ const MovieCardFavoriteListButton = ({ movie }: MovieCardFavoriteListProps) => {
     }
   };
 
-  const handleWatchList = () => {
+  const handleWatchList = (e: MouseEvent<HTMLSpanElement>) => {
+    e.stopPropagation();
+    if (isLoading) {
+      return null;
+    }
     if (isInFavoriteList) {
       dispatch(removeFromFavoriteList(movie));
       return;
@@ -46,7 +51,7 @@ const MovieCardFavoriteListButton = ({ movie }: MovieCardFavoriteListProps) => {
     }
   };
   return (
-    <span className={styles.action} onClick={handleWatchList}>
+    <span className={styles.action} onClick={(e) => handleWatchList(e)}>
       {renderElement()}
     </span>
   );

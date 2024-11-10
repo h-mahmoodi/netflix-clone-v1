@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import styles from "./styles.module.css";
 import { TMDB_CONFIGS } from "@src/constants";
 import MovieCarousel from "@src/components/app/movie/carousel";
+import { useEffect } from "react";
 
 const AppMoviePage = () => {
   const { id } = useParams();
@@ -21,6 +22,14 @@ const AppMoviePage = () => {
       }
     },
   });
+
+  const scrollToTopHandler = () => {
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    scrollToTopHandler();
+  }, [id]);
 
   console.log(movie);
   return (

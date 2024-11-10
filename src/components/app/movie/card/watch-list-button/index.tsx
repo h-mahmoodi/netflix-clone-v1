@@ -8,6 +8,7 @@ import {
 import { Movie } from "@src/types/movie";
 
 import styles from "./styles.module.css";
+import { MouseEvent } from "react";
 
 type MovieCardWatchListButtonProps = {
   movie: Movie;
@@ -25,7 +26,7 @@ const MovieCardWatchListButton = ({ movie }: MovieCardWatchListButtonProps) => {
       return <i className="fi fi-br-exclamation text-red-700"></i>;
     }
     if (isLoading) {
-      return <i className="fi fi-rr-spinner animate-spin"></i>;
+      return <i className="fi fi-rr-spinner animate-spin text-zinc-900"></i>;
     }
     if (isInWatchList) {
       return <i className="fi fi-sr-overview text-red-700"></i>;
@@ -35,7 +36,11 @@ const MovieCardWatchListButton = ({ movie }: MovieCardWatchListButtonProps) => {
     }
   };
 
-  const handleWatchList = () => {
+  const handleWatchList = (e: MouseEvent<HTMLSpanElement>) => {
+    e.stopPropagation();
+    if (isLoading) {
+      return null;
+    }
     if (isInWatchList) {
       return dispatch(removeFromWatchList(movie));
     }
