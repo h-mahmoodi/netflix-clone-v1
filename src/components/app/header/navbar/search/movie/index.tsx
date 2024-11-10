@@ -1,17 +1,21 @@
 import image from "@src/assets/movie.jpg";
 import styles from "./styles.module.css";
+import { Movie } from "@src/types/movie";
+import { TMDB_CONFIGS } from "@src/constants";
+import { truncateText } from "@src/utils/helpers";
 
-const NavSearchMovie = () => {
+type NavSearchMovieProps = {
+  movie: Movie;
+};
+
+const NavSearchMovie = ({ movie }: NavSearchMovieProps) => {
   return (
     <div className={styles.movie}>
-      <img src={image} alt="" />
+      <img src={`${TMDB_CONFIGS.imageUrl}${movie?.poster_path}`} alt="" />
       <div className={styles.movieDetails}>
         <div>
-          <p className={styles.movieTitle}>Venom: The Last Dance</p>
-          <p className={styles.movieDesc}>
-            While struggling with his dual identity, Arthur Fleck not only
-            stumbles upon
-          </p>
+          <p className={styles.movieTitle}>{movie.name || movie.title}</p>
+          <p className={styles.movieDesc}>{truncateText(movie.overview, 65)}</p>
         </div>
         <div className={styles.movieInfo}>
           <span>2013</span>
