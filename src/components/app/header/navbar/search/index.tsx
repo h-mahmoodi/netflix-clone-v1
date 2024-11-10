@@ -1,13 +1,15 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./styles.module.css";
 import NavSearchMovie from "./movie";
 import { useQuery } from "@tanstack/react-query";
 import { fetchSearchedMovies } from "@src/fetchers";
 import useDebounce from "@src/hooks/useDebounce";
 import { Movie } from "@src/types/movie";
+import useClickOutSide from "@src/hooks/useClickOutSide";
 
 const NavSearch = () => {
   const [searchInput, setSearchInput] = useState("");
+  const [isDropDownOpen, setIsDropDownOpen] = useState(false);
   const searchInputDebounce = useDebounce<string>(searchInput, 500);
   const isValidSearchInput = searchInput && searchInput.length > 2;
   const { data, isPending, error } = useQuery({
@@ -15,13 +17,32 @@ const NavSearch = () => {
     queryFn: async () => fetchSearchedMovies(searchInputDebounce),
   });
 
+  const dropDownRef = useClickOutSide(handleCloseDropDown);
+
   const movies: Movie[] = data?.results || [];
 
   console.log("movies", movies);
 
-  const handleClearSearchInput = () => {
+  function handleClearSearchInput() {
     setSearchInput("");
-  };
+  }
+
+  function handleCloseDropDown() {
+    setIsDropDownOpen(false);
+  }
+
+  function handleInputFocus() {
+    if (isValidSearchInput) {
+      setIsDropDownOpen(true);
+    }
+  }
+
+  useEffect(() => {
+    if (!isValidSearchInput) {
+      return handleCloseDropDown();
+    }
+    setIsDropDownOpen(true);
+  }, [isValidSearchInput]);
 
   const iconRender = () => {
     if (searchInput) {
@@ -67,20 +88,22 @@ const NavSearch = () => {
       );
     }
 
-    if (movies.length > 3) {
+    if (movies.length > 0) {
       return (
         <div className={styles.movie}>
-          {movies.map((movie, index) => (
+          {movies.map((movie) => (
             <NavSearchMovie key={movie.id} movie={movie} />
           ))}
-          <div className={styles.moreButton}>Show other 124 movies</div>
+          {/* <div className={styles.moreButton}>
+            Show All {data.total_results} Results
+          </div> */}
         </div>
       );
     }
   };
 
   return (
-    <div className={styles.search}>
+    <div className={styles.search} ref={dropDownRef}>
       <div className={styles.searchInner}>
         <input
           type="text"
@@ -88,11 +111,19 @@ const NavSearch = () => {
           className=""
           value={searchInput}
           onChange={(e) => setSearchInput(e.target.value)}
+          onFocus={handleInputFocus}
         />
         {iconRender()}
       </div>
-      {isValidSearchInput && (
-        <div className={styles.searchDropDown}>{renderResult()}</div>
+      {isDropDownOpen && (
+        <div className={styles.searchDropDown}>
+          {renderResult()}
+          {movies.length > 0 && (
+            <div className={styles.moreButton}>
+              Show All {data.total_results} Results
+            </div>
+          )}
+        </div>
       )}
     </div>
   );

@@ -4,6 +4,7 @@ export type Movie = {
   name?: string;
   overview?: string;
   backdrop_path?: string;
-  vote_average?: string;
+  vote_average?: number;
   poster_path?: string;
+  release_date: string;
 };

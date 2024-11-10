@@ -1,4 +1,3 @@
-import image from "@src/assets/movie.jpg";
 import styles from "./styles.module.css";
 import { Movie } from "@src/types/movie";
 import { TMDB_CONFIGS } from "@src/constants";
@@ -18,8 +17,8 @@ const NavSearchMovie = ({ movie }: NavSearchMovieProps) => {
           <p className={styles.movieDesc}>{truncateText(movie.overview, 65)}</p>
         </div>
         <div className={styles.movieInfo}>
-          <span>2013</span>
-          <span>IMDb 5.5</span>
+          <span>{new Date(movie.release_date).getFullYear()}</span>
+          <span>IMDb {movie.vote_average?.toFixed(1)}</span>
         </div>
       </div>
     </div>
