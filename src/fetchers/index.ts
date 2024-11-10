@@ -6,7 +6,7 @@ const { discover, movieDetails, nowPalying, topRated, popular, search } =
 
 export const fetchSliderMovies = async () => {
   try {
-    await new Promise((resolve) => setTimeout(resolve, 5000));
+    await new Promise((resolve) => setTimeout(resolve, 1000));
     const response = await appAxios(discover);
     return response.data;
   } catch (error) {
@@ -16,7 +16,7 @@ export const fetchSliderMovies = async () => {
 
 export const fetchNowPlayingMovies = async () => {
   try {
-    await new Promise((resolve) => setTimeout(resolve, 5000));
+    await new Promise((resolve) => setTimeout(resolve, 1000));
     const response = await appAxios(nowPalying);
     return response.data;
   } catch (error) {
@@ -26,7 +26,7 @@ export const fetchNowPlayingMovies = async () => {
 
 export const fetchTopRatedMovies = async () => {
   try {
-    await new Promise((resolve) => setTimeout(resolve, 5000));
+    await new Promise((resolve) => setTimeout(resolve, 1000));
     const response = await appAxios(topRated);
     return response.data;
   } catch (error) {
@@ -36,7 +36,7 @@ export const fetchTopRatedMovies = async () => {
 
 export const fetchPopularMovies = async () => {
   try {
-    await new Promise((resolve) => setTimeout(resolve, 5000));
+    await new Promise((resolve) => setTimeout(resolve, 1000));
     const response = await appAxios(popular);
     return response.data;
   } catch (error) {
@@ -46,7 +46,7 @@ export const fetchPopularMovies = async () => {
 
 export const fetchMovies = async (endPoint: string) => {
   try {
-    await new Promise((resolve) => setTimeout(resolve, 5000));
+    await new Promise((resolve) => setTimeout(resolve, 1000));
     const response = await appAxios(endPoint);
     return response.data;
   } catch (error) {

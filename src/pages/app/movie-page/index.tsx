@@ -1,9 +1,10 @@
-import { fetchMovieDetails } from "@src/fetchers";
+import { fetchMovieDetails, fetchSliderMovies } from "@src/fetchers";
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
 
 import styles from "./styles.module.css";
 import { TMDB_CONFIGS } from "@src/constants";
+import MovieCarousel from "@src/components/app/movie/carousel";
 
 const AppMoviePage = () => {
   const { id } = useParams();
@@ -44,6 +45,11 @@ const AppMoviePage = () => {
           </div>
         </div>
         <div className={styles.backdrop}></div>
+      </div>
+      <div>
+        <div className={styles.relatedSection}>
+          <MovieCarousel title="Related Movies" fetcher={fetchSliderMovies} />
+        </div>
       </div>
       AppMoviePage
     </div>

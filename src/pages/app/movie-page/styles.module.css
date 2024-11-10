@@ -3,7 +3,7 @@
 }
 
 .movie {
-  @apply bg-cover pt-24 relative;
+  @apply bg-cover pt-24 pb-14 relative;
 }
 .backdrop {
   @apply absolute top-0 left-0 w-full h-full
@@ -26,8 +26,12 @@
 }
 
 .title {
-  @apply text-6xl font-bold text-white;
+  @apply text-7xl font-bold text-white;
 }
 .description {
-  @apply text-xl text-white;
+  @apply text-2xl text-white;
+}
+
+.relatedSection {
+  @apply container mx-auto;
 }
