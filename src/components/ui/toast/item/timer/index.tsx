@@ -56,7 +56,7 @@ const ToastItemTimeBar = ({
   return (
     <div className={styles.timeBar}>
       <div
-        style={{ width: `${(timer / interval) * 100}%` }}
+        style={{ width: `${100 - (timer / interval) * 100}%` }}
         className={styles.bar}
       ></div>
     </div>

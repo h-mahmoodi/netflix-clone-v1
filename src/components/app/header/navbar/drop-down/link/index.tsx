@@ -19,16 +19,16 @@ type LinkType = {
   to: string;
 } & LinkProps;
 
-type DropDownLinkProps = ButtonType | LinkType;
+type NavDropDownLinkProps = ButtonType | LinkType;
 
-function DropDownLink({
+function NavDropDownLink({
   icon,
   title,
   to,
   count,
   className,
   ...rest
-}: DropDownLinkProps) {
+}: NavDropDownLinkProps) {
   if (to) {
     return (
       <Link
@@ -55,4 +55,4 @@ function DropDownLink({
     </button>
   );
 }
-export default DropDownLink;
+export default NavDropDownLink;

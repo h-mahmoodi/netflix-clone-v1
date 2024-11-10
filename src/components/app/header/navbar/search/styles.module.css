@@ -1,0 +1,48 @@
+.search {
+  @apply relative;
+}
+
+.searchInner {
+  @apply flex items-center gap-2 p-3
+       rounded-md transition-all border-none
+       text-zinc-50 no-underline bg-zinc-800;
+}
+
+.search i {
+  @apply flex text-2xl;
+}
+
+.search input {
+  @apply flex text-lg bg-zinc-800 text-zinc-100 outline-none
+   leading-none font-semibold;
+}
+
+.searchDropDown {
+  @apply absolute bg-zinc-900 w-96 p-2 rounded-md top-16 mt-2 right-0 flex
+  flex-col gap-1;
+}
+
+.searchLoading {
+  @apply flex flex-col items-center gap-1 text-zinc-50 p-2
+  rounded-md;
+}
+.searchLoading i {
+  @apply flex text-xl;
+}
+.searchError {
+  @apply flex flex-col items-center gap-1 text-zinc-50 p-2
+  rounded-md;
+}
+
+.searchError i {
+  @apply flex text-3xl;
+}
+
+.movie {
+  @apply flex flex-col gap-1 h-[350px] overflow-y-scroll;
+}
+
+.moreButton {
+  @apply bg-red-700 hover:bg-red-800 text-zinc-50 p-3 rounded-md text-center
+  cursor-pointer;
+}

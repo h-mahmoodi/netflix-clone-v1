@@ -1,5 +1,5 @@
 .timeBar {
-  @apply absolute top-0 left-0 w-full h-1;
+  @apply absolute top-0 left-0 w-full h-[6px];
 }
 
 .bar {

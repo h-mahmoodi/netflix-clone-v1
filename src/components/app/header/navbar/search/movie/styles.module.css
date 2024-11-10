@@ -1,0 +1,22 @@
+.movie {
+  @apply flex gap-3 bg-zinc-800 text-zinc-50 p-2
+    rounded-md cursor-pointer hover:bg-zinc-700;
+}
+
+.movieDetails {
+  @apply flex flex-col justify-between flex-grow;
+}
+
+.movieTitle {
+  @apply text-zinc-50 text-lg font-semibold;
+}
+.movieDesc {
+  @apply text-zinc-300 text-sm;
+}
+.movieInfo {
+  @apply flex justify-between text-zinc-300 font-semibold;
+}
+
+.movie img {
+  @apply w-16 h-24 rounded-md object-cover;
+}

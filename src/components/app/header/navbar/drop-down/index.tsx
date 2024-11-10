@@ -2,14 +2,14 @@ import { ReactNode, useState } from "react";
 import styles from "./styles.module.css";
 import useClickOutSide from "@hooks/useClickOutSide";
 
-type DropDownProps = {
+type NavDropDownProps = {
   icon?: string;
   title?: string;
   className?: string;
   children: ReactNode;
 };
 
-function DropDown({ icon, title, className, children }: DropDownProps) {
+function NavDropDown({ icon, title, className, children }: NavDropDownProps) {
   const [isOpen, setIsOpen] = useState(false);
   const ref = useClickOutSide(() => setIsOpen(false));
 
@@ -26,4 +26,4 @@ function DropDown({ icon, title, className, children }: DropDownProps) {
     </div>
   );
 }
-export default DropDown;
+export default NavDropDown;

@@ -1,13 +1,14 @@
 // import Logo from "../logo";
 
-import NavLink from "@components/ui/nav-link";
-import DropDown from "@components/ui/drop-down";
-import DropDownLink from "@components/ui/drop-down-link";
+import NavLink from "@src/components/app/header/navbar/nav-link";
+import NavDropDown from "@src/components/app/header/navbar/drop-down";
+import NavDropDownLink from "@src/components/app/header/navbar/drop-down/link";
 
 import styles from "./styles.module.css";
 import { useAppSelector } from "@src/hooks/useAppSelector";
 import { selectWatchList } from "@src/redux/watch-list-slice";
 import { selectFavoriteList } from "@src/redux/favorite-list-slice";
+import NavSearch from "./search";
 
 // import Search from "../explore";
 
@@ -20,7 +21,8 @@ function AppNavbar() {
         <NavLink icon="fi fi-rr-apps" title="Explore" to="explore" />
       </div>
       <div className={styles.sideMenu}>
-        <NavLink icon="fi fi-rr-search" to="explore" />
+        <NavSearch />
+        {/* <NavDropDown icon="fi fi-rr-search">jjjjj</NavDropDown> */}
         <NavLink
           icon="fi fi-rr-heart"
           to="explore"
@@ -37,16 +39,17 @@ function AppNavbar() {
             watchListMovies.length > 0 ? watchListMovies.length : undefined
           }
         />
-        <DropDown icon="fi fi-rr-user" title="My profile">
-          <DropDownLink title="Favorites" icon="fi fi-rr-heart" count={5} />
-          <DropDownLink
+
+        <NavDropDown icon="fi fi-rr-user">
+          <NavDropDownLink title="Favorites" icon="fi fi-rr-heart" count={5} />
+          <NavDropDownLink
             title="Watch list"
             icon="fi fi-rr-clapperboard-play"
             count={5}
           />
-          <DropDownLink title="Settings" icon="fi fi-rr-settings" />
-          <DropDownLink title="Log out" icon="fi fi-rr-exit" />
-        </DropDown>
+          <NavDropDownLink title="Settings" icon="fi fi-rr-settings" />
+          <NavDropDownLink title="Log out" icon="fi fi-rr-exit" />
+        </NavDropDown>
       </div>
     </div>
   );
