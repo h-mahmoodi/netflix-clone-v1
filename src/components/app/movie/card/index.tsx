@@ -4,6 +4,7 @@ import { TMDB_CONFIGS } from "@src/constants";
 
 import MovieCardWatchListButton from "./watch-list-button";
 import MovieCardFavoriteListButton from "./favorite-list-button";
+import { Link } from "react-router-dom";
 
 type MovieCardProps = {
   movie: Movie;
@@ -11,7 +12,7 @@ type MovieCardProps = {
 
 function MovieCard({ movie }: MovieCardProps) {
   return (
-    <div className={styles.card}>
+    <Link className={styles.card} to={`movies/${movie.id}`}>
       <div className={styles.imageContainer}>
         <img
           className={styles.image}
@@ -41,7 +42,7 @@ function MovieCard({ movie }: MovieCardProps) {
           <span>IMDb 5.5</span>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
 export default MovieCard;

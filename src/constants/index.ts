@@ -23,6 +23,7 @@ export const FIREBASE_CONFIGS: FirebaseConfigTypes = {
 export const RequestEndPoints: RequestEndPointsTypes = {
   discover: "/discover/movie?include_video=true",
   search: "/search/movie",
+  movieDetails: "/movie",
   trailer: "/movie/<Movie_ID>/videos",
   nowPalying: "/movie/now_playing",
   topRated:

@@ -11,10 +11,11 @@ const NavSearch = () => {
   const [searchInput, setSearchInput] = useState("");
   const [isDropDownOpen, setIsDropDownOpen] = useState(false);
   const searchInputDebounce = useDebounce<string>(searchInput, 500);
-  const isValidSearchInput = searchInput && searchInput.length > 2;
-  const { data, isPending, error } = useQuery({
+  const isValidSearchInput = !!searchInput && searchInput.length > 2;
+  const { data, isFetching, error } = useQuery({
     queryKey: ["navSearch", searchInputDebounce],
-    queryFn: async () => fetchSearchedMovies(searchInputDebounce),
+    queryFn: () => fetchSearchedMovies(searchInputDebounce),
+    enabled: isValidSearchInput,
   });
 
   const dropDownRef = useClickOutSide(handleCloseDropDown);
@@ -46,6 +47,9 @@ const NavSearch = () => {
 
   const iconRender = () => {
     if (searchInput) {
+      if (isFetching) {
+        return <i className="fi fi-br-spinner animate-spin"></i>;
+      }
       return (
         <i
           className="fi fi-rr-cross-small"
@@ -60,14 +64,6 @@ const NavSearch = () => {
     if (!isValidSearchInput) {
       return null;
     }
-    if (isPending) {
-      return (
-        <div className={styles.searchLoading}>
-          <i className="fi fi-br-spinner animate-spin"></i>
-          <span>Searching...</span>
-        </div>
-      );
-    }
 
     if (error) {
       return (
@@ -79,7 +75,7 @@ const NavSearch = () => {
       );
     }
 
-    if (movies.length === 0) {
+    if (!isFetching && movies.length === 0) {
       return (
         <div className={styles.searchError}>
           <i className="fi fi-rr-engine-warning"></i>
@@ -115,7 +111,7 @@ const NavSearch = () => {
         />
         {iconRender()}
       </div>
-      {isDropDownOpen && (
+      {!isFetching && isDropDownOpen && (
         <div className={styles.searchDropDown}>
           {renderResult()}
           {movies.length > 0 && (

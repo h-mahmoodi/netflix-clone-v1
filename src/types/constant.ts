@@ -16,6 +16,7 @@ export type FirebaseConfigTypes = {
 
 export type RequestEndPointsTypes = {
   discover: string;
+  movieDetails: string;
   search: string;
   trailer: string;
   nowPalying: string;
