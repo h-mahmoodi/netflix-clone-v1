@@ -1,0 +1,29 @@
+.movie {
+  @apply bg-cover pt-24 pb-14 relative;
+}
+.backdrop {
+  @apply absolute top-0 left-0 w-full h-full
+      backdrop-blur-sm bg-black/70;
+}
+.movieSection {
+  @apply container mx-auto relative z-20 grid grid-cols-4 py-10 gap-10;
+}
+
+.banner {
+  @apply col-span-1 h-[500px];
+}
+
+.banner img {
+  @apply object-cover rounded-xl;
+}
+
+.details {
+  @apply col-span-3 p-4 space-y-4;
+}
+
+.title {
+  @apply text-7xl font-bold text-white;
+}
+.description {
+  @apply text-2xl text-white;
+}

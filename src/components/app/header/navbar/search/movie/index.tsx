@@ -2,15 +2,22 @@ import styles from "./styles.module.css";
 import { Movie } from "@src/types/movie";
 import { TMDB_CONFIGS } from "@src/constants";
 import { truncateText } from "@src/utils/helpers";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 type NavSearchMovieProps = {
   movie: Movie;
+  onClose: () => void;
 };
 
-const NavSearchMovie = ({ movie }: NavSearchMovieProps) => {
+const NavSearchMovie = ({ movie, onClose }: NavSearchMovieProps) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/movies/${movie.id}`);
+    onClose();
+  };
   return (
-    <Link className={styles.movie} to={`movies/${movie.id}`}>
+    <div className={styles.movie} onClick={handleClick}>
       <img src={`${TMDB_CONFIGS.imageUrl}${movie?.poster_path}`} alt="" />
       <div className={styles.movieDetails}>
         <div>
@@ -22,7 +29,7 @@ const NavSearchMovie = ({ movie }: NavSearchMovieProps) => {
           <span>IMDb {movie.vote_average?.toFixed(1)}</span>
         </div>
       </div>
-    </Link>
+    </div>
   );
 };
 export default NavSearchMovie;

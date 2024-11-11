@@ -1,8 +1,16 @@
 import { appAxios } from "@src/configs/axios";
 import { RequestEndPoints } from "@src/constants";
 
-const { discover, movieDetails, nowPalying, topRated, popular, search } =
-  RequestEndPoints;
+const {
+  discover,
+  movieDetails,
+  recommendedMovies,
+  similarMovies,
+  nowPalying,
+  topRated,
+  popular,
+  search,
+} = RequestEndPoints;
 
 export const fetchSliderMovies = async () => {
   try {
@@ -68,6 +76,25 @@ export const fetchMovieDetails = async (id: string) => {
   try {
     await new Promise((resolve) => setTimeout(resolve, 1000));
     const response = await appAxios(`${movieDetails}/${id}`);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const fetchRecommendedMovies = async (id: string) => {
+  try {
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    const response = await appAxios(recommendedMovies(id));
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+export const fetchSimilarMovies = async (id: string) => {
+  try {
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    const response = await appAxios(similarMovies(id));
     return response.data;
   } catch (error) {
     console.log(error);

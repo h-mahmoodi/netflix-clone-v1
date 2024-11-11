@@ -88,7 +88,11 @@ const NavSearch = () => {
       return (
         <div className={styles.movie}>
           {movies.map((movie) => (
-            <NavSearchMovie key={movie.id} movie={movie} />
+            <NavSearchMovie
+              key={movie.id}
+              movie={movie}
+              onClose={() => setIsDropDownOpen(false)}
+            />
           ))}
           {/* <div className={styles.moreButton}>
             Show All {data.total_results} Results

@@ -6,22 +6,18 @@ import MovieCardSkeleton from "../card/skeleton";
 import CarouselHeader from "./header";
 import CarouselNavigation from "./navigation";
 import { useQuery } from "@tanstack/react-query";
-import {
-  fetchMovies,
-  fetchNowPlayingMovies,
-  fetchSliderMovies,
-} from "@src/fetchers";
 import { Movie } from "@src/types/movie";
 
 type MovieCarouselProps = {
   title: string;
   fetcher: () => Promise<{ results: Movie[] }>;
+  flag?: string | number;
 };
 
-function MovieCarousel({ title, fetcher }: MovieCarouselProps) {
+function MovieCarousel({ title, flag, fetcher }: MovieCarouselProps) {
   const [movies, setMovies] = useState<Movie[]>([]);
-  const { isPending, error, data } = useQuery({
-    queryKey: ["MovieCarousel", title],
+  const { isFetching, error, data } = useQuery({
+    queryKey: ["MovieCarousel", title, flag],
     queryFn: fetcher,
   });
   const fetchedMovies: Movie[] = useMemo(() => data?.results || [], [data]);
@@ -43,10 +39,13 @@ function MovieCarousel({ title, fetcher }: MovieCarouselProps) {
   // if (!data) return <div>Failed to load movies.</div>;
 
   const renderMovies = () => {
-    if (isPending) {
+    if (isFetching) {
       return Array(VIEW_COUNT)
         .fill(null)
         .map((_item, index) => <MovieCardSkeleton key={index} />);
+    }
+    if (fetchedMovies.length === 0) {
+      return <div>No item found</div>;
     } else {
       return movies.map((movie) => <MovieCard key={movie.id} movie={movie} />);
     }
