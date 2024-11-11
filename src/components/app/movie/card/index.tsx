@@ -1,6 +1,7 @@
 import { Movie } from "@src/types/movie";
 import styles from "./styles.module.css";
 import { TMDB_CONFIGS } from "@src/constants";
+import fallBackImage from "@src/assets/fallback.png";
 
 import MovieCardWatchListButton from "./watch-list-button";
 import MovieCardFavoriteListButton from "./favorite-list-button";
@@ -22,6 +23,7 @@ function MovieCard({ movie }: MovieCardProps) {
           className={styles.image}
           src={`${TMDB_CONFIGS.imageUrl}${movie?.poster_path}`}
           alt={movie?.title}
+          onError={(e) => (e.currentTarget.src = fallBackImage)}
         />
         <div className={styles.overlay}>
           <div className={styles.overlayActions}>
