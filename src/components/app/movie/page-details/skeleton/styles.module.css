@@ -1,0 +1,57 @@
+.movie {
+  @apply bg-cover pt-24 pb-14 relative;
+}
+.backdrop {
+  @apply absolute top-0 left-0 w-full h-full
+        backdrop-blur-sm bg-black/70;
+}
+.movieSection {
+  @apply container mx-auto relative z-20 grid grid-cols-4 py-10 gap-10 items-center;
+}
+
+.banner {
+  @apply relative col-span-1 h-[500px] rounded-xl overflow-hidden bg-zinc-900;
+  background: linear-gradient(-45deg, #18181b 40%, #212124 50%, #18181b 60%);
+  animation: shimmer 1s infinite ease-in-out;
+}
+
+.details {
+  @apply col-span-3 flex flex-col gap-1 p-4 space-y-4;
+}
+
+.title {
+  @apply h-16 w-1/2 bg-zinc-900 rounded-md;
+  background: linear-gradient(-45deg, #18181b 40%, #212124 50%, #18181b 60%);
+  animation: shimmer 1s infinite ease-in-out;
+}
+.description {
+  @apply h-24 bg-zinc-900 rounded-md;
+  background: linear-gradient(-45deg, #18181b 40%, #212124 50%, #18181b 60%);
+  animation: shimmer 1s infinite ease-in-out;
+}
+
+.infoSection {
+  @apply flex items-center gap-3;
+}
+
+.info {
+  @apply h-12 w-28 bg-zinc-900 rounded-md;
+  background: linear-gradient(-45deg, #18181b 40%, #212124 50%, #18181b 60%);
+  animation: shimmer 1s infinite ease-in-out;
+}
+.genresSection {
+  @apply h-12 w-40 bg-zinc-900 rounded-md;
+  background: linear-gradient(-45deg, #18181b 40%, #212124 50%, #18181b 60%);
+  animation: shimmer 1s infinite ease-in-out;
+}
+
+@keyframes shimmer {
+  from {
+    background-position-x: 100%;
+    background-size: 400%;
+  }
+  to {
+    background-position-x: 0%;
+    background-size: 400%;
+  }
+}

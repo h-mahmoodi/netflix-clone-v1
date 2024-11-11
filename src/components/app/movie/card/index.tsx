@@ -5,7 +5,7 @@ import fallBackImage from "@src/assets/fallback.png";
 
 import MovieCardWatchListButton from "./watch-list-button";
 import MovieCardFavoriteListButton from "./favorite-list-button";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 type MovieCardProps = {
   movie: Movie;

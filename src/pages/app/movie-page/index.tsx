@@ -13,12 +13,13 @@ import MovieCarousel from "@src/components/app/movie/carousel";
 import { useCallback, useEffect, useLayoutEffect, useState } from "react";
 import MoviePageDetails from "@src/components/app/movie/page-details";
 import Loading from "@src/components/ui/loading";
+import MoviePageDetailsSkeleton from "@src/components/app/movie/page-details/skeleton";
 
 const AppMoviePage = () => {
   const { id } = useParams<{ id: string }>();
 
   const scrollToTopHandler = () => {
-    window.scrollTo({ top: 0, left: 0 });
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   };
 
   useLayoutEffect(() => {

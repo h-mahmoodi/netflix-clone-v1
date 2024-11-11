@@ -2,7 +2,7 @@ import styles from "./styles.module.css";
 import { Movie } from "@src/types/movie";
 import { TMDB_CONFIGS } from "@src/constants";
 import { truncateText } from "@src/utils/helpers";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 type NavSearchMovieProps = {
   movie: Movie;
