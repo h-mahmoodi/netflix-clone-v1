@@ -7,6 +7,8 @@ import MoviePageDetailsSkeleton from "./skeleton";
 import { useAppDispatch } from "@src/hooks/useAppDispatch";
 import { openModal } from "@src/redux/modal-slice";
 import MovieTrailer from "../trailer";
+import MovieCardFavoriteListButton from "../card/favorite-list-button";
+import MovieCardWatchListButton from "../card/watch-list-button";
 
 type MoviePageDetailsProps = {
   id: string | number;
@@ -22,6 +24,7 @@ const MoviePageDetails = ({ id }: MoviePageDetailsProps) => {
     queryKey: ["moviePageDetails", id],
     queryFn: () => fetchMovieDetails(id as string),
     enabled: !!id,
+    staleTime: 5 * 60 * 1000,
   });
 
   const handleShowModal = () => {
@@ -32,6 +35,10 @@ const MoviePageDetails = ({ id }: MoviePageDetailsProps) => {
       })
     );
   };
+
+  if (!movie || error) {
+    return <div>Error</div>;
+  }
 
   if (isFetching) {
     return <MoviePageDetailsSkeleton />;
@@ -51,6 +58,10 @@ const MoviePageDetails = ({ id }: MoviePageDetailsProps) => {
             className="w-full h-full"
           />
           <div className={styles.bannerOverlay}>
+            <div className={styles.actions}>
+              <MovieCardFavoriteListButton movie={movie} />
+              <MovieCardWatchListButton movie={movie} />
+            </div>
             <span className={styles.bannerPlayButton} onClick={handleShowModal}>
               <i className="fi fi-rr-play-circle"></i>
               {/* <span>Watch Trailers</span> */}

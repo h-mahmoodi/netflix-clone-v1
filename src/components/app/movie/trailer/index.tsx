@@ -14,7 +14,7 @@ const MovieTrailer = ({ movieId }: MovieTrailerProps) => {
     error,
   } = useQuery<MovieTrailerType[]>({
     queryKey: ["movieTrailer", movieId],
-    queryFn: async () => fetchMovieTrailers(movieId),
+    queryFn: async () => fetchMovieTrailers(movieId as string),
   });
 
   const firstTrailer = trailers?.filter(

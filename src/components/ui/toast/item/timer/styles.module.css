@@ -1,7 +1,7 @@
 .timeBar {
-  @apply absolute top-0 left-0 w-full h-[6px];
+  @apply absolute top-0 left-0 w-full h-[6px] bg-zinc-400;
 }
 
 .bar {
-  @apply h-full bg-green-600;
+  @apply h-full bg-green-700;
 }

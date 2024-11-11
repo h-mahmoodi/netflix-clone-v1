@@ -2,7 +2,6 @@ import { useAppSelector } from "@src/hooks/useAppSelector";
 import styles from "./styles.module.css";
 import { closeModal, selectModal } from "@src/redux/modal-slice";
 import { useAppDispatch } from "@src/hooks/useAppDispatch";
-import { ReactNode } from "react";
 
 const Modal = () => {
   const {

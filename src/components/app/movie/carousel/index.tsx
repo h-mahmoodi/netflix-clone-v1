@@ -19,6 +19,7 @@ function MovieCarousel({ title, flag, fetcher }: MovieCarouselProps) {
   const { isFetching, error, data } = useQuery({
     queryKey: ["MovieCarousel", title, flag],
     queryFn: fetcher,
+    staleTime: 5 * 60 * 1000,
   });
   const fetchedMovies: Movie[] = useMemo(() => data?.results || [], [data]);
   const VIEW_COUNT = 6;

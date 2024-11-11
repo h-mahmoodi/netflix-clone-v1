@@ -21,8 +21,16 @@
   flex items-center justify-center duration-300;
 }
 
-.banner:hover .bannerOverlay {
-  opacity: 1;
+.actions {
+  @apply absolute top-0 right-0 flex flex-col gap-3;
+}
+
+.actions span {
+  @apply cursor-pointer;
+}
+
+.actions i {
+  @apply text-3xl p-1 cursor-pointer;
 }
 
 .bannerPlayButton {
