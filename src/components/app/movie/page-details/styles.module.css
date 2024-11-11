@@ -17,7 +17,7 @@
   @apply object-cover;
 }
 .bannerOverlay {
-  @apply opacity-0 absolute top-0 left-0 bg-black/60 w-full h-full
+  @apply absolute top-0 left-0  w-full h-full
   flex items-center justify-center duration-300;
 }
 
@@ -30,9 +30,14 @@
 }
 
 .bannerPlayButton i {
-  @apply flex text-8xl text-red-800 bg-zinc-50 p-1 rounded-full
-   cursor-pointer;
+  @apply flex text-8xl text-zinc-950 bg-zinc-50  p-2 rounded-full
+   cursor-pointer duration-300;
 }
+
+.bannerPlayButton i:hover {
+  @apply scale-105;
+}
+
 .bannerPlayButton span {
   @apply text-2xl font-semibold;
 }
@@ -44,6 +49,10 @@
 .title {
   @apply text-7xl font-bold text-white;
 }
+
+.tagline {
+  @apply text-2xl font-semibold text-white;
+}
 .description {
   @apply text-xl text-white;
 }
@@ -53,7 +62,7 @@
 }
 
 .info {
-  @apply bg-zinc-800 text-xl py-2 px-4 rounded-md;
+  @apply bg-zinc-950 text-xl py-2 px-4 rounded-md;
 }
 .genresSection {
   @apply flex flex-col gap-2;
@@ -65,6 +74,6 @@
   @apply flex gap-3;
 }
 .genre {
-  @apply text-lg bg-zinc-800 py-1 px-2 rounded-md
+  @apply text-lg bg-zinc-950 py-2 px-4 rounded-md
    hover:bg-red-700 cursor-pointer duration-300;
 }

@@ -6,6 +6,7 @@ const {
   movieDetails,
   recommendedMovies,
   similarMovies,
+  movieTrailer,
   nowPalying,
   topRated,
   popular,
@@ -96,6 +97,16 @@ export const fetchSimilarMovies = async (id: string) => {
     await new Promise((resolve) => setTimeout(resolve, 1000));
     const response = await appAxios(similarMovies(id));
     return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const fetchMovieTrailers = async (id: string) => {
+  try {
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    const response = await appAxios(movieTrailer(id));
+    return response.data.results;
   } catch (error) {
     console.log(error);
   }

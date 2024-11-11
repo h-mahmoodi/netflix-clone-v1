@@ -30,7 +30,9 @@ export const RequestEndPoints: RequestEndPointsTypes = {
   similarMovies: (id: string) => {
     return "/movie/<Movie_ID>/similar".replace("<Movie_ID>", id);
   },
-  trailer: "/movie/<Movie_ID>/videos",
+  movieTrailer: (id: string) => {
+    return "/movie/<Movie_ID>/videos".replace("<Movie_ID>", id);
+  },
   nowPalying: "/movie/now_playing",
   topRated:
     "/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=vote_count.desc",

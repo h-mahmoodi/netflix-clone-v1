@@ -12,6 +12,7 @@ type Genre = {
 export type Movie = {
   id: number;
   title?: string;
+  tagline?: string;
   name?: string;
   overview?: string;
   backdrop_path?: string;
@@ -21,4 +22,17 @@ export type Movie = {
   spoken_languages?: SpokenLanguage[];
   status?: string;
   genres?: Genre[];
+};
+
+export type MovieTrailer = {
+  iso_639_1: string;
+  iso_3166_1: string;
+  name: string;
+  key: string;
+  site: string;
+  size: number;
+  type: string;
+  official: boolean;
+  published_at: string;
+  id: string;
 };

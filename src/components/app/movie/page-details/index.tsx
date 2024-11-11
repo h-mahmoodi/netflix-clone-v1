@@ -4,21 +4,34 @@ import styles from "./styles.module.css";
 import { fetchMovieDetails } from "@src/fetchers";
 import { useQuery } from "@tanstack/react-query";
 import MoviePageDetailsSkeleton from "./skeleton";
+import { useAppDispatch } from "@src/hooks/useAppDispatch";
+import { openModal } from "@src/redux/modal-slice";
+import MovieTrailer from "../trailer";
 
 type MoviePageDetailsProps = {
   id: string | number;
 };
 
 const MoviePageDetails = ({ id }: MoviePageDetailsProps) => {
+  const dispatch = useAppDispatch();
   const {
     data: movie,
     isFetching,
     error,
   } = useQuery<Movie>({
     queryKey: ["moviePageDetails", id],
-    queryFn: () => fetchMovieDetails(id),
+    queryFn: () => fetchMovieDetails(id as string),
     enabled: !!id,
   });
+
+  const handleShowModal = () => {
+    dispatch(
+      openModal({
+        title: movie?.title || movie?.title || "The Trailer",
+        content: <MovieTrailer movieId={id} />,
+      })
+    );
+  };
 
   if (isFetching) {
     return <MoviePageDetailsSkeleton />;
@@ -38,9 +51,9 @@ const MoviePageDetails = ({ id }: MoviePageDetailsProps) => {
             className="w-full h-full"
           />
           <div className={styles.bannerOverlay}>
-            <span className={styles.bannerPlayButton}>
+            <span className={styles.bannerPlayButton} onClick={handleShowModal}>
               <i className="fi fi-rr-play-circle"></i>
-              <span>Watch Trailers</span>
+              {/* <span>Watch Trailers</span> */}
             </span>
           </div>
         </div>
@@ -66,6 +79,7 @@ const MoviePageDetails = ({ id }: MoviePageDetailsProps) => {
               </span>
             </div>
           </div>
+          <div className={styles.tagline}>{movie?.tagline}</div>
 
           <p className={styles.description}>{movie?.overview}</p>
           <div className={styles.genresSection}>

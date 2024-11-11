@@ -13,11 +13,23 @@
 }
 
 .content {
-  @apply relative bg-zinc-50 p-5 rounded-md z-40;
+  @apply relative bg-zinc-950 p-5 rounded-md z-40;
 }
 
 .overlay {
   @apply absolute top-0 left-0 z-30 h-full w-full  
   backdrop-filter backdrop-blur;
   animation: animation 0.3s;
+}
+
+.header {
+  @apply flex justify-between items-center pb-5 gap-10;
+}
+
+.title {
+  @apply text-2xl font-bold text-zinc-100;
+}
+
+.close i {
+  @apply flex text-lg bg-zinc-800 hover:bg-red-800 p-2 rounded-md cursor-pointer;
 }

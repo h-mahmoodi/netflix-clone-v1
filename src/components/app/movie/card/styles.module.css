@@ -67,8 +67,8 @@
 }
 
 .overlayPlay i {
-  @apply text-7xl  text-zinc-50 rounded-full flex p-1 transition-all
-  duration-300;
+  @apply flex text-7xl text-zinc-950 bg-zinc-50  p-1 rounded-full
+  cursor-pointer duration-300;
 }
 .overlayPlay i:hover {
   @apply scale-125;

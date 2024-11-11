@@ -20,7 +20,7 @@ export type RequestEndPointsTypes = {
   movieDetails: string;
   recommendedMovies: (id: string) => string;
   similarMovies: (id: string) => string;
-  trailer: string;
+  movieTrailer: (id: string) => string;
   nowPalying: string;
   topRated: string;
   popular: string;
