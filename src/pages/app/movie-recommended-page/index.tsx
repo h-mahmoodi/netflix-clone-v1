@@ -2,11 +2,13 @@ import { TMDB_CONFIGS } from "@src/constants";
 import { fetchMovieDetails, fetchRecommendedMovies } from "@src/fetchers";
 import { Movie } from "@src/types/movie";
 import { useQuery } from "@tanstack/react-query";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import styles from "./styles.module.css";
 import MovieGrid from "@src/components/app/movie/grid";
+import useInfiniteScroll from "@src/hooks/useInfiniteScroll";
+import MovieCardSkeleton from "@src/components/app/movie/card/skeleton";
 
 const MovieRecommendedPage = () => {
   const { id } = useParams();
@@ -25,24 +27,38 @@ const MovieRecommendedPage = () => {
   const { data, isFetching, error } = useQuery({
     queryKey: ["MovieRecommendedPage", id, page],
     queryFn: () => fetchRecommendedMovies(id as string, page),
-    initialData: { results: [] },
+    enabled: !!id,
+    staleTime: 5 * 60 * 1000,
   });
 
-  const result = data?.results;
   const totalPages = data?.total_pages;
+  const hasNextPage = page < totalPages;
 
-  const handleViewMore = () => {
+  useEffect(() => {
+    if (data?.results) {
+      setMovies((prev) =>
+        page === 1 ? data.results : [...prev, ...data.results]
+      );
+    }
+  }, [data, page]);
+
+  useEffect(() => {
+    setMovies([]);
+    setPage(1);
+  }, [id]);
+
+  const fetchNextPage = () => {
     if (page < totalPages) {
       setPage((prev) => prev + 1);
     }
   };
 
-  useEffect(() => {
-    setMovies((prev) => [...prev, ...result]);
-  }, [result]);
+  const loadMoreRef = useInfiniteScroll({
+    fetchNextPage,
+    hasNextPage,
+    isLoading: isFetching,
+  });
 
-  console.log(mainMovie);
-  console.log(data);
   return (
     <div className={styles.page}>
       <div
@@ -61,8 +77,8 @@ const MovieRecommendedPage = () => {
       <div className={styles.containerLayout}>
         <MovieGrid movies={movies} loading={isFetching} />
         {page < totalPages && (
-          <div className={styles.moreButton}>
-            <button onClick={handleViewMore}>Load More</button>
+          <div className={styles.moreButton} ref={loadMoreRef}>
+            <button>Load More</button>
           </div>
         )}
       </div>

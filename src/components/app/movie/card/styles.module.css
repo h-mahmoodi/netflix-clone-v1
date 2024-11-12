@@ -17,7 +17,7 @@
 } */
 
 .imageContainer {
-  @apply relative h-[360px] max-h-[420px] rounded-xl
+  @apply relative  max-h-[420px] rounded-xl
   overflow-hidden;
 }
 

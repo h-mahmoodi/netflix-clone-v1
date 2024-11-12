@@ -12,7 +12,7 @@ type MovieGridProps = {
 function MovieGrid({ movies, loading }: MovieGridProps) {
   const renderMovies = () => {
     if (loading) {
-      return Array(12)
+      return Array(10)
         .fill(null)
         .map((_item, index) => <MovieCardSkeleton key={index} />);
     } else {
@@ -22,7 +22,20 @@ function MovieGrid({ movies, loading }: MovieGridProps) {
 
   return (
     <div className={styles.container}>
-      <div className={styles.gridLayout}>{renderMovies()}</div>
+      <div className={styles.gridLayout}>
+        {movies.map((movie) => (
+          <MovieCard key={movie.id} movie={movie} />
+        ))}
+      </div>
+      {loading && (
+        <div className={styles.gridLayout}>
+          {Array(5)
+            .fill(null)
+            .map((_item, index) => (
+              <MovieCardSkeleton key={index} />
+            ))}
+        </div>
+      )}
     </div>
   );
 }
