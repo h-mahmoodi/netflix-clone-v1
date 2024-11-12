@@ -3,22 +3,26 @@
 }
 
 .searchInner {
-  @apply flex items-center gap-2 p-3
-       rounded-md transition-all border-none
-       text-zinc-50 no-underline bg-zinc-800;
+  @apply flex items-center gap-2 pl-3
+       rounded-md transition-all 
+       text-zinc-50 no-underline bg-zinc-950
+       border-2 border-zinc-800 overflow-hidden;
 }
 
+.searchIcon {
+  @apply bg-zinc-900 p-3;
+}
 .search i {
   @apply flex text-2xl;
 }
 
 .search input {
-  @apply flex text-lg bg-zinc-800 text-zinc-100 outline-none
+  @apply flex text-xl w-96 bg-zinc-950 text-zinc-100 outline-none
    leading-none font-semibold;
 }
 
 .searchDropDown {
-  @apply absolute bg-zinc-900 w-96 p-3 rounded-md top-16 mt-2 right-0 flex
+  @apply absolute bg-zinc-900 w-full p-3 rounded-md top-14 left-0 flex
   flex-col gap-1;
 }
 

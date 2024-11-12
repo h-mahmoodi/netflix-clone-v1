@@ -1,19 +1,23 @@
 .actions {
-  @apply flex  gap-6;
-}
-.play {
-  @apply flex items-center gap-3 py-1 pl-1 pr-5 bg-zinc-50 
-    text-red-700 rounded-r-md rounded-l-[2rem] cursor-pointer
-     transition-all;
+  @apply relative flex gap-4 z-20;
 }
 
-.play i {
-  @apply flex  text-5xl;
+.buttonPrimary {
+  @apply py-4 px-6 text-lg bg-red-800 text-zinc-50 border-none rounded-md 
+  font-semibold flex items-center
+ gap-5 leading-none duration-300;
 }
-.play span {
-  @apply flex  text-xl rounded-full font-semibold leading-none;
+
+.buttonPrimary i {
+  @apply flex text-2xl;
 }
-.button {
-  @apply py-3 px-8 text-xl bg-red-700 border-none rounded-md
-    text-zinc-50 font-semibold transition-all flex items-center;
+
+.buttonSecondary {
+  @apply p-3 text-lg bg-zinc-950 text-zinc-50 border-none rounded-md 
+      font-semibold flex items-center
+     gap-3 leading-none duration-300;
+}
+
+.buttonSecondary i {
+  @apply flex text-2xl;
 }

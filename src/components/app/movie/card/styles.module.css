@@ -1,7 +1,7 @@
 .card {
   animation: animation 0.5s ease-in-out;
-  @apply relative shrink-0 cursor-pointer flex flex-col gap-2 rounded-xl
-  transition-all duration-300;
+  @apply relative shrink-0  flex flex-col gap-2 rounded-xl
+  transition-all duration-300 overflow-hidden;
 }
 @keyframes animation {
   0% {
@@ -63,15 +63,15 @@
 
 .overlayPlay {
   @apply absolute top-1/2 left-1/2 -translate-x-1/2 
-  -translate-y-1/2;
+  -translate-y-3/4;
 }
 
 .overlayPlay i {
-  @apply flex text-7xl text-zinc-950 bg-zinc-50  p-1 rounded-full
+  @apply flex text-7xl bg-zinc-950 text-zinc-50  p-2 rounded-full
   cursor-pointer duration-300;
 }
 .overlayPlay i:hover {
-  @apply scale-125;
+  @apply scale-110 text-red-800;
 }
 
 .card:hover .overlay {
@@ -79,17 +79,26 @@
 }
 
 .details {
-  @apply flex flex-col gap-1 px-1;
+  @apply absolute bottom-0 translate-y-full w-full  duration-300
+   p-1 scale-75;
+}
+
+.card:hover .details {
+  @apply translate-y-0 scale-100;
+}
+.detailsContainer {
+  @apply flex flex-col bg-zinc-950
+  gap-1 p-3 rounded-lg;
 }
 
 .title {
-  @apply text-zinc-300 font-semibold text-lg truncate;
+  @apply text-zinc-300 font-semibold text-xl mt-1 cursor-pointer;
 }
 
-.card:hover .title {
-  @apply text-red-600;
-}
+/* .title:hover {
+  @apply text-red-700;
+} */
 
 .info {
-  @apply flex justify-between text-zinc-500 text-sm font-semibold;
+  @apply flex justify-between text-zinc-200;
 }

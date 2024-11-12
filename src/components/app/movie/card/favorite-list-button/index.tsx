@@ -26,13 +26,13 @@ const MovieCardFavoriteListButton = ({ movie }: MovieCardFavoriteListProps) => {
       return <i className="fi fi-br-exclamation text-red-700"></i>;
     }
     if (isLoading) {
-      return <i className="fi fi-rr-spinner animate-spin text-zinc-900"></i>;
+      return <i className="fi fi-rr-spinner animate-spin text-zinc-50"></i>;
     }
     if (isInFavoriteList) {
       return <i className="fi fi-sr-heart text-red-700"></i>;
     }
     if (!isInFavoriteList) {
-      return <i className="fi fi-rr-heart text-zinc-900"></i>;
+      return <i className="fi fi-rr-heart text-zinc-50 hover:text-red-700"></i>;
     }
   };
 

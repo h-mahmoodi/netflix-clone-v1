@@ -13,9 +13,16 @@ type MovieCarouselProps = {
   fetcher: () => Promise<{ results: Movie[] }>;
   flag?: string | number;
   link?: string;
+  grid?: number;
 };
 
-function MovieCarousel({ title, flag, link, fetcher }: MovieCarouselProps) {
+function MovieCarousel({
+  title,
+  flag,
+  link,
+  grid = 5,
+  fetcher,
+}: MovieCarouselProps) {
   const [movies, setMovies] = useState<Movie[]>([]);
   const { isFetching, error, data } = useQuery({
     queryKey: ["MovieCarousel", title, flag],
@@ -23,18 +30,17 @@ function MovieCarousel({ title, flag, link, fetcher }: MovieCarouselProps) {
     staleTime: 5 * 60 * 1000,
   });
   const fetchedMovies: Movie[] = useMemo(() => data?.results || [], [data]);
-  const VIEW_COUNT = 6;
   const countMovies = fetchedMovies.length;
 
   useEffect(() => {
-    setMovies(fetchedMovies.slice(0, VIEW_COUNT));
-  }, [fetchedMovies]);
+    setMovies(fetchedMovies.slice(0, grid));
+  }, [fetchedMovies, grid]);
 
   const handleNavigate = useCallback(
     (start: number) => {
-      setMovies(fetchedMovies.slice(start, start + VIEW_COUNT));
+      setMovies(fetchedMovies.slice(start, start + grid));
     },
-    [fetchedMovies, VIEW_COUNT]
+    [fetchedMovies, grid]
   );
 
   // if (loading) return <div>Loading...</div>;
@@ -42,7 +48,7 @@ function MovieCarousel({ title, flag, link, fetcher }: MovieCarouselProps) {
 
   const renderMovies = () => {
     if (isFetching) {
-      return Array(VIEW_COUNT)
+      return Array(grid)
         .fill(null)
         .map((_item, index) => <MovieCardSkeleton key={index} />);
     }
@@ -60,12 +66,20 @@ function MovieCarousel({ title, flag, link, fetcher }: MovieCarouselProps) {
       <div className={styles.header}>
         <CarouselHeader title={title} link={link} />
       </div>
-      <div className={styles.movies}>{renderMovies()}</div>
+      <div
+        className={styles.movies}
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(5, minmax(0, 1fr))",
+        }}
+      >
+        {renderMovies()}
+      </div>
 
       <div className={styles.navigation}>
         <CarouselNavigation
           itemsCount={countMovies}
-          viewCount={VIEW_COUNT}
+          viewCount={grid}
           handlerFn={handleNavigate}
         />
       </div>

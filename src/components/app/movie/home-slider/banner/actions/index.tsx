@@ -1,26 +1,25 @@
 import { Movie } from "@src/types/movie";
 import styles from "./styles.module.css";
-import { useAppDispatch } from "@src/hooks/useAppDispatch";
-import { openModal } from "@src/redux/modal-slice";
 
 type HomeSliderBannerActionsProps = {
   movie: Movie;
 };
 
 const HomeSliderBannerActions = ({ movie }: HomeSliderBannerActionsProps) => {
-  const dispatch = useAppDispatch();
-
-  const handleWatchTrailer = () => {
-    dispatch(openModal("aaaaaaaaaaaaaaaaa"));
-  };
-
   return (
     <div className={styles.actions}>
-      <div className={styles.play} onClick={handleWatchTrailer}>
-        <i className="fi fi-rr-play-circle"></i>
-        <span>Watch Trailer</span>
-      </div>
-      <button className={styles.button}>Show Details</button>
+      <button className={styles.buttonPrimary}>
+        <span>More Details</span>
+        <i className="fi fi fi-sr-arrow-right flex text-3xl"></i>
+      </button>
+      <button className={styles.buttonSecondary}>
+        <i className="fi fi-rr-heart  "></i>
+        <span>Add to Favorite</span>
+      </button>
+      <button className={styles.buttonSecondary}>
+        <i className="fi fi-rr-play-alt  "></i>
+        <span>Add to Watch List</span>
+      </button>
     </div>
   );
 };

@@ -7,7 +7,7 @@
 }
 
 .movies {
-  @apply grid grid-cols-6 gap-8 overflow-x-scroll relative z-20;
+  @apply gap-5 overflow-x-scroll relative z-20;
 }
 
 .movies::-webkit-scrollbar {

@@ -26,13 +26,15 @@ const MovieCardWatchListButton = ({ movie }: MovieCardWatchListButtonProps) => {
       return <i className="fi fi-br-exclamation text-red-700"></i>;
     }
     if (isLoading) {
-      return <i className="fi fi-rr-spinner animate-spin text-zinc-900"></i>;
+      return <i className="fi fi-rr-spinner animate-spin text-zinc-50"></i>;
     }
     if (isInWatchList) {
-      return <i className="fi fi-sr-overview text-red-700"></i>;
+      return <i className="fi fi-sr-play-alt text-red-700"></i>;
     }
     if (!isInWatchList) {
-      return <i className="fi fi-rr-overview text-zinc-900"></i>;
+      return (
+        <i className="fi fi-rr-play-alt text-zinc-50 hover:text-red-700"></i>
+      );
     }
   };
 

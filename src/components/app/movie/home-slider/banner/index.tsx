@@ -24,7 +24,7 @@ function HomeSliderBanner({ movie }: HomeSliderBannerProps) {
           <div className={styles.content}>
             <HomeSliderBannerCard movie={movie} />
             <div className={styles.details}>
-              <HomeSliderBannerStatistics movie={movie} />
+              {/* <HomeSliderBannerStatistics movie={movie} /> */}
               <HomeSliderBannerInfo movie={movie} />
               <HomeSliderBannerActions movie={movie} />
             </div>

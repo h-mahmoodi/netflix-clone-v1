@@ -1,11 +1,7 @@
 .action {
-  @apply bg-zinc-50 p-2 rounded-md;
+  @apply rounded-md cursor-pointer;
 }
 
 .action i {
-  @apply flex text-2xl;
-}
-
-.action span {
-  @apply text-sm;
+  @apply flex text-2xl p-1 duration-300;
 }

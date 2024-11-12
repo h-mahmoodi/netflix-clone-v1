@@ -113,7 +113,7 @@ const NavSearch = () => {
           onChange={(e) => setSearchInput(e.target.value)}
           onFocus={handleInputFocus}
         />
-        {iconRender()}
+        <div className={styles.searchIcon}>{iconRender()}</div>
       </div>
       {!isFetching && isDropDownOpen && (
         <div className={styles.searchDropDown}>
