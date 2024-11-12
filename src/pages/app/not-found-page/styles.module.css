@@ -1,0 +1,11 @@
+.page {
+  @apply h-[800px] flex flex-col gap-5 items-center justify-center;
+}
+
+.icon {
+  @apply text-9xl;
+}
+
+.title {
+  @apply text-4xl font-semibold;
+}

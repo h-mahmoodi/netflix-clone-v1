@@ -36,12 +36,11 @@ const MoviePageDetails = ({ id }: MoviePageDetailsProps) => {
     );
   };
 
-  if (!movie || error) {
-    return <div>Error</div>;
-  }
-
   if (isFetching) {
     return <MoviePageDetailsSkeleton />;
+  }
+  if (!movie || error) {
+    return <div>Error</div>;
   }
   return (
     <div

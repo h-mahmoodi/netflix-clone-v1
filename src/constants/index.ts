@@ -24,8 +24,11 @@ export const RequestEndPoints: RequestEndPointsTypes = {
   discover: "/discover/movie?include_video=true",
   search: "/search/movie",
   movieDetails: "/movie",
-  recommendedMovies: (id: string) => {
-    return "/movie/<Movie_ID>/recommendations".replace("<Movie_ID>", id);
+  recommendedMovies: (id: string, page: number) => {
+    return `/movie/<Movie_ID>/recommendations?page=${page}`.replace(
+      "<Movie_ID>",
+      id
+    );
   },
   similarMovies: (id: string) => {
     return "/movie/<Movie_ID>/similar".replace("<Movie_ID>", id);

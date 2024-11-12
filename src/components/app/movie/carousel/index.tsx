@@ -12,9 +12,10 @@ type MovieCarouselProps = {
   title: string;
   fetcher: () => Promise<{ results: Movie[] }>;
   flag?: string | number;
+  link?: string;
 };
 
-function MovieCarousel({ title, flag, fetcher }: MovieCarouselProps) {
+function MovieCarousel({ title, flag, link, fetcher }: MovieCarouselProps) {
   const [movies, setMovies] = useState<Movie[]>([]);
   const { isFetching, error, data } = useQuery({
     queryKey: ["MovieCarousel", title, flag],
@@ -57,7 +58,7 @@ function MovieCarousel({ title, flag, fetcher }: MovieCarouselProps) {
   return (
     <div className={styles.carousel}>
       <div className={styles.header}>
-        <CarouselHeader title={title} isActive={countMovies > 0} />
+        <CarouselHeader title={title} link={link} />
       </div>
       <div className={styles.movies}>{renderMovies()}</div>
 

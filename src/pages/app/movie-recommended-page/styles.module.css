@@ -1,0 +1,40 @@
+.page {
+  @apply relative;
+  animation: imageAnimation 1s ease-in-out;
+}
+
+@keyframes imageAnimation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.header {
+  @apply relative h-80 pt-10 bg-cover flex flex-col gap-3 items-center justify-center;
+}
+.headerTitle {
+  @apply relative text-4xl font-semibold;
+}
+
+.headerTMovieName {
+  @apply relative text-6xl font-semibold;
+}
+
+.headerOverlay {
+  @apply absolute top-0 left-0 w-full h-full bg-black opacity-50;
+}
+
+.containerLayout {
+  @apply container mx-auto my-10;
+}
+
+.moreButton {
+  @apply flex items-center justify-center;
+}
+
+.moreButton button {
+  @apply bg-red-800 p-3 rounded-md text-xl;
+}

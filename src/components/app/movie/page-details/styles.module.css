@@ -43,7 +43,7 @@
 }
 
 .bannerPlayButton i:hover {
-  @apply scale-105;
+  @apply scale-110;
 }
 
 .bannerPlayButton span {

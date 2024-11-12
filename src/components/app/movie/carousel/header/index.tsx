@@ -1,17 +1,20 @@
+import { Link } from "react-router-dom";
 import styles from "./styles.module.css";
 
 type CarouselHeaderProps = {
   title?: string;
-  isActive?: boolean;
+  link?: string;
 };
 
-function CarouselHeader({ title, isActive }: CarouselHeaderProps) {
+function CarouselHeader({ title, link }: CarouselHeaderProps) {
   return (
     <div className={styles.header}>
       <h3 className={styles.title}>{title}</h3>
-      <button className={styles.button} disabled={!isActive}>
-        Show More
-      </button>
+      {link && (
+        <Link className={styles.button} to={link}>
+          Show More
+        </Link>
+      )}
     </div>
   );
 }

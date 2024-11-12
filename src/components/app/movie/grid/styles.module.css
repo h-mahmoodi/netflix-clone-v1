@@ -2,6 +2,6 @@
   @apply w-full;
 }
 
-.grid {
-  @apply grid grid-cols-4 gap-5;
+.gridLayout {
+  @apply grid grid-cols-6 gap-5;
 }
