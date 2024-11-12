@@ -9,6 +9,7 @@ import { useAppSelector } from "@src/hooks/useAppSelector";
 import { selectWatchList } from "@src/redux/watch-list-slice";
 import { selectFavoriteList } from "@src/redux/favorite-list-slice";
 import NavSearch from "./search";
+import AppLogo from "../logo";
 
 // import Search from "../explore";
 
@@ -17,11 +18,15 @@ function AppNavbar() {
   const { movies: favoriteListMovies } = useAppSelector(selectFavoriteList);
   return (
     <div className={styles.navbar}>
-      <div className={styles.mainMenu}>
-        <NavLink icon="fi fi-rr-apps" title="Explore" to="explore" />
+      <div className="flex items-center gap-3">
+        <i className="fi fi-rr-menu-burger flex text-4xl"></i>
+        <AppLogo />
       </div>
+      {/* <div className={styles.mainMenu}>
+        <NavLink icon="fi fi-rr-apps" title="Explore" to="explore" />
+      </div> */}
+      <NavSearch />
       <div className={styles.sideMenu}>
-        <NavSearch />
         {/* <NavDropDown icon="fi fi-rr-search">jjjjj</NavDropDown> */}
         <NavLink
           icon="fi fi-rr-heart"

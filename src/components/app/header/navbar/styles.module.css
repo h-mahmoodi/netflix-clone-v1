@@ -6,5 +6,5 @@
   @apply flex items-center gap-2 flex-1;
 }
 .sideMenu {
-  @apply flex items-center gap-4;
+  @apply flex items-center gap-3;
 }

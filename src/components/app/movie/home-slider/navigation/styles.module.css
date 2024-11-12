@@ -1,14 +1,22 @@
 .navigation {
-  @apply flex justify-between w-full relative;
+  @apply flex justify-between w-full relative p-2;
 }
 
 .left,
 .right {
-  @apply border-2 border-zinc-50 w-12 h-12 rounded-full text-xl flex
-  items-center justify-center leading-none cursor-pointer bg-zinc-50
-  text-zinc-950 transition-all;
+  @apply border-2 border-zinc-50 w-16 h-16 rounded-full text-2xl flex
+  items-center justify-center leading-none cursor-pointer 
+  text-zinc-50 duration-300 p-2;
+}
+
+.left i {
+  @apply flex;
+}
+
+.right i {
+  @apply flex;
 }
 
 .navigation button:hover {
-  @apply bg-red-700 text-zinc-50 border-red-700;
+  @apply bg-zinc-50 text-zinc-950;
 }

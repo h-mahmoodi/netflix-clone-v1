@@ -22,7 +22,6 @@ const AppHeader = () => {
   return (
     <header className={cls}>
       <div className={styles.containerBox}>
-        <AppLogo />
         <AppNavbar />
       </div>
     </header>
