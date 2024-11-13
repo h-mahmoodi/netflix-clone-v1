@@ -16,11 +16,11 @@
   @apply relative h-80 pt-10 bg-cover flex flex-col gap-3 items-center justify-center;
 }
 .headerTitle {
-  @apply relative text-4xl font-semibold;
+  @apply relative text-3xl font-semibold;
 }
 
 .headerTMovieName {
-  @apply relative text-6xl font-semibold;
+  @apply relative text-5xl font-semibold cursor-pointer flex items-center gap-3;
 }
 
 .headerOverlay {

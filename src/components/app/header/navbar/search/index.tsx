@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { KeyboardEvent, useEffect, useState } from "react";
 import styles from "./styles.module.css";
 import NavSearchMovie from "./movie";
 import { useQuery } from "@tanstack/react-query";
@@ -6,15 +6,21 @@ import { fetchSearchedMovies } from "@src/fetchers";
 import useDebounce from "@src/hooks/useDebounce";
 import { Movie } from "@src/types/movie";
 import useClickOutSide from "@src/hooks/useClickOutSide";
+import { useAppDispatch } from "@src/hooks/useAppDispatch";
+import { useAppSelector } from "@src/hooks/useAppSelector";
+import { addToRecentSearch, selectSearch } from "@src/redux/search-slice";
 
 // "dead pool", "venom", "avatar"
-const recentSearches = ["dead pool", "venom", "avatar"];
+// const recentSearches = ["dead pool", "venom", "avatar"];
 
 const NavSearch = () => {
   const [searchInput, setSearchInput] = useState("");
   const [isDropDownOpen, setIsDropDownOpen] = useState(false);
   const searchInputDebounce = useDebounce<string>(searchInput, 500);
-  const isValidSearchInput = !!searchInput && searchInput.length > 2;
+  const isValidSearchInput = !!searchInput;
+
+  const dispatch = useAppDispatch();
+  const { searchedKeywords: recentSearches } = useAppSelector(selectSearch);
 
   const { data, isFetching, error } = useQuery({
     queryKey: ["navSearch", searchInputDebounce],
@@ -35,6 +41,7 @@ const NavSearch = () => {
 
   function handleClearSearchInput() {
     setSearchInput("");
+    handleCloseDropDown();
   }
 
   function handleCloseDropDown() {
@@ -50,6 +57,18 @@ const NavSearch = () => {
     }
   }
 
+  const selectMovieHandler = () => {
+    dispatch(addToRecentSearch(searchInput));
+    setIsDropDownOpen(false);
+  };
+
+  const handleOnKeyEnterInput = (e: KeyboardEvent<HTMLInputElement>) => {
+    console.log(e.key);
+    if (e.key === "Enter") {
+      dispatch(addToRecentSearch(searchInput));
+    }
+  };
+
   useEffect(() => {
     // if (!isValidSearchInput) {
     //   return handleCloseDropDown();
@@ -63,16 +82,16 @@ const NavSearch = () => {
   const iconRender = () => {
     if (searchInput) {
       if (isFetching) {
-        return <i className="fi fi-br-spinner animate-spin"></i>;
+        return <i className="flex fi fi-br-spinner animate-spin"></i>;
       }
       return (
         <i
-          className="fi fi-rr-cross-small"
+          className="flex fi fi-rr-cross-small"
           onClick={handleClearSearchInput}
         ></i>
       );
     }
-    return <i className="fi fi-rr-search"></i>;
+    return <i className="flex fi fi-rr-search"></i>;
   };
 
   const renderResult = () => {
@@ -106,7 +125,7 @@ const NavSearch = () => {
             <NavSearchMovie
               key={movie.id}
               movie={movie}
-              onClose={() => setIsDropDownOpen(false)}
+              onClose={selectMovieHandler}
             />
           ))}
           {/* <div className={styles.moreButton}>
@@ -127,6 +146,7 @@ const NavSearch = () => {
           value={searchInput}
           onChange={(e) => setSearchInput(e.target.value)}
           onFocus={handleInputFocus}
+          onKeyDown={(e) => handleOnKeyEnterInput(e)}
         />
         <div className={styles.searchIcon}>{iconRender()}</div>
       </div>

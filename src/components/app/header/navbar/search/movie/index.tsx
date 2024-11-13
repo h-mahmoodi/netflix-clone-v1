@@ -25,7 +25,7 @@ const NavSearchMovie = ({ movie, onClose }: NavSearchMovieProps) => {
           <p className={styles.movieDesc}>{truncateText(movie.overview, 65)}</p>
         </div>
         <div className={styles.movieInfo}>
-          <span>{new Date(movie.release_date).getFullYear()}</span>
+          <span>{new Date(movie.release_date as string).getFullYear()}</span>
           <span>IMDb {movie.vote_average?.toFixed(1)}</span>
         </div>
       </div>

@@ -52,6 +52,11 @@
   @apply flex flex-col gap-2 max-h-[350px] overflow-y-scroll;
 }
 
+.movie::-webkit-scrollbar {
+  display: none;
+  scrollbar-width: none;
+}
+
 .moreButton {
   @apply bg-red-800 hover:bg-red-700 text-zinc-50 p-3 rounded-md text-center
   cursor-pointer mt-3 text-lg font-semibold;
@@ -65,7 +70,11 @@
 }
 
 .dropDownRecentContainer {
-  @apply flex gap-2;
+  @apply flex flex-wrap gap-2 max-h-[70px] overflow-y-scroll;
+}
+.dropDownRecentContainer::-webkit-scrollbar {
+  display: none;
+  scrollbar-width: none;
 }
 .dropDownRecentContainer span {
   @apply bg-zinc-900 py-1 px-2 rounded-md hover:bg-red-800

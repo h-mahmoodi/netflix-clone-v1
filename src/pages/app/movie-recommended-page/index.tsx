@@ -3,7 +3,7 @@ import { fetchMovieDetails, fetchRecommendedMovies } from "@src/fetchers";
 import { Movie } from "@src/types/movie";
 import { useQuery } from "@tanstack/react-query";
 import { useEffect, useMemo, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import styles from "./styles.module.css";
 import MovieGrid from "@src/components/app/movie/grid";
@@ -12,6 +12,7 @@ import MovieCardSkeleton from "@src/components/app/movie/card/skeleton";
 
 const MovieRecommendedPage = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [movies, setMovies] = useState<Movie[]>([]);
   const [page, setPage] = useState(1);
   const {
@@ -59,6 +60,10 @@ const MovieRecommendedPage = () => {
     isLoading: isFetching,
   });
 
+  const navigateBackHandler = () => {
+    navigate(-1);
+  };
+
   return (
     <div className={styles.page}>
       <div
@@ -70,8 +75,11 @@ const MovieRecommendedPage = () => {
       >
         <div className={styles.headerOverlay}></div>
         <div className={styles.headerTitle}>Recommended Movies</div>
-        <div className={styles.headerTMovieName}>
-          {mainMovie?.title || mainMovie?.name}
+        <div className={styles.headerTMovieName} onClick={navigateBackHandler}>
+          <span>
+            <i className="fi fi-rr-arrow-left flex"></i>
+          </span>
+          <span>{mainMovie?.title || mainMovie?.name}</span>
         </div>
       </div>
       <div className={styles.containerLayout}>
