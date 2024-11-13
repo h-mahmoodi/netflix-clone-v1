@@ -1,6 +1,7 @@
 .toast {
-  @apply bg-zinc-800 py-3 px-3 rounded  flex items-center
-   justify-between gap-5 relative overflow-hidden text-zinc-50 min-w-96;
+  @apply bg-zinc-950 pt-5 pb-3 px-3 rounded  flex items-center
+   justify-between gap-5 relative overflow-hidden
+    text-zinc-50 min-w-96 border-2 border-zinc-800;
   animation: toastAnimation 0.5s ease-in-out;
 }
 
@@ -38,9 +39,9 @@
 }
 
 .toastIcon i {
-  @apply flex text-2xl text-emerald-700;
+  @apply flex text-xl text-emerald-700;
 }
 
 .toastAction i {
-  @apply flex text-sm bg-red-700 text-zinc-50 cursor-pointer p-2 rounded-md;
+  @apply flex text-sm bg-red-800 hover:bg-red-700 text-zinc-50 cursor-pointer p-2 rounded-md;
 }

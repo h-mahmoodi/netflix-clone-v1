@@ -1,5 +1,5 @@
 .timeBar {
-  @apply absolute top-0 left-0 w-full h-[6px] bg-zinc-400;
+  @apply absolute top-0 left-0 w-full h-[4px] bg-zinc-400;
 }
 
 .bar {
