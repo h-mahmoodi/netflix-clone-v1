@@ -4,6 +4,7 @@ import AppHomePage from "@src/pages/app/home-page";
 import AppMoviePage from "@src/pages/app/movie-page";
 import AppNotFoundPage from "@src/pages/app/not-found-page";
 import MovieRecommendedPage from "@src/pages/app/movie-recommended-page";
+import MovieRelatedPage from "@src/pages/app/movie-related-page";
 
 const Router = () => {
   return (
@@ -17,7 +18,7 @@ const Router = () => {
           <Route path=":id">
             <Route index element={<AppMoviePage />} />
             <Route path="recommended" element={<MovieRecommendedPage />} />
-            <Route path="related" element={<p>Related Movies</p>} />
+            {/* <Route path="related" element={<MovieRelatedPage />} /> */}
           </Route>
         </Route>
         <Route path="*" element={<AppNotFoundPage />} />

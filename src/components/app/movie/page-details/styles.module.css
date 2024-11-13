@@ -1,9 +1,30 @@
 .movie {
   @apply bg-cover pt-24 pb-14 relative;
+  animation: bannerBackground 50s linear infinite;
+}
+@keyframes bannerBackground {
+  0% {
+    background-size: 150%;
+    background-position: 50% 50%;
+  }
+  50% {
+    background-size: 100%;
+    background-position: 50% 20%;
+  }
+  100% {
+    background-size: 150%;
+    background-position: 50% 50%;
+  }
 }
 .backdrop {
   @apply absolute top-0 left-0 w-full h-full
-      backdrop-blur-sm bg-black/70;
+      backdrop-blur-sm;
+  background: linear-gradient(
+    180deg,
+    rgba(9, 9, 11, 0.7) 20%,
+    rgba(9, 9, 11, 0.7) 70%,
+    rgba(9, 9, 11, 1) 100%
+  );
 }
 .movieSection {
   @apply container mx-auto relative z-20 grid grid-cols-4 py-10 gap-10 items-center;

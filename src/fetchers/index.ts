@@ -92,10 +92,10 @@ export const fetchRecommendedMovies = async (id: string, page = 1) => {
     console.log(error);
   }
 };
-export const fetchSimilarMovies = async (id: string) => {
+export const fetchSimilarMovies = async (id: string, page = 1) => {
   try {
     await new Promise((resolve) => setTimeout(resolve, 1000));
-    const response = await appAxios(similarMovies(id));
+    const response = await appAxios(similarMovies(id, page));
     return response.data;
   } catch (error) {
     console.log(error);

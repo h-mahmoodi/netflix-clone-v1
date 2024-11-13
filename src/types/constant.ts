@@ -19,7 +19,7 @@ export type RequestEndPointsTypes = {
   search: string;
   movieDetails: string;
   recommendedMovies: (id: string, page: number) => string;
-  similarMovies: (id: string) => string;
+  similarMovies: (id: string, page: number) => string;
   movieTrailer: (id: string) => string;
   nowPalying: string;
   topRated: string;

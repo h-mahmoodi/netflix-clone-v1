@@ -37,7 +37,7 @@ const NavSearch = () => {
   const hasSearchedMovies = movies.length > 0;
   const isValidToOpenDropDown = hasRecentSearches || hasSearchedMovies;
 
-  console.log("menuuuuuuuu", movies);
+  // console.log("menuuuuuuuu", movies);
 
   function handleClearSearchInput() {
     setSearchInput("");

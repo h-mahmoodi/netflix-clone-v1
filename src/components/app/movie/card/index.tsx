@@ -64,8 +64,10 @@ function MovieCard({ movie }: MovieCardProps) {
             {movie?.title}
           </Link>
           <div className={styles.info}>
-            <span>{new Date(movie.release_date as string).getFullYear()}</span>
-            <span>IMDb {movie.vote_average?.toFixed(1)}</span>
+            <span>
+              {new Date((movie?.release_date as string) || 1990).getFullYear()}
+            </span>
+            <span>IMDb {movie?.vote_average?.toFixed(1)}</span>
           </div>
         </div>
       </div>

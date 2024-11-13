@@ -17,7 +17,7 @@ const useInfiniteScroll = ({
   useEffect(() => {
     if (!hasNextPage || isLoading) return;
 
-    if (observerRef.current) observerRef.current.disconnect();
+    // if (observerRef.current) observerRef.current.disconnect();
 
     observerRef.current = new IntersectionObserver(
       (entries) => {

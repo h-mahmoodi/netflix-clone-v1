@@ -30,8 +30,8 @@ export const RequestEndPoints: RequestEndPointsTypes = {
       id
     );
   },
-  similarMovies: (id: string) => {
-    return "/movie/<Movie_ID>/similar".replace("<Movie_ID>", id);
+  similarMovies: (id: string, page: number) => {
+    return `/movie/<Movie_ID>/similar?page=${page}`.replace("<Movie_ID>", id);
   },
   movieTrailer: (id: string) => {
     return "/movie/<Movie_ID>/videos".replace("<Movie_ID>", id);

@@ -34,7 +34,7 @@ const AppMoviePage = () => {
             title="Related Movies"
             fetcher={() => fetchSimilarMovies(id as string)}
             flag={id}
-            link="/related"
+            link="related"
           />
         </div>
       </div>
