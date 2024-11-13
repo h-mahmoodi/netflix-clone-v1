@@ -45,6 +45,14 @@ function AppNavbar() {
           }
         />
 
+        <NavLink
+          icon="fi fi-rr-time-past"
+          to="explore"
+          badge={
+            watchListMovies.length > 0 ? watchListMovies.length : undefined
+          }
+        />
+
         <NavDropDown icon="fi fi-rr-user">
           <NavDropDownLink title="Favorites" icon="fi fi-rr-heart" count={5} />
           <NavDropDownLink

@@ -7,22 +7,31 @@ import useDebounce from "@src/hooks/useDebounce";
 import { Movie } from "@src/types/movie";
 import useClickOutSide from "@src/hooks/useClickOutSide";
 
+// "dead pool", "venom", "avatar"
+const recentSearches = ["dead pool", "venom", "avatar"];
+
 const NavSearch = () => {
   const [searchInput, setSearchInput] = useState("");
   const [isDropDownOpen, setIsDropDownOpen] = useState(false);
   const searchInputDebounce = useDebounce<string>(searchInput, 500);
   const isValidSearchInput = !!searchInput && searchInput.length > 2;
+
   const { data, isFetching, error } = useQuery({
     queryKey: ["navSearch", searchInputDebounce],
     queryFn: () => fetchSearchedMovies(searchInputDebounce),
     enabled: isValidSearchInput,
+    staleTime: 5 * 60 * 1000,
   });
 
   const dropDownRef = useClickOutSide(handleCloseDropDown);
 
   const movies: Movie[] = data?.results || [];
 
-  console.log("movies", movies);
+  const hasRecentSearches = recentSearches.length > 0;
+  const hasSearchedMovies = movies.length > 0;
+  const isValidToOpenDropDown = hasRecentSearches || hasSearchedMovies;
+
+  console.log("menuuuuuuuu", movies);
 
   function handleClearSearchInput() {
     setSearchInput("");
@@ -33,17 +42,23 @@ const NavSearch = () => {
   }
 
   function handleInputFocus() {
-    if (isValidSearchInput) {
+    // if (isValidSearchInput) {
+    //   setIsDropDownOpen(true);
+    // }
+    if (hasRecentSearches) {
       setIsDropDownOpen(true);
     }
   }
 
   useEffect(() => {
-    if (!isValidSearchInput) {
-      return handleCloseDropDown();
+    // if (!isValidSearchInput) {
+    //   return handleCloseDropDown();
+    // }
+    if (isValidToOpenDropDown) {
+      return setIsDropDownOpen(true);
     }
-    setIsDropDownOpen(true);
-  }, [isValidSearchInput]);
+    handleCloseDropDown();
+  }, [isValidToOpenDropDown]);
 
   const iconRender = () => {
     if (searchInput) {
@@ -61,9 +76,9 @@ const NavSearch = () => {
   };
 
   const renderResult = () => {
-    if (!isValidSearchInput) {
-      return null;
-    }
+    // if (!isValidSearchInput) {
+    //   return null;
+    // }
 
     if (error) {
       return (
@@ -75,16 +90,16 @@ const NavSearch = () => {
       );
     }
 
-    if (!isFetching && movies.length === 0) {
-      return (
-        <div className={styles.searchError}>
-          <i className="fi fi-rr-engine-warning"></i>
-          <span>Not Found</span>
-        </div>
-      );
-    }
+    // if (!isFetching && !hasSearchedMovies && isValidSearchInput) {
+    //   return (
+    //     <div className={styles.searchError}>
+    //       <i className="fi fi-rr-engine-warning"></i>
+    //       <span>Not Found</span>
+    //     </div>
+    //   );
+    // }
 
-    if (movies.length > 0) {
+    if (hasSearchedMovies) {
       return (
         <div className={styles.movie}>
           {movies.map((movie) => (
@@ -115,12 +130,34 @@ const NavSearch = () => {
         />
         <div className={styles.searchIcon}>{iconRender()}</div>
       </div>
-      {!isFetching && isDropDownOpen && (
+      {isDropDownOpen && (
         <div className={styles.searchDropDown}>
-          {renderResult()}
-          {movies.length > 0 && (
-            <div className={styles.moreButton}>
-              Show All {data.total_results} Results
+          {hasRecentSearches && (
+            <div className={styles.dropDownRecent}>
+              <span className={styles.dropDownRecentHeader}>
+                Recent Searched Keywords
+              </span>
+              <div className={styles.dropDownRecentContainer}>
+                {recentSearches.map((recent, index) => (
+                  <span key={index} onClick={() => setSearchInput(recent)}>
+                    {recent}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* <div>Results</div> */}
+          {hasSearchedMovies && (
+            <div className={styles.dropDownMoviesContainer}>
+              <span className={styles.dropDownMoviesHeader}>
+                Searched Movies
+              </span>
+
+              {renderResult()}
+              <div className={styles.moreButton}>
+                Show All {data.total_results} Results
+              </div>
             </div>
           )}
         </div>

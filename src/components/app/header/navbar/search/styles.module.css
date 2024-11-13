@@ -22,8 +22,8 @@
 }
 
 .searchDropDown {
-  @apply absolute bg-zinc-900 w-full p-3 rounded-md top-14 left-0 flex
-  flex-col gap-1;
+  @apply absolute bg-zinc-950 w-full p-3 rounded-md top-14 left-0 flex
+  flex-col gap-3 border-2 border-zinc-900;
 }
 
 .searchLoading {
@@ -42,11 +42,32 @@
   @apply flex text-3xl;
 }
 
+.dropDownMoviesContainer {
+  @apply flex flex-col gap-1;
+}
+.dropDownMoviesHeader {
+  @apply font-semibold text-zinc-50;
+}
 .movie {
   @apply flex flex-col gap-2 max-h-[350px] overflow-y-scroll;
 }
 
 .moreButton {
-  @apply bg-red-700 hover:bg-red-800 text-zinc-50 p-3 rounded-md text-center
-  cursor-pointer;
+  @apply bg-red-800 hover:bg-red-700 text-zinc-50 p-3 rounded-md text-center
+  cursor-pointer mt-3 text-lg font-semibold;
+}
+
+.dropDownRecent {
+  @apply flex flex-col gap-1;
+}
+.dropDownRecentHeader {
+  @apply font-semibold text-zinc-50;
+}
+
+.dropDownRecentContainer {
+  @apply flex gap-2;
+}
+.dropDownRecentContainer span {
+  @apply bg-zinc-900 py-1 px-2 rounded-md hover:bg-red-800
+   cursor-pointer duration-300 text-base;
 }
