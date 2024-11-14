@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import AppNavbar from "./navbar";
 import styles from "./styles.module.css";
-import AppLogo from "./logo";
 
 const AppHeader = () => {
   const [isScrolled, setIsScrolled] = useState(false);

@@ -14,54 +14,54 @@ export const getRandomArrayItems = (arr = [], number: number) => {
   return array.slice(0, number);
 };
 
-export const validation = (field, rules = {}) => {
-  let error = "";
-  const { name, value, type = "string" } = field;
-  const ruleHandlers = {
-    required: (value) => {
-      if (!value || !value.trim()) {
-        return `${name} is required`;
-      }
-      return "";
-    },
-    isEmail: (value) => {
-      if (!/\S+@\S+\.\S+/.test(value)) {
-        return `${name} must be a valid email`;
-      }
-      return "";
-    },
-    min: (value) => {
-      if (type === "number" && value < rules.min) {
-        return `${name} must be at least ${rules.min}`;
-      }
-      if (type === "string" && value.length < rules.min) {
-        return `${name} must be at least ${rules.min} characters`;
-      }
-      return "";
-    },
-    max: (value) => {
-      if (type === "number" && value > rules.min) {
-        return `${name} must be no more than ${rules.max}`;
-      }
-      if (type === "string" && value.length > rules.min) {
-        return `${name} must be no more than ${rules.max} characters`;
-      }
-      return "";
-    },
-    isEqual: (value) => {
-      if (value !== rules.isEqual) {
-        return `${name} must be equal`;
-      }
-      return "";
-    },
-  };
+// export const validation = (field, rules = {}) => {
+//   let error = "";
+//   const { name, value, type = "string" } = field;
+//   const ruleHandlers = {
+//     required: (value) => {
+//       if (!value || !value.trim()) {
+//         return `${name} is required`;
+//       }
+//       return "";
+//     },
+//     isEmail: (value) => {
+//       if (!/\S+@\S+\.\S+/.test(value)) {
+//         return `${name} must be a valid email`;
+//       }
+//       return "";
+//     },
+//     min: (value) => {
+//       if (type === "number" && value < rules.min) {
+//         return `${name} must be at least ${rules.min}`;
+//       }
+//       if (type === "string" && value.length < rules.min) {
+//         return `${name} must be at least ${rules.min} characters`;
+//       }
+//       return "";
+//     },
+//     max: (value) => {
+//       if (type === "number" && value > rules.min) {
+//         return `${name} must be no more than ${rules.max}`;
+//       }
+//       if (type === "string" && value.length > rules.min) {
+//         return `${name} must be no more than ${rules.max} characters`;
+//       }
+//       return "";
+//     },
+//     isEqual: (value) => {
+//       if (value !== rules.isEqual) {
+//         return `${name} must be equal`;
+//       }
+//       return "";
+//     },
+//   };
 
-  for (const rule in rules) {
-    if (rule in ruleHandlers && rules[rule] !== false) {
-      error = ruleHandlers[rule](value);
-      if (error) break; // Stop at the first error encountered
-    }
-  }
+//   for (const rule in rules) {
+//     if (rule in ruleHandlers && rules[rule] !== false) {
+//       error = ruleHandlers[rule](value);
+//       if (error) break; // Stop at the first error encountered
+//     }
+//   }
 
-  return error;
-};
+//   return error;
+// };

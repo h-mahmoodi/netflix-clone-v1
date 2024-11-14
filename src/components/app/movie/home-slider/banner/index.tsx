@@ -2,7 +2,6 @@ import styles from "./styles.module.css";
 import { TMDB_CONFIGS } from "@src/constants";
 import { Movie } from "@src/types/movie";
 import HomeSliderBannerCard from "./card";
-import HomeSliderBannerStatistics from "./statistics";
 import HomeSliderBannerInfo from "./info";
 import HomeSliderBannerActions from "./actions";
 

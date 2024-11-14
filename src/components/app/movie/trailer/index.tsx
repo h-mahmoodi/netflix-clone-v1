@@ -29,6 +29,14 @@ const MovieTrailer = ({ movieId }: MovieTrailerProps) => {
       </div>
     );
   }
+
+  if (error) {
+    return (
+      <div className="flex items-center justify-center w-[700px] h-[400px]">
+        Something went wrong
+      </div>
+    );
+  }
   return (
     <div>
       {firstTrailer && (

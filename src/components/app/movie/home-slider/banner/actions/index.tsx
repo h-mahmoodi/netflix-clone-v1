@@ -9,7 +9,7 @@ const HomeSliderBannerActions = ({ movie }: HomeSliderBannerActionsProps) => {
   return (
     <div className={styles.actions}>
       <button className={styles.buttonPrimary}>
-        <span>More Details</span>
+        <span>More Details {movie.id}</span>
         <i className="fi fi fi-sr-arrow-right flex text-3xl"></i>
       </button>
       <button className={styles.buttonSecondary}>
