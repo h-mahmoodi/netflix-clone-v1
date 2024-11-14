@@ -40,25 +40,25 @@ function MovieCard({ movie }: MovieCardProps) {
         />
         <Link className={styles.overlay} to={`/movies/${movie.id}`}>
           <div className={styles.overlayPlay}>
-            <i className="fi fi-tr-play-circle"></i>
+            <i className="fi fi-rr-play-circle"></i>
           </div>
         </Link>
       </div>
       <div className={styles.details}>
         <div className={styles.detailsContainer}>
-          <div className="flex justify-between items-center text-xl">
+          <div className="flex justify-between items-center text-xl ">
             <div className="flex gap-3">
               <MovieCardFavoriteListButton movie={movie} />
               <MovieCardWatchListButton movie={movie} />
             </div>
-            {/* <div className={styles.linkArrow} onClick={clickCardHandler}>
+            <div className={styles.linkArrow} onClick={clickCardHandler}>
               <span>
                 <i
-                  className="fi fi fi-sr-arrow-right flex text-3xl
+                  className="fi fi-rr-time-past flex text-2xl text-zinc-500
                  hover:text-red-700 cursor-pointer duration-300"
                 ></i>
               </span>
-            </div> */}
+            </div>
           </div>
           <Link className={styles.title} to={`/movies/${movie.id}`}>
             {movie?.title}

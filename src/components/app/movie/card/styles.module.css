@@ -67,11 +67,11 @@
 }
 
 .overlayPlay i {
-  @apply flex text-7xl bg-zinc-950 text-zinc-50  p-2 rounded-full
+  @apply flex text-7xl text-zinc-950 bg-zinc-50  p-2 rounded-full
   cursor-pointer duration-300;
 }
 .overlayPlay i:hover {
-  @apply scale-110 text-red-800;
+  @apply scale-110;
 }
 
 .card:hover .overlay {
@@ -92,7 +92,7 @@
 }
 
 .title {
-  @apply text-zinc-300 font-semibold text-xl mt-1 cursor-pointer;
+  @apply text-zinc-50 font-semibold text-xl cursor-pointer;
 }
 
 /* .title:hover {
@@ -100,5 +100,5 @@
 } */
 
 .info {
-  @apply flex justify-between text-zinc-200;
+  @apply flex justify-between text-zinc-50 text-base;
 }
