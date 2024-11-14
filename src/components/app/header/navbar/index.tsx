@@ -30,7 +30,7 @@ function AppNavbar() {
         {/* <NavDropDown icon="fi fi-rr-search">jjjjj</NavDropDown> */}
         <NavLink
           icon="fi fi-rr-heart"
-          to="explore"
+          to="favorites"
           badge={
             favoriteListMovies.length > 0
               ? favoriteListMovies.length

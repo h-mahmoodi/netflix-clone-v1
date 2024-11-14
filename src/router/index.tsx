@@ -3,8 +3,9 @@ import AppLayout from "../layouts/app-layout";
 import AppHomePage from "@src/pages/app/home-page";
 import AppMoviePage from "@src/pages/app/movie-page";
 import AppNotFoundPage from "@src/pages/app/not-found-page";
-import MovieRecommendedPage from "@src/pages/app/movie-recommended-page";
-import MovieRelatedPage from "@src/pages/app/movie-related-page";
+import AppMovieRecommendedPage from "@src/pages/app/movie-recommended-page";
+import AppMovieRelatedPage from "@src/pages/app/movie-related-page";
+import AppFavoritePage from "@src/pages/app/favorites-page";
 
 const Router = () => {
   return (
@@ -17,10 +18,11 @@ const Router = () => {
           <Route path="most-popular" element={<p>Most Popular</p>} />
           <Route path=":id">
             <Route index element={<AppMoviePage />} />
-            <Route path="recommended" element={<MovieRecommendedPage />} />
-            <Route path="related" element={<MovieRelatedPage />} />
+            <Route path="recommended" element={<AppMovieRecommendedPage />} />
+            <Route path="related" element={<AppMovieRelatedPage />} />
           </Route>
         </Route>
+        <Route path="favorites" element={<AppFavoritePage />} />
         <Route path="*" element={<AppNotFoundPage />} />
       </Route>
     </Routes>

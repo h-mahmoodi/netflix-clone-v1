@@ -9,7 +9,7 @@ import useInfiniteScroll from "@src/hooks/useInfiniteScroll";
 import MovieRecommendedPageSkeleton from "./components/skeleteon";
 import MovieRecommendedPageHeader from "./components/header";
 
-const MovieRecommendedPage = () => {
+const AppMovieRecommendedPage = () => {
   const { id } = useParams();
   const {
     data: mainMovie,
@@ -81,4 +81,4 @@ const MovieRecommendedPage = () => {
     </div>
   );
 };
-export default MovieRecommendedPage;
+export default AppMovieRecommendedPage;

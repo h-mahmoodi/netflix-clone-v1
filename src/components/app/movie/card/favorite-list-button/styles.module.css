@@ -1,7 +1,7 @@
 .action {
-  @apply rounded-md cursor-pointer;
+  @apply rounded-md cursor-pointer p-1 duration-300;
 }
 
 .action i {
-  @apply flex text-2xl p-1 duration-300;
+  @apply flex text-2xl;
 }

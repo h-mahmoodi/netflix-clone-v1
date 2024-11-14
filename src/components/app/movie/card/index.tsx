@@ -37,6 +37,9 @@ function MovieCard({ movie }: MovieCardProps) {
           src={`${TMDB_CONFIGS.imageUrl}${movie?.poster_path}`}
           alt={movie?.title}
           onError={(e) => (e.currentTarget.src = fallBackImage)}
+          loading="lazy"
+          width="291px"
+          height="420px"
         />
         <Link className={styles.overlay} to={`/movies/${movie.id}`}>
           <div className={styles.overlayPlay}>

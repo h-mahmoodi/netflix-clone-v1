@@ -1,0 +1,13 @@
+.page {
+  @apply relative;
+  animation: imageAnimation 1s ease-in-out;
+}
+
+@keyframes imageAnimation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

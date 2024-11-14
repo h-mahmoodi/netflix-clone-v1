@@ -88,7 +88,7 @@
 }
 .detailsContainer {
   @apply flex flex-col bg-zinc-950
-  gap-1 p-3 rounded-lg;
+  gap-1 p-2 rounded-lg;
 }
 
 .title {

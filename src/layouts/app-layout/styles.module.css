@@ -1,4 +1,8 @@
-.layout {
+.main {
+  @apply bg-zinc-950;
+}
+
+.main > div {
   animation: animation 0.3s linear;
   @apply bg-zinc-950 min-h-dvh;
 }

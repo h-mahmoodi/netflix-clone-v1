@@ -8,8 +8,9 @@ import MovieGrid from "@src/components/app/movie/grid";
 import useInfiniteScroll from "@src/hooks/useInfiniteScroll";
 import MovieRelatedPageSkeleton from "./components/skeleton";
 import MovieRelatedPageHeader from "./components/header";
+import { useEffect } from "react";
 
-const MovieRelatedPage = () => {
+const AppMovieRelatedPage = () => {
   const { id } = useParams();
   const {
     data: mainMovie,
@@ -49,7 +50,13 @@ const MovieRelatedPage = () => {
     isLoading: isFetchingNextPage,
   });
 
-  console.log(data);
+  useEffect(() => {
+    const moveToTop = () => {
+      window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+    };
+
+    moveToTop();
+  }, []);
 
   const renderHeader = () => {
     if (mainMovieIsFetching) {
@@ -81,4 +88,4 @@ const MovieRelatedPage = () => {
     </div>
   );
 };
-export default MovieRelatedPage;
+export default AppMovieRelatedPage;

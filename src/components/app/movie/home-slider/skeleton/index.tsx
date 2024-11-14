@@ -16,12 +16,13 @@ function MovieSliderSkeleton() {
         <div className={styles.content}>
           <div className={styles.image}></div>
           <div className={styles.details}>
-            <div className={styles.statistics}></div>
+            {/* <div className={styles.statistics}></div> */}
             <div className={styles.titleContainer}>
               <div className={styles.title}></div>
               <div className={styles.description}></div>
             </div>
             <div className={styles.buttonContainer}>
+              <div className={styles.button}></div>
               <div className={styles.button}></div>
               <div className={styles.button}></div>
             </div>

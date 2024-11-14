@@ -10,7 +10,7 @@ type WatchListState = {
 };
 
 const initialState: WatchListState = {
-  movies: [],
+  movies: JSON.parse(localStorage.getItem("watch-list") || "[]"),
   loading: [],
   error: null,
 };

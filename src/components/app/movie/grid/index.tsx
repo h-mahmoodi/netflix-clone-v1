@@ -7,7 +7,7 @@ import { Movie } from "@src/types/movie";
 
 type MovieGridProps = {
   movies?: Movie[];
-  isLoading: boolean;
+  isLoading?: boolean;
 };
 
 const MovieGrid = forwardRef<HTMLDivElement, MovieGridProps>(

@@ -10,7 +10,7 @@ type FavoriteListState = {
 };
 
 const initialState: FavoriteListState = {
-  movies: [],
+  movies: JSON.parse(localStorage.getItem("favorite-list") || "[]"),
   loading: [],
   error: null,
 };
@@ -21,7 +21,7 @@ export const addToFavoriteList = createAsyncThunk<
   { rejectValue: { id: number; error: string } }
 >("favoriteList/add", async (movie: Movie, { dispatch, rejectWithValue }) => {
   try {
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    await new Promise((resolve) => setTimeout(resolve, 500));
     const favoriteList = JSON.parse(
       localStorage.getItem("favorite-list") || "[]"
     );
@@ -48,7 +48,7 @@ export const removeFromFavoriteList = createAsyncThunk<
   "favoriteList/remove",
   async (movie: Movie, { dispatch, rejectWithValue }) => {
     try {
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      await new Promise((resolve) => setTimeout(resolve, 500));
       const favoriteList = JSON.parse(
         localStorage.getItem("favorite-list") || "[]"
       );

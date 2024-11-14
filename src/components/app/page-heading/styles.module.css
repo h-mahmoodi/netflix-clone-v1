@@ -1,0 +1,37 @@
+.header {
+  @apply relative h-80 bg-cover;
+  animation: bannerBackground 100s linear infinite;
+}
+
+@keyframes bannerBackground {
+  0% {
+    background-size: 150%;
+    background-position: 50% 50%;
+  }
+  50% {
+    background-size: 100%;
+    background-position: 50% 20%;
+  }
+  100% {
+    background-size: 150%;
+    background-position: 50% 50%;
+  }
+}
+
+.headerOverlay {
+  @apply absolute top-0 left-0 w-full h-full backdrop-blur-sm bg-zinc-950/70;
+  /* background: linear-gradient(
+    180deg,
+    rgba(9, 9, 11, 0.7) 20%,
+    rgba(9, 9, 11, 0.7) 70%,
+    rgba(9, 9, 11, 1) 100%
+  ); */
+}
+
+.headerContainer {
+  @apply container mx-auto flex flex-col
+      gap-3 items-center justify-center h-full pt-10;
+}
+.headerTitle {
+  @apply relative text-5xl font-bold;
+}

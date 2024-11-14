@@ -8,11 +8,13 @@ import {
   fetchTopRatedMovies,
 } from "@src/fetchers";
 
+import style from "./styles.module.css";
+
 const { discover, nowPalying, topRated } = RequestEndPoints;
 
 const AppHomePage = () => {
   return (
-    <div>
+    <div className={style.page}>
       <HomeSlider />
       <div className="container mx-auto">
         <MovieCarousel
