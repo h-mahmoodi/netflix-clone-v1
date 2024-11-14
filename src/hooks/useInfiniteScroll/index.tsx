@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 type useInfiniteScrollProps = {
   fetchNextPage: () => void;
@@ -13,11 +13,12 @@ const useInfiniteScroll = ({
 }: useInfiniteScrollProps) => {
   const observerRef = useRef<IntersectionObserver | null>(null);
   const loadMoreRef = useRef<HTMLDivElement | null>(null);
+  const [hasScrolled, setHasScrolled] = useState(false);
 
   useEffect(() => {
-    if (!hasNextPage || isLoading) return;
+    if (!hasNextPage || isLoading || !hasScrolled) return;
 
-    // if (observerRef.current) observerRef.current.disconnect();
+    if (observerRef.current) observerRef.current.disconnect();
 
     observerRef.current = new IntersectionObserver(
       (entries) => {
@@ -31,7 +32,13 @@ const useInfiniteScroll = ({
     if (loadMoreRef.current) observerRef.current.observe(loadMoreRef.current);
 
     return () => observerRef.current?.disconnect();
-  }, [fetchNextPage, isLoading, hasNextPage]);
+  }, [fetchNextPage, isLoading, hasNextPage, hasScrolled]);
+
+  useEffect(() => {
+    const onScroll = () => setHasScrolled(true);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return loadMoreRef;
 };
