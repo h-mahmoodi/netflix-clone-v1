@@ -3,12 +3,12 @@ import { Movie } from "@src/types/movie";
 import styles from "./styles.module.css";
 import { fetchMovieDetails } from "@src/fetchers";
 import { useQuery } from "@tanstack/react-query";
-import MoviePageDetailsSkeleton from "./skeleton";
 import { useAppDispatch } from "@src/hooks/useAppDispatch";
 import { openModal } from "@src/redux/modal-slice";
-import MovieTrailer from "../trailer";
-import MovieCardFavoriteListButton from "../card/favorite-list-button";
-import MovieCardWatchListButton from "../card/watch-list-button";
+import MovieTrailer from "@src/components/app/movie/trailer";
+import MovieCardFavoriteListButton from "@src/components/app/movie/card/favorite-list-button";
+import MovieCardWatchListButton from "@src/components/app/movie/card/watch-list-button";
+import MoviePageSkeleton from "../skeleton";
 
 type MoviePageDetailsProps = {
   id: string | number;
@@ -37,7 +37,7 @@ const MoviePageDetails = ({ id }: MoviePageDetailsProps) => {
   };
 
   if (isFetching) {
-    return <MoviePageDetailsSkeleton />;
+    return <MoviePageSkeleton />;
   }
   if (!movie || error) {
     return <div>Error</div>;

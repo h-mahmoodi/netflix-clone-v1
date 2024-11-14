@@ -85,7 +85,7 @@ export const fetchMovieDetails = async (id: string) => {
 
 export const fetchRecommendedMovies = async (id: string, page = 1) => {
   try {
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+    await new Promise((resolve) => setTimeout(resolve, 1000));
     const response = await appAxios(recommendedMovies(id, page));
     return response.data;
   } catch (error) {
@@ -94,7 +94,7 @@ export const fetchRecommendedMovies = async (id: string, page = 1) => {
 };
 export const fetchSimilarMovies = async (id: string, page = 1) => {
   try {
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+    await new Promise((resolve) => setTimeout(resolve, 1000));
     const response = await appAxios(similarMovies(id, page));
     return response.data;
   } catch (error) {

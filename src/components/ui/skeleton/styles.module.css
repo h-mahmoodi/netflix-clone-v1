@@ -1,0 +1,16 @@
+.skeleton {
+  background: linear-gradient(-45deg, #18181b 40%, #212124 50%, #18181b 60%);
+  animation: shimmer 1s infinite ease-in-out;
+  @apply relative flex rounded-md;
+}
+
+@keyframes shimmer {
+  from {
+    background-position-x: 100%;
+    background-size: 400%;
+  }
+  to {
+    background-position-x: 0%;
+    background-size: 400%;
+  }
+}

@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import styles from "./styles.module.css";
 import MovieCarousel from "@src/components/app/movie/carousel";
 import { useLayoutEffect } from "react";
-import MoviePageDetails from "@src/components/app/movie/page-details";
+import MoviePageDetails from "./components/page";
 
 const AppMoviePage = () => {
   const { id } = useParams<{ id: string }>();

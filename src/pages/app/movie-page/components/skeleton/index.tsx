@@ -1,6 +1,6 @@
 import styles from "./styles.module.css";
 
-const MoviePageDetailsSkeleton = () => {
+const MoviePageSkeleton = () => {
   return (
     <div className={styles.movie}>
       <div className={styles.movieSection}>
@@ -22,4 +22,4 @@ const MoviePageDetailsSkeleton = () => {
     </div>
   );
 };
-export default MoviePageDetailsSkeleton;
+export default MoviePageSkeleton;

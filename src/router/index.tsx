@@ -18,7 +18,7 @@ const Router = () => {
           <Route path=":id">
             <Route index element={<AppMoviePage />} />
             <Route path="recommended" element={<MovieRecommendedPage />} />
-            {/* <Route path="related" element={<MovieRelatedPage />} /> */}
+            <Route path="related" element={<MovieRelatedPage />} />
           </Route>
         </Route>
         <Route path="*" element={<AppNotFoundPage />} />

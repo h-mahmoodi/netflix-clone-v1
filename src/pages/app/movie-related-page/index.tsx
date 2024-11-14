@@ -1,4 +1,4 @@
-import { fetchMovieDetails, fetchRecommendedMovies } from "@src/fetchers";
+import { fetchMovieDetails, fetchSimilarMovies } from "@src/fetchers";
 import { Movie } from "@src/types/movie";
 import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
@@ -6,10 +6,10 @@ import { useParams } from "react-router-dom";
 import styles from "./styles.module.css";
 import MovieGrid from "@src/components/app/movie/grid";
 import useInfiniteScroll from "@src/hooks/useInfiniteScroll";
-import MovieRecommendedPageSkeleton from "./components/skeleteon";
-import MovieRecommendedPageHeader from "./components/header";
+import MovieRelatedPageSkeleton from "./components/skeleton";
+import MovieRelatedPageHeader from "./components/header";
 
-const MovieRecommendedPage = () => {
+const MovieRelatedPage = () => {
   const { id } = useParams();
   const {
     data: mainMovie,
@@ -30,8 +30,8 @@ const MovieRecommendedPage = () => {
     hasNextPage,
     isFetchingNextPage,
   } = useInfiniteQuery({
-    queryKey: ["MovieRecommendedPage", id],
-    queryFn: ({ pageParam }) => fetchRecommendedMovies(id as string, pageParam),
+    queryKey: ["MovieRelatedPage", id],
+    queryFn: ({ pageParam }) => fetchSimilarMovies(id as string, pageParam),
     getNextPageParam: (lastPage) => {
       if (lastPage.page < lastPage.total_pages) {
         return lastPage.page + 1;
@@ -53,13 +53,13 @@ const MovieRecommendedPage = () => {
 
   const renderHeader = () => {
     if (mainMovieIsFetching) {
-      return <MovieRecommendedPageSkeleton />;
+      return <MovieRelatedPageSkeleton />;
     }
     if (mainMovieError) {
       return <div>Something went wrong</div>;
     }
     if (!mainMovieIsFetching && mainMovie) {
-      return <MovieRecommendedPageHeader movie={mainMovie} />;
+      return <MovieRelatedPageHeader movie={mainMovie} />;
     }
   };
 
@@ -81,4 +81,4 @@ const MovieRecommendedPage = () => {
     </div>
   );
 };
-export default MovieRecommendedPage;
+export default MovieRelatedPage;

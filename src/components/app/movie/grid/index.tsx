@@ -19,7 +19,7 @@ const MovieGrid = forwardRef<HTMLDivElement, MovieGridProps>(
             <MovieCard key={`${movie.id}-${index}`} movie={movie} />
           ))}
           {isLoading &&
-            Array(5)
+            Array(10)
               .fill(null)
               .map((_item, index) => <MovieCardSkeleton key={index} />)}
         </div>
