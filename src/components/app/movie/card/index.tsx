@@ -6,9 +6,6 @@ import fallBackImage from "@src/assets/fallback.png";
 import MovieCardWatchListButton from "./watch-list-button";
 import MovieCardFavoriteListButton from "./favorite-list-button";
 import { Link, useNavigate } from "react-router-dom";
-import { useAppDispatch } from "@src/hooks/useAppDispatch";
-import { openModal } from "@src/redux/modal-slice";
-import MovieTrailer from "../trailer";
 
 type MovieCardProps = {
   movie: Movie;
@@ -16,16 +13,7 @@ type MovieCardProps = {
 
 function MovieCard({ movie }: MovieCardProps) {
   const navigate = useNavigate();
-  const dispatch = useAppDispatch();
 
-  const handleWatchTrailer = () => {
-    dispatch(
-      openModal({
-        title: movie?.title || movie?.title || "The Trailer",
-        content: <MovieTrailer movieId={movie.id} />,
-      })
-    );
-  };
   const clickCardHandler = () => {
     navigate(`/movies/${movie.id}`);
   };
