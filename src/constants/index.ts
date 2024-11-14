@@ -9,6 +9,8 @@ export const TMDB_CONFIGS: TmdbConfigTypes = {
   apiToken: import.meta.env.VITE_APP_TMDB_API_TOKEN,
   baseUrl: "https://api.themoviedb.org/3",
   imageUrl: "https://image.tmdb.org/t/p/original",
+  imageUrl_w150: "https://image.tmdb.org/t/p/w154",
+  imageUrl_w300: "https://image.tmdb.org/t/p/w342",
 };
 
 export const FIREBASE_CONFIGS: FirebaseConfigTypes = {

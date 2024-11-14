@@ -6,7 +6,13 @@ import { Link } from "react-router-dom";
 function AppLogo() {
   return (
     <Link to="/">
-      <img src={logo} alt="Netflix Clone App" className={styles.logo} />
+      <img
+        src={logo}
+        alt="Netflix Clone App"
+        className={styles.logo}
+        width="192px"
+        height="60px"
+      />
     </Link>
   );
 }

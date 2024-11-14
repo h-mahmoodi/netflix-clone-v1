@@ -22,7 +22,7 @@ function MovieCard({ movie }: MovieCardProps) {
       <div className={styles.imageContainer}>
         <img
           className={styles.image}
-          src={`${TMDB_CONFIGS.imageUrl}${movie?.poster_path}`}
+          src={`${TMDB_CONFIGS.imageUrl_w300}${movie?.poster_path}`}
           alt={movie?.title}
           onError={(e) => (e.currentTarget.src = fallBackImage)}
           loading="lazy"

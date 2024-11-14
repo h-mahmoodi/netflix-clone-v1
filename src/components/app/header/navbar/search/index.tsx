@@ -52,7 +52,7 @@ const NavSearch = () => {
     // if (isValidSearchInput) {
     //   setIsDropDownOpen(true);
     // }
-    if (hasRecentSearches) {
+    if (hasRecentSearches || isValidSearchInput) {
       setIsDropDownOpen(true);
     }
   }

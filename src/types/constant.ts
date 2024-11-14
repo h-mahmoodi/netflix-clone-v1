@@ -3,6 +3,8 @@ export type TmdbConfigTypes = {
   apiToken: string;
   baseUrl: string;
   imageUrl: string;
+  imageUrl_w150: string;
+  imageUrl_w300: string;
 };
 
 export type FirebaseConfigTypes = {

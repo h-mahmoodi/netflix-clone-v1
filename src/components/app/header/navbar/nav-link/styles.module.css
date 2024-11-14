@@ -4,7 +4,7 @@
 
 .navLink {
   @apply flex items-center gap-2 p-3
-   rounded-md transition-all border-2 border-zinc-800
+   rounded-md transition-all 
    text-zinc-50 cursor-pointer no-underline;
 }
 
@@ -17,13 +17,13 @@
 }
 
 .navLink i {
-  @apply flex text-2xl;
+  @apply flex text-3xl;
 }
 
 .badge {
   @apply absolute -top-1 -right-1 bg-red-700 rounded-full
    leading-none flex items-center justify-center h-5 w-5
-   text-xs text-zinc-200 font-semibold;
+   text-sm text-zinc-200 font-semibold;
 }
 
 .badge span {
