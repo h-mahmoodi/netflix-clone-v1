@@ -20,7 +20,7 @@ export type FirebaseConfigTypes = {
 
 export type RequestEndPointsTypes = {
   discover: string;
-  search: string;
+  search: (query: string, page: number) => string;
   movieDetails: string;
   recommendedMovies: (id: string, page: number) => string;
   similarMovies: (id: string, page: number) => string;

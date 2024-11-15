@@ -26,7 +26,9 @@ export const FIREBASE_CONFIGS: FirebaseConfigTypes = {
 
 export const RequestEndPoints: RequestEndPointsTypes = {
   discover: "/discover/movie",
-  search: "/search/movie",
+  search: (query: string, page: number) => {
+    return `/search/movie?query=${query}&page=${page}`;
+  },
   movieDetails: "/movie",
   recommendedMovies: (id: string, page: number) => {
     return `/movie/<Movie_ID>/recommendations?page=${page}`.replace(

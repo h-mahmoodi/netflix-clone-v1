@@ -65,12 +65,11 @@ export const fetchPopularMovies = async () => {
   }
 };
 
-export const fetchSearchedMovies = async (title: string | null) => {
+export const fetchSearchedMovies = async (query: string, page = 1) => {
   try {
     // await new Promise((resolve) => setTimeout(resolve, 1000));
-    const url = title ? `${search}?query=${title}` : search;
 
-    const response = await appAxios(url);
+    const response = await appAxios(search(query, page));
     return response.data;
   } catch (error) {
     console.log(error);
