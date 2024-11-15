@@ -13,7 +13,7 @@
   @apply bg-zinc-900 p-3;
 }
 .search i {
-  @apply flex text-3xl;
+  @apply flex text-2xl;
 }
 
 .search input {
@@ -66,7 +66,7 @@
   @apply flex flex-col gap-1;
 }
 .dropDownRecentHeader {
-  @apply font-semibold text-zinc-50;
+  @apply font-semibold text-zinc-50 text-lg;
 }
 
 .dropDownRecentContainer {
@@ -76,7 +76,18 @@
   display: none;
   scrollbar-width: none;
 }
+.dropDownRecentContainer div {
+  @apply bg-zinc-950  rounded 
+    duration-300 border border-zinc-800
+   flex overflow-hidden;
+}
 .dropDownRecentContainer span {
-  @apply bg-zinc-900 py-1 px-2 rounded-md hover:bg-red-800
-   cursor-pointer duration-300 text-base;
+  @apply px-3 py-1 text-lg hover:bg-zinc-900 cursor-pointer;
+}
+.dropDownRecentContainer button {
+  @apply bg-zinc-900  py-1 px-2;
+}
+
+.dropDownRecentContainer button i {
+  @apply text-lg;
 }

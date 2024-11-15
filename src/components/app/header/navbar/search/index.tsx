@@ -159,9 +159,12 @@ const NavSearch = () => {
               </span>
               <div className={styles.dropDownRecentContainer}>
                 {recentSearches.map((recent, index) => (
-                  <span key={index} onClick={() => setSearchInput(recent)}>
-                    {recent}
-                  </span>
+                  <div key={index} onClick={() => setSearchInput(recent)}>
+                    <span>{recent}</span>
+                    <button>
+                      <i className="flex fi fi-rr-cross-small"></i>
+                    </button>
+                  </div>
                 ))}
               </div>
             </div>

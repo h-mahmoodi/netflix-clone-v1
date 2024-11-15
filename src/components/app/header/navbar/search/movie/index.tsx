@@ -18,7 +18,7 @@ const NavSearchMovie = ({ movie, onClose }: NavSearchMovieProps) => {
   };
   return (
     <div className={styles.movie} onClick={handleClick}>
-      <img src={`${TMDB_CONFIGS.imageUrl}${movie?.poster_path}`} alt="" />
+      <img src={`${TMDB_CONFIGS.imageUrl_w150}${movie?.poster_path}`} alt="" />
       <div className={styles.movieDetails}>
         <div>
           <p className={styles.movieTitle}>{movie.name || movie.title}</p>

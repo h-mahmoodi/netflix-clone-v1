@@ -5,11 +5,11 @@
 .navLink {
   @apply flex items-center gap-2 p-3
    rounded-md transition-all 
-   text-zinc-50 cursor-pointer no-underline;
+   text-zinc-50 cursor-pointer no-underline border-2 border-zinc-950;
 }
 
 .navLink:hover {
-  @apply bg-zinc-900;
+  @apply bg-zinc-900 border-zinc-800;
 }
 
 .navLink p {
@@ -17,7 +17,7 @@
 }
 
 .navLink i {
-  @apply flex text-3xl;
+  @apply flex text-2xl;
 }
 
 .badge {
