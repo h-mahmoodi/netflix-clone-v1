@@ -1,6 +1,7 @@
 .movie {
-  @apply flex gap-3 bg-zinc-950 text-zinc-50 py-1 px-2
-    rounded-md cursor-pointer hover:bg-zinc-900 mr-2 duration-300;
+  @apply flex gap-3 bg-zinc-900 text-zinc-50 py-1 pr-2
+    rounded-md cursor-pointer hover:bg-zinc-800 duration-300
+    border-2 border-zinc-800;
 }
 
 .movieDetails {
@@ -11,12 +12,12 @@
   @apply text-zinc-50 text-lg font-semibold;
 }
 .movieDesc {
-  @apply text-zinc-300 text-sm;
+  @apply text-zinc-400 text-base;
 }
 .movieInfo {
   @apply flex justify-between text-zinc-300 font-semibold;
 }
 
 .movie img {
-  @apply w-16 h-24 rounded-md object-cover;
+  @apply w-16 rounded-md object-cover;
 }

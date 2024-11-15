@@ -22,7 +22,7 @@
 }
 
 .searchDropDown {
-  @apply absolute bg-zinc-950 w-full p-3 rounded-md top-16 left-0 flex
+  @apply absolute bg-zinc-950 w-full p-3 rounded-md top-14 left-0 flex
   flex-col gap-3 border-2 border-zinc-900;
 }
 
@@ -46,7 +46,7 @@
   @apply flex flex-col gap-1;
 }
 .dropDownMoviesHeader {
-  @apply font-semibold text-zinc-50;
+  @apply font-semibold text-zinc-50 text-lg;
 }
 .movie {
   @apply flex flex-col gap-2 max-h-[350px] overflow-y-scroll;

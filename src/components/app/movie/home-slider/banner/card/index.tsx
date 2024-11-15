@@ -23,7 +23,7 @@ const HomeSliderBannerCard = ({ movie }: HomeSliderBannerCardProps) => {
   return (
     <div className={styles.card}>
       <img
-        src={`${TMDB_CONFIGS.imageUrl_w300}${movie.poster_path}`}
+        src={`${TMDB_CONFIGS.imageUrl_w500}${movie.poster_path}`}
         className={styles.image}
         alt={movie?.title || movie?.title}
         loading="lazy"

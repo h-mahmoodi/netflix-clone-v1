@@ -25,7 +25,7 @@ export const FIREBASE_CONFIGS: FirebaseConfigTypes = {
 };
 
 export const RequestEndPoints: RequestEndPointsTypes = {
-  discover: "/discover/movie?include_video=true",
+  discover: "/discover/movie",
   search: "/search/movie",
   movieDetails: "/movie",
   recommendedMovies: (id: string, page: number) => {

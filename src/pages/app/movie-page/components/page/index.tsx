@@ -52,12 +52,12 @@ const MoviePageDetails = ({ id }: MoviePageDetailsProps) => {
       <div className={styles.movieSection}>
         <div className={styles.banner}>
           <img
-            src={`${TMDB_CONFIGS.imageUrl_w300}${movie?.poster_path}`}
+            src={`${TMDB_CONFIGS.imageUrl_w500}${movie?.poster_path}`}
             alt=""
             className="w-full h-full"
             loading="lazy"
-            width="342px"
-            height="513px"
+            width="513"
+            height="770"
           />
           <div className={styles.bannerOverlay}>
             <div className={styles.actions}>

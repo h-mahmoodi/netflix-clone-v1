@@ -13,6 +13,18 @@ const {
   search,
 } = RequestEndPoints;
 
+export const fetchMovies = async (searchQuery = "") => {
+  try {
+    // await new Promise((resolve) => setTimeout(resolve, 1000));
+    const url = searchQuery ? `${discover}?${searchQuery}` : discover;
+    console.log(url);
+    const response = await appAxios(url);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const fetchSliderMovies = async () => {
   try {
     // await new Promise((resolve) => setTimeout(resolve, 1000));
@@ -53,20 +65,12 @@ export const fetchPopularMovies = async () => {
   }
 };
 
-export const fetchMovies = async (endPoint: string) => {
+export const fetchSearchedMovies = async (title: string | null) => {
   try {
     // await new Promise((resolve) => setTimeout(resolve, 1000));
-    const response = await appAxios(endPoint);
-    return response.data;
-  } catch (error) {
-    console.log(error);
-  }
-};
+    const url = title ? `${search}?query=${title}` : search;
 
-export const fetchSearchedMovies = async (title: string) => {
-  try {
-    // await new Promise((resolve) => setTimeout(resolve, 1000));
-    const response = await appAxios(`${search}?query=${title}`);
+    const response = await appAxios(url);
     return response.data;
   } catch (error) {
     console.log(error);

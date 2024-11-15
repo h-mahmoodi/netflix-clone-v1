@@ -9,6 +9,7 @@ import useClickOutSide from "@src/hooks/useClickOutSide";
 import { useAppDispatch } from "@src/hooks/useAppDispatch";
 import { useAppSelector } from "@src/hooks/useAppSelector";
 import { addToRecentSearch, selectSearch } from "@src/redux/search-slice";
+import { useNavigate } from "react-router-dom";
 
 // "dead pool", "venom", "avatar"
 // const recentSearches = ["dead pool", "venom", "avatar"];
@@ -18,6 +19,7 @@ const NavSearch = () => {
   const [isDropDownOpen, setIsDropDownOpen] = useState(false);
   const searchInputDebounce = useDebounce<string>(searchInput, 500);
   const isValidSearchInput = !!searchInput;
+  const navigate = useNavigate();
 
   const dispatch = useAppDispatch();
   const { searchedKeywords: recentSearches } = useAppSelector(selectSearch);
@@ -64,8 +66,10 @@ const NavSearch = () => {
 
   const handleOnKeyEnterInput = (e: KeyboardEvent<HTMLInputElement>) => {
     console.log(e.key);
-    if (e.key === "Enter") {
+    if (e.key === "Enter" && searchInput) {
       dispatch(addToRecentSearch(searchInput));
+      setIsDropDownOpen(false);
+      navigate(`/search?query=${searchInput}`);
     }
   };
 
@@ -77,7 +81,7 @@ const NavSearch = () => {
       return setIsDropDownOpen(true);
     }
     handleCloseDropDown();
-  }, [isValidToOpenDropDown]);
+  }, [isValidToOpenDropDown, searchInputDebounce]);
 
   const iconRender = () => {
     if (searchInput) {
@@ -146,6 +150,7 @@ const NavSearch = () => {
           value={searchInput}
           onChange={(e) => setSearchInput(e.target.value)}
           onFocus={handleInputFocus}
+          onClick={handleInputFocus}
           onKeyDown={(e) => handleOnKeyEnterInput(e)}
         />
         <div className={styles.searchIcon}>{iconRender()}</div>

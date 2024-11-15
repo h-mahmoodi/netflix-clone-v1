@@ -1,6 +1,7 @@
 .header {
   @apply relative h-80 bg-cover;
   animation: bannerBackground 50s linear infinite;
+  height: 350px;
 }
 
 @keyframes bannerBackground {
@@ -19,13 +20,14 @@
 }
 
 .headerOverlay {
-  @apply absolute top-0 left-0 w-full h-full backdrop-blur-sm;
-  background: linear-gradient(
+  @apply absolute top-0 left-0 w-full h-full backdrop-blur-sm
+  bg-zinc-950/70;
+  /* background: linear-gradient(
     180deg,
     rgba(9, 9, 11, 0.7) 20%,
     rgba(9, 9, 11, 0.7) 70%,
     rgba(9, 9, 11, 1) 100%
-  );
+  ); */
 }
 
 .headerContainer {
