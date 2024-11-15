@@ -11,6 +11,8 @@ export const TMDB_CONFIGS: TmdbConfigTypes = {
   imageUrl: "https://image.tmdb.org/t/p/original",
   imageUrl_w150: "https://image.tmdb.org/t/p/w154",
   imageUrl_w300: "https://image.tmdb.org/t/p/w342",
+  imageUrl_w500: "https://image.tmdb.org/t/p/w500",
+  imageUrl_w1300: "https://image.tmdb.org/t/p/w1280",
 };
 
 export const FIREBASE_CONFIGS: FirebaseConfigTypes = {

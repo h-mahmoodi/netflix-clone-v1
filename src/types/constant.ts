@@ -5,6 +5,8 @@ export type TmdbConfigTypes = {
   imageUrl: string;
   imageUrl_w150: string;
   imageUrl_w300: string;
+  imageUrl_w500: string;
+  imageUrl_w1300: string;
 };
 
 export type FirebaseConfigTypes = {

@@ -29,7 +29,11 @@ function MovieCard({ movie }: MovieCardProps) {
           width="291px"
           height="420px"
         />
-        <Link className={styles.overlay} to={`/movies/${movie.id}`}>
+        <Link
+          className={styles.overlay}
+          to={`/movies/${movie.id}`}
+          aria-label={movie.title || movie.name}
+        >
           <div className={styles.overlayPlay}>
             <i className="fi fi-rr-play-circle"></i>
           </div>

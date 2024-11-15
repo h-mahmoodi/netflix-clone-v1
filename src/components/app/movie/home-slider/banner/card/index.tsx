@@ -22,16 +22,17 @@ const HomeSliderBannerCard = ({ movie }: HomeSliderBannerCardProps) => {
   };
   return (
     <div className={styles.card}>
-      <div
+      <img
+        src={`${TMDB_CONFIGS.imageUrl_w300}${movie.poster_path}`}
         className={styles.image}
-        style={{
-          backgroundImage: `url(${TMDB_CONFIGS.imageUrl}${movie?.poster_path})`,
-        }}
-      >
-        <div className={styles.play} onClick={handleWatchTrailer}>
-          <i className="fi fi-tr-play-circle"></i>
-          {/* <span>Watch Trailer</span> */}
-        </div>
+        alt={movie?.title || movie?.title}
+        loading="lazy"
+        width="342px"
+        height="513px"
+      />
+      <div className={styles.play} onClick={handleWatchTrailer}>
+        <i className="fi fi-rr-play-circle"></i>
+        {/* <span>Watch Trailer</span> */}
       </div>
     </div>
   );

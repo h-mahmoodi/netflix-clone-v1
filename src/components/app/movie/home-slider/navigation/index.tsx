@@ -40,12 +40,14 @@ const HomeSliderNavigation = ({
       <button
         className={styles.left}
         onClick={() => handleNavigateClick(Nav.NAV_PREV)}
+        aria-label="previous slide"
       >
         <i className="fi fi-br-angle-left"></i>
       </button>
       <button
         className={styles.right}
         onClick={() => handleNavigateClick(Nav.NAV_NEXT)}
+        aria-label="next slide"
       >
         <i className="fi fi-br-angle-right"></i>
       </button>

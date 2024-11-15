@@ -27,11 +27,12 @@
   );
 }
 .movieSection {
-  @apply container mx-auto relative z-20 grid grid-cols-4 py-10 gap-10 items-center;
+  @apply container mx-auto relative z-20
+   grid grid-cols-4 py-10 gap-10 items-center;
 }
 
 .banner {
-  @apply relative col-span-1 h-[500px] rounded-xl overflow-hidden;
+  @apply relative col-span-1 h-[513px] w-[342px] rounded-xl overflow-hidden;
 }
 
 .banner img {

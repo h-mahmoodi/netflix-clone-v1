@@ -34,6 +34,7 @@ const NavLink = ({
           className={`${styles.navLink} ${className}`}
           {...(rest as LinkProps)}
           to={to}
+          aria-label={title || to}
         >
           {icon && <i className={icon}></i>}
           {title && <p>{title}</p>}
@@ -45,6 +46,7 @@ const NavLink = ({
       <button
         className={`${styles.navLink} ${className}`}
         {...(rest as ComponentProps<"button">)}
+        aria-label={title || "button"}
       >
         {icon && <i className={icon}></i>}
         {title && <p>{title}</p>}

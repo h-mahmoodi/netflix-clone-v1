@@ -9,9 +9,13 @@ type CarouselHeaderProps = {
 function CarouselHeader({ title, link }: CarouselHeaderProps) {
   return (
     <div className={styles.header}>
-      <h3 className={styles.title}>{title}</h3>
+      <h2 className={styles.title}>{title}</h2>
       {link && (
-        <Link className={styles.button} to={link}>
+        <Link
+          className={styles.button}
+          to={link}
+          aria-label={`show more ${title}`}
+        >
           Show More
         </Link>
       )}

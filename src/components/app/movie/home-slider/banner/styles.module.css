@@ -34,7 +34,7 @@
 }
 
 .content {
-  @apply relative flex gap-8 justify-start items-center;
+  @apply relative flex gap-10 justify-start items-center;
 }
 
 .details {

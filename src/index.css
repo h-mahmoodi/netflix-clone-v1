@@ -1,4 +1,6 @@
-@import "@flaticon/flaticon-uicons/css/all/all";
+@import "@flaticon/flaticon-uicons/css/regular/rounded";
+@import "@flaticon/flaticon-uicons/css/bold/rounded";
+@import "@flaticon/flaticon-uicons/css/solid/rounded";
 
 @tailwind base;
 @tailwind components;

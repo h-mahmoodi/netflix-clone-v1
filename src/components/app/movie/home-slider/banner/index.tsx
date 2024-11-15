@@ -14,7 +14,7 @@ function HomeSliderBanner({ movie }: HomeSliderBannerProps) {
     <div
       className={styles.banner}
       style={{
-        backgroundImage: `url(${TMDB_CONFIGS.imageUrl}${movie?.backdrop_path})`,
+        backgroundImage: `url(${TMDB_CONFIGS.imageUrl_w1300}${movie?.backdrop_path})`,
       }}
     >
       <>

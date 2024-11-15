@@ -9,7 +9,7 @@ type HomeSliderBannerInfoProps = {
 const HomeSliderBannerInfo = ({ movie }: HomeSliderBannerInfoProps) => {
   return (
     <div className={styles.info}>
-      <h1 className={styles.title}>{`${movie?.name || movie?.title} `}</h1>
+      <h2 className={styles.title}>{`${movie?.name || movie?.title} `}</h2>
 
       <p className={styles.description}>{truncateText(movie?.overview, 145)}</p>
     </div>

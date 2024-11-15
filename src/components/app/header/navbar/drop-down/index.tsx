@@ -18,6 +18,7 @@ function NavDropDown({ icon, title, className, children }: NavDropDownProps) {
       <button
         className={`${styles.button} ${isOpen ? styles.isActive : undefined}`}
         onClick={() => setIsOpen((prev) => !prev)}
+        aria-label="user profile"
       >
         {icon && <i className={icon}></i>}
         {title && <p>{title}</p>}
