@@ -34,7 +34,7 @@ const sortOptions: SortOption[] = [
 ];
 
 const AppSearchPage = () => {
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const [query, setQuery] = useState(searchParams.get("query") || "");
   const {
     data,
@@ -114,6 +114,8 @@ const AppSearchPage = () => {
             options={sortOptions}
             movies={movies}
             setter={setSortedMovies}
+            searchParams={searchParams}
+            setSearchParams={setSearchParams}
           />
 
           <div className="flex gap-3 items-center">

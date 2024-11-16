@@ -1,17 +1,36 @@
 import { Movie, SortOption } from "@src/types/movie";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { URLSearchParamsInit, useSearchParams } from "react-router-dom";
 
 type SortControlProps = {
   options: SortOption[];
   movies: Movie[];
   setter: (movies: Movie[]) => void;
+  searchParams: URLSearchParams;
+  setSearchParams: (params: URLSearchParamsInit) => void;
 };
 
-const SortControl = ({ options, movies, setter }: SortControlProps) => {
+const SortControl = ({
+  options,
+  movies,
+  setter,
+  searchParams,
+  setSearchParams,
+}: SortControlProps) => {
   const [activeSort, setActiveSort] = useState<{
     field: keyof Movie | null;
     direction: "asc" | "desc" | null;
-  }>({ field: null, direction: null });
+  }>({
+    field: searchParams.get("sortBy") as keyof Movie | null,
+    direction: searchParams.get("sortDir") as "asc" | "desc" | null,
+  });
+
+  useEffect(() => {
+    setActiveSort({
+      field: searchParams.get("sortBy") as keyof Movie | null,
+      direction: searchParams.get("sortDir") as "asc" | "desc" | null,
+    });
+  }, [searchParams]);
 
   const [prevMovieCount, setPrevMovieCount] = useState(movies.length);
 
@@ -44,11 +63,31 @@ const SortControl = ({ options, movies, setter }: SortControlProps) => {
 
   const handleSortClick = (field: keyof Movie) => {
     setActiveSort((prev) => {
-      if (prev.field === field) {
-        if (prev.direction === "desc") return { field, direction: "asc" };
-        if (prev.direction === "asc") return { field: null, direction: null };
+      const newDirection =
+        prev.field === field && prev.direction === "desc"
+          ? "asc"
+          : prev.field === field && prev.direction === "asc"
+          ? null
+          : "desc";
+
+      const newSortState = newDirection
+        ? { field, direction: newDirection as "asc" | "desc" }
+        : { field: null, direction: null };
+
+      if (newSortState.field && newSortState.direction) {
+        setSearchParams({
+          ...Object.fromEntries(searchParams.entries()), // Preserve existing query params
+          sortBy: newSortState.field,
+          sortDir: newSortState.direction,
+        });
+      } else {
+        const newParams = new URLSearchParams(searchParams);
+        newParams.delete("sortBy");
+        newParams.delete("sortDir");
+        setSearchParams(newParams);
       }
-      return { field, direction: "desc" };
+
+      return newSortState;
     });
   };
 

@@ -65,12 +65,17 @@ const NavSearch = () => {
   };
 
   const handleOnKeyEnterInput = (e: KeyboardEvent<HTMLInputElement>) => {
-    console.log(e.key);
     if (e.key === "Enter" && searchInput) {
       dispatch(addToRecentSearch(searchInput));
       setIsDropDownOpen(false);
       navigate(`/search?query=${searchInput}`);
     }
+  };
+
+  const handleClickonAllMovies = () => {
+    dispatch(addToRecentSearch(searchInput));
+    setIsDropDownOpen(false);
+    navigate(`/search?query=${searchInput}`);
   };
 
   useEffect(() => {
@@ -183,7 +188,10 @@ const NavSearch = () => {
               </span>
 
               {renderResult()}
-              <div className={styles.moreButton}>
+              <div
+                className={styles.moreButton}
+                onClick={handleClickonAllMovies}
+              >
                 Show All {data.total_results} Results
               </div>
             </div>
