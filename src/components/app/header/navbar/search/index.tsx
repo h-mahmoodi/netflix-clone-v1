@@ -41,7 +41,7 @@ const NavSearch = () => {
 
   const hasRecentSearches = recentSearches.length > 0;
   const hasSearchedMovies = movies.length > 0;
-  const isValidToOpenDropDown = hasRecentSearches || hasSearchedMovies;
+  // const isValidToOpenDropDown = hasRecentSearches || hasSearchedMovies;
 
   // console.log("menuuuuuuuu", movies);
 
@@ -86,11 +86,11 @@ const NavSearch = () => {
     // if (!isValidSearchInput) {
     //   return handleCloseDropDown();
     // }
-    if (isValidToOpenDropDown) {
+    if (searchInputDebounce) {
       return setIsDropDownOpen(true);
     }
     handleCloseDropDown();
-  }, [isValidToOpenDropDown, searchInputDebounce]);
+  }, [searchInputDebounce]);
 
   const iconRender = () => {
     if (searchInput) {
