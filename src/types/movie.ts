@@ -17,6 +17,7 @@ export type Movie = {
   overview?: string;
   backdrop_path?: string;
   vote_average?: number;
+  vote_count?: number;
   poster_path?: string;
   release_date?: string;
   spoken_languages?: SpokenLanguage[];
@@ -35,4 +36,9 @@ export type MovieTrailer = {
   official: boolean;
   published_at: string;
   id: string;
+};
+
+export type SortOption = {
+  display: string;
+  field: keyof Movie;
 };
