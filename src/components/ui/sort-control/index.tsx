@@ -1,6 +1,6 @@
 import { Movie, SortOption } from "@src/types/movie";
-import { useCallback, useEffect, useRef, useState } from "react";
-import { URLSearchParamsInit, useSearchParams } from "react-router-dom";
+import { useCallback, useEffect, useState } from "react";
+import { URLSearchParamsInit } from "react-router-dom";
 
 type SortControlProps = {
   options: SortOption[];
@@ -107,12 +107,12 @@ const SortControl = ({
 
   return (
     <div className="flex gap-3 items-center">
-      {/* <span className="text-xl">Sort By</span> */}
+      {/* <span className="text-2xl">Sort By</span> */}
       <div className="flex items-center gap-3">
         {options.map((option, index) => (
           <button
             className="flex items-stretch
-                    border border-zinc-800 bg-zinc-900
+                    border border-zinc-800 bg-zinc-800
                      rounded-md overflow-hidden"
             onClick={() => handleSortClick(option.field)}
             key={index}
@@ -125,7 +125,7 @@ const SortControl = ({
                   <i className="flex fi fi-rr-sort-amount-down-alt"></i>
                 )
               ) : (
-                <i className="flex fi fi-rr-apps-sort "></i>
+                <i className="flex fi fi-rr-sort-alt "></i>
               )}
             </span>
 
@@ -133,7 +133,7 @@ const SortControl = ({
               className={`text-lg py-2 px-3
                  ${
                    activeSort.field === option.field
-                     ? "bg-red-800"
+                     ? "bg-zinc-900"
                      : "bg-zinc-950"
                  } `}
             >

@@ -24,12 +24,8 @@ const sortOptions: SortOption[] = [
     field: "vote_count",
   },
   {
-    display: "Year",
+    display: "Released Date",
     field: "release_date",
-  },
-  {
-    display: "id",
-    field: "id",
   },
 ];
 
@@ -121,20 +117,20 @@ const AppSearchPage = () => {
           <div className="flex gap-3 items-center">
             <button
               className="flex items-stretch
-              border border-zinc-800 bg-zinc-900
+              border border-zinc-800 bg-zinc-800
                rounded-md overflow-hidden"
             >
-              <span className="text-lg py-2 px-3 bg-zinc-800">5 Columns</span>
+              <span className="text-lg py-2 px-3 bg-zinc-900">5 Columns</span>
               <span className="flex items-center px-3">
-                <i className="flex fi fi-rr-square-5"></i>
+                <i className="flex fi fi-rr-columns-3"></i>
               </span>
             </button>
             <button
               className="flex items-stretch
-              border border-zinc-800 bg-zinc-900
+              border border-zinc-800 bg-zinc-800
                rounded-md overflow-hidden"
             >
-              <span className="text-lg py-2 px-3 bg-zinc-800">Grid</span>
+              <span className="text-lg py-2 px-3 bg-zinc-900">Grid</span>
               <span className="flex items-center px-3">
                 <i className="flex fi fi-rr-apps"></i>
               </span>
