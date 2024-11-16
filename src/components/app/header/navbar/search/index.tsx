@@ -99,7 +99,7 @@ const NavSearch = () => {
       }
       return (
         <i
-          className="flex fi fi-rr-cross-small"
+          className="flex fi fi-rr-cross-small cursor-pointer"
           onClick={handleClearSearchInput}
         ></i>
       );
@@ -173,12 +173,12 @@ const NavSearch = () => {
               </span>
               <div className={styles.dropDownRecentContainer}>
                 {recentSearches.map((recent, index) => (
-                  <div key={index} onClick={() => setSearchInput(recent)}>
-                    <span>{recent}</span>
+                  <div key={index}>
+                    <span onClick={() => setSearchInput(recent)}>{recent}</span>
                     <button
                       onClick={() => dispatch(removeFromRecentSearch(recent))}
                     >
-                      <i className="flex fi fi-rr-cross-small"></i>
+                      <i className="flex fi fi-rr-cross-small "></i>
                     </button>
                   </div>
                 ))}

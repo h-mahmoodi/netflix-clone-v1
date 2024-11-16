@@ -10,6 +10,7 @@ import { selectWatchList } from "@src/redux/watch-list-slice";
 import { selectFavoriteList } from "@src/redux/favorite-list-slice";
 import NavSearch from "./search";
 import AppLogo from "../logo";
+import AppSidebarMenu from "./sidebar-menu";
 
 // import Search from "../explore";
 
@@ -19,7 +20,7 @@ function AppNavbar() {
   return (
     <div className={styles.navbar}>
       <div className="flex items-center gap-3">
-        <i className="fi fi-rr-menu-burger flex text-4xl border-2 border-zinc-800 p-2 rounded-md"></i>
+        <AppSidebarMenu />
         <AppLogo />
       </div>
       {/* <div className={styles.mainMenu}>
