@@ -14,6 +14,37 @@ export const getRandomArrayItems = (arr = [], number: number) => {
   return array.slice(0, number);
 };
 
+export const loadFromLocalStorage = <T>(key: string): T | null => {
+  try {
+    const localData = localStorage.getItem(key);
+    if (localData === null) {
+      return null;
+    }
+    return JSON.parse(localData) as T;
+  } catch (error) {
+    console.error(`Failed to parse localStorage data for key "${key}":`, error);
+    return null;
+  }
+};
+
+export const saveToLocalStorage = <
+  T extends string | number | Array<string> | Array<number> | object
+>(
+  key: string,
+  value: T
+): void => {
+  try {
+    const serializedValue = JSON.stringify(value);
+    localStorage.setItem(key, serializedValue);
+  } catch (error) {
+    console.error(
+      `Failed to save to localStorage. Key: "${key}", Value:`,
+      value,
+      error
+    );
+  }
+};
+
 // export const validation = (field, rules = {}) => {
 //   let error = "";
 //   const { name, value, type = "string" } = field;
