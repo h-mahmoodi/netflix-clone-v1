@@ -134,7 +134,7 @@ const SortControl = ({
                  ${
                    activeSort.field === option.field
                      ? "bg-zinc-900"
-                     : "bg-zinc-950"
+                     : "bg-zinc-950 hover:bg-zinc-900"
                  } `}
             >
               {option.display}

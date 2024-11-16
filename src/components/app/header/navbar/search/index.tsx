@@ -8,7 +8,11 @@ import { Movie } from "@src/types/movie";
 import useClickOutSide from "@src/hooks/useClickOutSide";
 import { useAppDispatch } from "@src/hooks/useAppDispatch";
 import { useAppSelector } from "@src/hooks/useAppSelector";
-import { addToRecentSearch, selectSearch } from "@src/redux/search-slice";
+import {
+  addToRecentSearch,
+  removeFromRecentSearch,
+  selectSearch,
+} from "@src/redux/search-slice";
 import { useNavigate } from "react-router-dom";
 
 // "dead pool", "venom", "avatar"
@@ -171,7 +175,9 @@ const NavSearch = () => {
                 {recentSearches.map((recent, index) => (
                   <div key={index} onClick={() => setSearchInput(recent)}>
                     <span>{recent}</span>
-                    <button>
+                    <button
+                      onClick={() => dispatch(removeFromRecentSearch(recent))}
+                    >
                       <i className="flex fi fi-rr-cross-small"></i>
                     </button>
                   </div>

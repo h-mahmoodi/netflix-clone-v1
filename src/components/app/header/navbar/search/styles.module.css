@@ -77,15 +77,15 @@
   scrollbar-width: none;
 }
 .dropDownRecentContainer div {
-  @apply bg-zinc-950  rounded 
+  @apply bg-zinc-800  rounded 
     duration-300 border border-zinc-800
    flex overflow-hidden;
 }
 .dropDownRecentContainer span {
-  @apply px-3 py-1 text-lg hover:bg-zinc-900 cursor-pointer;
+  @apply px-3 py-1 text-lg bg-zinc-950 hover:bg-zinc-900 cursor-pointer;
 }
 .dropDownRecentContainer button {
-  @apply bg-zinc-900  py-1 px-2;
+  @apply bg-zinc-800  py-1 px-2;
 }
 
 .dropDownRecentContainer button i {
