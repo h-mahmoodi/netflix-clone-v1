@@ -33,7 +33,7 @@ const sortOptions: SortOption[] = [
 const AppSearchPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [query, setQuery] = useState(searchParams.get("query") || "");
-  const [selectedGrid, setSelectedGrid] = useState(6);
+  const [selectedGrid, setSelectedGrid] = useState<number | null>(null);
   const {
     data,
     isFetching,

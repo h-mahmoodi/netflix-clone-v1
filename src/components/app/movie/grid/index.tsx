@@ -8,21 +8,21 @@ import { Movie } from "@src/types/movie";
 type MovieGridProps = {
   movies?: Movie[];
   isLoading?: boolean;
-  grid: number;
+  grid?: number;
 };
 
 const MovieGrid = forwardRef<HTMLDivElement, MovieGridProps>(
-  ({ movies, isLoading, grid }, ref) => {
+  ({ movies, isLoading, grid = 5 }, ref) => {
+    const withGenerator = () => {
+      return styles[`width-1-${grid}`];
+    };
     return (
       <div className={styles.container}>
-        <div
-          className={styles.gridLayout}
-          style={{
-            gridTemplateColumns: `repeat(${grid},1fr)`,
-          }}
-        >
+        <div className={styles.gridLayout}>
           {movies?.map((movie, index) => (
-            <MovieCard key={`${movie.id}-${index}`} movie={movie} />
+            <div className={withGenerator()}>
+              <MovieCard key={`${movie.id}-${index}`} movie={movie} />
+            </div>
           ))}
           {isLoading &&
             Array(grid * 2)
