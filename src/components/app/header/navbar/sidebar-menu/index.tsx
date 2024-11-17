@@ -61,14 +61,32 @@ const AppSidebarMenu = () => {
             <div className={styles.drawerMenuItem}>
               <i className="flex fi fi-rr-heart"></i>
               <span>Favorite Movies</span>
+              <span
+                className="absolute right-3 bg-red-700 rounded-full
+              size-5 flex items-center justify-center text-sm leading-none p-1"
+              >
+                1
+              </span>
             </div>
             <div className={styles.drawerMenuItem}>
               <i className="flex fi fi-rr-play-alt"></i>
               <span>Watch List</span>
+              <span
+                className="absolute right-3 bg-red-700 rounded-full
+              size-5 flex items-center justify-center text-sm leading-none p-1"
+              >
+                1
+              </span>
             </div>
             <div className={styles.drawerMenuItem}>
               <i className="flex fi fi-rr-time-past"></i>
               <span>Recent Views</span>
+              <span
+                className="absolute right-3 bg-red-700 rounded-full
+              size-5 flex items-center justify-center text-sm leading-none p-1"
+              >
+                1
+              </span>
             </div>
           </div>
           <div className={styles.drawerMenuContainer}>
