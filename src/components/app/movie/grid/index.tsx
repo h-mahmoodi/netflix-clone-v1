@@ -8,18 +8,24 @@ import { Movie } from "@src/types/movie";
 type MovieGridProps = {
   movies?: Movie[];
   isLoading?: boolean;
+  grid: number;
 };
 
 const MovieGrid = forwardRef<HTMLDivElement, MovieGridProps>(
-  ({ movies, isLoading }, ref) => {
+  ({ movies, isLoading, grid }, ref) => {
     return (
       <div className={styles.container}>
-        <div className={styles.gridLayout}>
+        <div
+          className={styles.gridLayout}
+          style={{
+            gridTemplateColumns: `repeat(${grid},1fr)`,
+          }}
+        >
           {movies?.map((movie, index) => (
             <MovieCard key={`${movie.id}-${index}`} movie={movie} />
           ))}
           {isLoading &&
-            Array(10)
+            Array(grid * 2)
               .fill(null)
               .map((_item, index) => <MovieCardSkeleton key={index} />)}
         </div>

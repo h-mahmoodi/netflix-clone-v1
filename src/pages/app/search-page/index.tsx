@@ -9,6 +9,7 @@ import AppPageHeading from "@src/components/app/page-heading";
 import useInfiniteScroll from "@src/hooks/useInfiniteScroll";
 import SortControl from "@src/components/ui/sort-control";
 import { type Movie, type SortOption } from "@src/types/movie";
+import DispalyControl from "@src/components/ui/display-control";
 
 const sortOptions: SortOption[] = [
   {
@@ -32,6 +33,7 @@ const sortOptions: SortOption[] = [
 const AppSearchPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [query, setQuery] = useState(searchParams.get("query") || "");
+  const [selectedGrid, setSelectedGrid] = useState(6);
   const {
     data,
     isFetching,
@@ -85,6 +87,7 @@ const AppSearchPage = () => {
           movies={sortedMovies}
           isLoading={isFetching}
           ref={loadMoreRef}
+          grid={selectedGrid}
         />
       </div>
     );
@@ -96,7 +99,7 @@ const AppSearchPage = () => {
   //   if (isSortLoading) {
   //     return <div>Sorting</div>;
   //   }
-  console.log("page");
+  // console.log("page");
   return (
     <div>
       <AppPageHeading title={headerTitle} />
@@ -104,7 +107,7 @@ const AppSearchPage = () => {
       <div className={styles.containerLayout}>
         <div
           className="flex justify-between items-center 
-        py-4 bg-zinc-950 sticky top-20 left-0 z-20"
+        py-4 bg-zinc-950 sticky top-16 left-0 z-20"
         >
           <SortControl
             options={sortOptions}
@@ -114,28 +117,7 @@ const AppSearchPage = () => {
             setSearchParams={setSearchParams}
           />
 
-          <div className="flex gap-3 items-center">
-            <button
-              className="flex items-stretch
-              border border-zinc-800 bg-zinc-800
-               rounded-md overflow-hidden"
-            >
-              <span className="text-lg py-2 px-3 bg-zinc-900">5 Columns</span>
-              <span className="flex items-center px-3">
-                <i className="flex fi fi-rr-columns-3"></i>
-              </span>
-            </button>
-            <button
-              className="flex items-stretch
-              border border-zinc-800 bg-zinc-800
-               rounded-md overflow-hidden"
-            >
-              <span className="text-lg py-2 px-3 bg-zinc-900">Grid</span>
-              <span className="flex items-center px-3">
-                <i className="flex fi fi-rr-apps"></i>
-              </span>
-            </button>
-          </div>
+          <DispalyControl setSelectedGrid={setSelectedGrid} />
         </div>
         <div>{renderMovies()}</div>
       </div>

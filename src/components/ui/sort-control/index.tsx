@@ -103,7 +103,7 @@ const SortControl = ({
     sortMovies();
   }, [sortMovies]);
 
-  console.log("sort");
+  // console.log("sort");
 
   return (
     <div className="flex gap-3 items-center">
@@ -134,7 +134,7 @@ const SortControl = ({
                  ${
                    activeSort.field === option.field
                      ? "bg-zinc-900"
-                     : "bg-zinc-950 hover:bg-zinc-900"
+                     : "bg-zinc-950 hover:bg-zinc-900 text-zinc-300"
                  } `}
             >
               {option.display}

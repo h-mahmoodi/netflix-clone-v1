@@ -3,5 +3,5 @@
 }
 
 .gridLayout {
-  @apply grid grid-cols-5 gap-5;
+  @apply grid gap-5 transition-all duration-500;
 }
