@@ -1,0 +1,41 @@
+.sidebar {
+  @apply relative;
+}
+
+.drawer {
+  @apply fixed left-0 top-0 h-screen bg-zinc-950
+  w-72 opacity-0 transition-all duration-500 p-3
+  flex flex-col gap-5;
+}
+
+.drawerOpen {
+  @apply translate-x-0 opacity-100;
+}
+
+.drawerClose {
+  @apply -translate-x-72 opacity-0;
+}
+
+.drawerHeader {
+  @apply flex justify-between items-center font-semibold
+  pt-2;
+}
+
+.drawerHeaderTitle {
+  @apply text-4xl;
+}
+
+.drawerMenuContainer {
+  @apply flex flex-col border-b-2 border-zinc-800 pt-2 pb-3;
+}
+
+.drawerMenuItem {
+  @apply flex gap-6 items-center p-2 text-lg 
+  rounded-md border-2 border-transparent
+   hover:border-zinc-800 hover:bg-zinc-900
+    cursor-pointer;
+}
+
+.drawerMenuItem i {
+  @apply text-xl;
+}
