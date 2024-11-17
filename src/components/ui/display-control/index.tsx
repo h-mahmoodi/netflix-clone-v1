@@ -22,7 +22,7 @@ const DispalyControl = ({ setSelectedGrid }: DispalyControlProps) => {
       const length = displayOptions.columns.length;
       const selectedIndex = displayOptions.columns.indexOf(display);
       console.log(length, "/", selectedIndex);
-      setDisplay((prev) =>
+      setDisplay(
         selectedIndex < length - 1
           ? displayOptions.columns[selectedIndex + 1]
           : displayOptions.columns[0]

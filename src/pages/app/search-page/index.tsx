@@ -33,7 +33,9 @@ const sortOptions: SortOption[] = [
 const AppSearchPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [query, setQuery] = useState(searchParams.get("query") || "");
-  const [selectedGrid, setSelectedGrid] = useState<number | null>(null);
+  const [selectedGrid, setSelectedGrid] = useState<number | undefined>(
+    undefined
+  );
   const {
     data,
     isFetching,
@@ -82,14 +84,12 @@ const AppSearchPage = () => {
       return <div>Something went wrong</div>;
     }
     return (
-      <div className={styles.containerLayout}>
-        <MovieGrid
-          movies={sortedMovies}
-          isLoading={isFetching}
-          ref={loadMoreRef}
-          grid={selectedGrid}
-        />
-      </div>
+      <MovieGrid
+        movies={sortedMovies}
+        isLoading={isFetching}
+        ref={loadMoreRef}
+        grid={selectedGrid}
+      />
     );
   };
   const headerTitle = query
@@ -107,7 +107,7 @@ const AppSearchPage = () => {
       <div className={styles.containerLayout}>
         <div
           className="flex justify-between items-center 
-        py-4 bg-zinc-950 sticky top-16 left-0 z-20"
+         bg-zinc-950 sticky top-16 left-0 z-20 py-2 px-3"
         >
           <SortControl
             options={sortOptions}
