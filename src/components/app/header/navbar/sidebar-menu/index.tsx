@@ -22,7 +22,7 @@ const AppSidebarMenu = () => {
       >
         <div className={styles.drawerHeader}>
           <span className={styles.drawerHeaderTitle}>NETFLIX</span>
-          <NavLink icon="fi fi-rr-cross" onClick={handleToggleIsOpen} />
+          <NavLink icon="fi fi-rr-menu-burger" onClick={handleToggleIsOpen} />
         </div>
         <div>
           <div className={styles.drawerMenuContainer}>
@@ -63,7 +63,7 @@ const AppSidebarMenu = () => {
               <span>Favorite Movies</span>
               <span
                 className="absolute right-3 bg-red-700 rounded-full
-              size-5 flex items-center justify-center text-sm leading-none p-1"
+              size-5 flex items-center justify-center text-sm leading-none pb-0.5"
               >
                 1
               </span>
@@ -73,7 +73,7 @@ const AppSidebarMenu = () => {
               <span>Watch List</span>
               <span
                 className="absolute right-3 bg-red-700 rounded-full
-              size-5 flex items-center justify-center text-sm leading-none p-1"
+              size-5 flex items-center justify-center text-sm leading-none pb-0.5"
               >
                 1
               </span>
@@ -83,9 +83,9 @@ const AppSidebarMenu = () => {
               <span>Recent Views</span>
               <span
                 className="absolute right-3 bg-red-700 rounded-full
-              size-5 flex items-center justify-center text-sm leading-none p-1"
+              size-5 flex items-center justify-center text-sm leading-none pb-0.5"
               >
-                1
+                15
               </span>
             </div>
           </div>
