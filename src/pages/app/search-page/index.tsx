@@ -50,7 +50,6 @@ const AppSearchPage = () => {
   });
 
   const movies: Movie[] = useMemo(() => {
-    console.log("yessssssssssssss");
     return data?.pages.flatMap((page) => page.results) || [];
   }, [data]);
 

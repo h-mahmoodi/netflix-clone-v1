@@ -1,16 +1,35 @@
 import { fetchMovieDetails, fetchSimilarMovies } from "@src/fetchers";
-import { Movie } from "@src/types/movie";
+import { Movie, SortOption } from "@src/types/movie";
 import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
-import { useParams } from "react-router-dom";
-
-import styles from "./styles.module.css";
-import MovieGrid from "@src/components/app/movie/grid";
-import useInfiniteScroll from "@src/hooks/useInfiniteScroll";
+import { useParams, useSearchParams } from "react-router-dom";
 import MovieRelatedPageSkeleton from "./components/skeleton";
 import MovieRelatedPageHeader from "./components/header";
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
+import MovieDisplayGrid from "@src/components/app/movie/display-grid";
+
+import styles from "./styles.module.css";
+
+const sortOptions: SortOption[] = [
+  {
+    display: "Name",
+    field: "title",
+  },
+  {
+    display: "IMDb Score",
+    field: "vote_average",
+  },
+  {
+    display: "Popularity",
+    field: "vote_count",
+  },
+  {
+    display: "Released Date",
+    field: "release_date",
+  },
+];
 
 const AppMovieRelatedPage = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
   const { id } = useParams();
   const {
     data: mainMovie,
@@ -42,21 +61,13 @@ const AppMovieRelatedPage = () => {
     initialPageParam: 1,
   });
 
-  const movies = data?.pages.flatMap((page) => page.results) || [];
-
-  const loadMoreRef = useInfiniteScroll({
-    fetchNextPage,
-    hasNextPage: !!hasNextPage,
-    isLoading: isFetchingNextPage,
-  });
+  const movies: Movie[] = useMemo(() => {
+    return data?.pages.flatMap((page) => page.results) || [];
+  }, [data]);
 
   useEffect(() => {
-    const moveToTop = () => {
-      window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-    };
-
-    moveToTop();
-  }, []);
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  }, [searchParams]);
 
   const renderHeader = () => {
     if (mainMovieIsFetching) {
@@ -70,21 +81,24 @@ const AppMovieRelatedPage = () => {
     }
   };
 
-  const renderMovies = () => {
-    if (error) {
-      return <div>Something went wrong</div>;
-    }
-    return (
-      <div className={styles.containerLayout}>
-        <MovieGrid movies={movies} isLoading={isFetching} ref={loadMoreRef} />
-      </div>
-    );
-  };
+  if (error) {
+    return <div>Something went wrong</div>;
+  }
 
   return (
     <div className={styles.page}>
       {renderHeader()}
-      {renderMovies()}
+      <MovieDisplayGrid
+        fetchNextPage={fetchNextPage}
+        hasNextPage={hasNextPage}
+        movies={movies}
+        isFetching={isFetching}
+        isFetchingNextPage={isFetchingNextPage}
+        error={error}
+        sortOptions={sortOptions}
+        searchParams={searchParams}
+        setSearchParams={setSearchParams}
+      />
     </div>
   );
 };

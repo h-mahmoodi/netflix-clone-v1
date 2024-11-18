@@ -32,9 +32,9 @@ const DispalyControl = ({ setSelectedGrid }: DispalyControlProps) => {
 
   useEffect(() => {
     setSelectedGrid(display);
-  }, [display]);
+  }, [display, setSelectedGrid]);
 
-  console.log(display);
+  //   console.log(display);
 
   return (
     <div className="flex gap-3 items-center">
