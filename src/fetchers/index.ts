@@ -97,7 +97,7 @@ export const fetchRecommendedMovies = async (id: string, page = 1) => {
 };
 export const fetchSimilarMovies = async (id: string, page = 1) => {
   try {
-    // await new Promise((resolve) => setTimeout(resolve, 1000));
+    // await new Promise((resolve) => setTimeout(resolve, 2000));
     const response = await appAxios(similarMovies(id, page));
     return response.data;
   } catch (error) {

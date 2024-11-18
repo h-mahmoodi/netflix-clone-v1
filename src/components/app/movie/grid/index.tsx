@@ -27,7 +27,11 @@ const MovieGrid = forwardRef<HTMLDivElement, MovieGridProps>(
           {isLoading &&
             Array(grid * 2)
               .fill(null)
-              .map((_item, index) => <MovieCardSkeleton key={index} />)}
+              .map((_item, index) => (
+                <div key={index} className={styles[`width-1-${grid}`]}>
+                  <MovieCardSkeleton />
+                </div>
+              ))}
         </div>
         <div className={styles.moreButton} ref={ref}></div>
       </div>

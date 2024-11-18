@@ -63,7 +63,7 @@ const MovieDisplayGrid = ({
       <div>
         <MovieGrid
           movies={sortedMovies}
-          isLoading={isFetching || isFetchingNextPage}
+          isLoading={isFetching}
           ref={loadMoreRef}
           grid={selectedGrid}
         />
