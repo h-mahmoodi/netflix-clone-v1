@@ -1,4 +1,4 @@
-import { Movie, SortOption } from "@src/types/movie";
+import { Movie, SortOption, SortState } from "@src/types/movie";
 import { useCallback, useEffect, useState } from "react";
 import { URLSearchParamsInit } from "react-router-dom";
 
@@ -17,10 +17,7 @@ const SortControl = ({
   searchParams,
   setSearchParams,
 }: SortControlProps) => {
-  const [activeSort, setActiveSort] = useState<{
-    field: keyof Movie | null;
-    direction: "asc" | "desc" | null;
-  }>({
+  const [activeSort, setActiveSort] = useState<SortState>({
     field: (searchParams.get("sortBy") as keyof Movie | null) || null,
     direction: (searchParams.get("sortDir") as "asc" | "desc" | null) || null,
   });

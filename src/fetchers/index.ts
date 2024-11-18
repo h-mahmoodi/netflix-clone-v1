@@ -65,7 +65,13 @@ export const fetchPopularMovies = async () => {
   }
 };
 
-export const fetchSearchedMovies = async (query: string, page = 1) => {
+export const fetchSearchedMovies = async ({
+  query,
+  page = 1,
+}: {
+  query: string;
+  page?: number;
+}) => {
   try {
     // await new Promise((resolve) => setTimeout(resolve, 1000));
 

@@ -1,45 +1,71 @@
 import useInfiniteScroll from "@src/hooks/useInfiniteScroll";
-import { Movie, SortOption } from "@src/types/movie";
+import { Movie, MovieResponse, SortOption, SortState } from "@src/types/movie";
 import MovieGrid from "../grid";
 import SortControl from "@src/components/ui/sort-control";
 import DispalyControl from "@src/components/ui/display-control";
-import { useState } from "react";
-import { URLSearchParamsInit } from "react-router-dom";
+import { useEffect, useMemo, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 
 import styles from "./styles.module.css";
+import { useInfiniteQuery } from "@tanstack/react-query";
 
 type MovieDisplayGrid = {
-  fetchNextPage: () => void;
-  hasNextPage: boolean;
-  movies: Movie[];
-  isFetching: boolean;
-  isFetchingNextPage: boolean;
-  error: Error | null;
+  query: string;
+  fetcher: (params: { query: string; page: number }) => Promise<MovieResponse>;
   sortOptions: SortOption[];
-  searchParams: URLSearchParams;
-  setSearchParams: (params: URLSearchParamsInit) => void;
 };
 
 const MovieDisplayGrid = ({
-  fetchNextPage,
-  hasNextPage,
-  movies,
-  isFetching,
-  isFetchingNextPage,
-  error,
+  query,
+  fetcher,
   sortOptions,
-  searchParams,
-  setSearchParams,
 }: MovieDisplayGrid) => {
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const [selectedSort, setSelectedSort] = useState<SortState>({
+    field: (searchParams.get("sortBy") as keyof Movie | null) || null,
+    direction: (searchParams.get("sortDir") as "asc" | "desc" | null) || null,
+  });
+
   const [selectedGrid, setSelectedGrid] = useState<number | undefined>(
     undefined
   );
-  const [sortedMovies, setSortedMovies] = useState(movies);
+
+  const {
+    data,
+    isFetching,
+    error,
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
+  } = useInfiniteQuery({
+    queryKey: ["searchPage", query],
+    queryFn: ({ pageParam }) => fetcher({ query, page: pageParam || 1 }),
+    getNextPageParam: (lastPage) => {
+      if (lastPage.page < lastPage.total_pages) {
+        return lastPage.page + 1;
+      }
+      return undefined;
+    },
+    initialPageParam: 1,
+    enabled: !!query,
+  });
+
   const loadMoreRef = useInfiniteScroll({
     fetchNextPage,
     hasNextPage: !!hasNextPage,
     isLoading: isFetchingNextPage,
   });
+
+  const movies: Movie[] = useMemo(() => {
+    return data?.pages.flatMap((page) => page.results) || [];
+  }, [data]);
+
+  const [sortedMovies, setSortedMovies] = useState(movies);
+
+  useEffect(() => {
+    window.scroll({ top: 0, left: 0, behavior: "smooth" });
+  }, [searchParams]);
 
   if (error) {
     return <div>Something went wrong</div>;

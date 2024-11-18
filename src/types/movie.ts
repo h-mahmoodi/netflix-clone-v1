@@ -42,3 +42,15 @@ export type SortOption = {
   display: string;
   field: keyof Movie;
 };
+
+export type SortState = {
+  field: keyof Movie | null;
+  direction: "asc" | "desc" | null;
+};
+
+export type MovieResponse = {
+  results: Movie[];
+  page: number;
+  total_pages: number;
+  total_results: number;
+};
