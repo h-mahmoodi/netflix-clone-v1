@@ -1,8 +1,7 @@
 import AppPageHeading from "@src/components/app/page-heading";
 import { useAppSelector } from "@src/hooks/useAppSelector";
-import { selectFavoriteList } from "@src/redux/favorite-list-slice";
-
 import styles from "./styles.module.css";
+import { selectWatchList } from "@src/redux/watch-list-slice";
 import MovieDisplayGrid from "@src/components/app/movie/display-grid";
 import { SortOption } from "@src/types/movie";
 
@@ -24,11 +23,11 @@ const sortOptions: SortOption[] = [
     field: "release_date",
   },
 ];
-const AppFavoritePage = () => {
-  const { movies } = useAppSelector(selectFavoriteList);
+const AppWatchListPage = () => {
+  const { movies } = useAppSelector(selectWatchList);
   return (
     <div className={styles.page}>
-      <AppPageHeading title="My Favorite Movies" />
+      <AppPageHeading title="My Watch List Movies" />
       <div className="container mx-auto mt-10">
         <MovieDisplayGrid
           movies={movies}
@@ -40,4 +39,4 @@ const AppFavoritePage = () => {
     </div>
   );
 };
-export default AppFavoritePage;
+export default AppWatchListPage;

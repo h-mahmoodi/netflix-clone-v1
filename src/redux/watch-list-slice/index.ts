@@ -21,7 +21,7 @@ export const addToWatchList = createAsyncThunk<
   { rejectValue: { id: number; error: string } }
 >("watchList/add", async (movie: Movie, { dispatch, rejectWithValue }) => {
   try {
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    await new Promise((resolve) => setTimeout(resolve, 500));
     const watchList = JSON.parse(localStorage.getItem("watch-list") || "[]");
     const newWatchList = [...watchList, movie];
     localStorage.setItem("watch-list", JSON.stringify(newWatchList));

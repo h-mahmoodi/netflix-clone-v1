@@ -8,6 +8,7 @@ import { useEffect, useMemo } from "react";
 import MovieDisplayGrid from "@src/components/app/movie/display-grid";
 
 import styles from "./styles.module.css";
+import useInfiniteScroll from "@src/hooks/useInfiniteScroll";
 
 const sortOptions: SortOption[] = [
   {
@@ -29,7 +30,7 @@ const sortOptions: SortOption[] = [
 ];
 
 const AppMovieRecommendedPage = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const { id } = useParams();
   const {
     data: mainMovie,
@@ -59,6 +60,13 @@ const AppMovieRecommendedPage = () => {
       return undefined;
     },
     initialPageParam: 1,
+    enabled: !!id,
+  });
+
+  const loadMoreRef = useInfiniteScroll({
+    fetchNextPage,
+    hasNextPage: !!hasNextPage,
+    isLoading: isFetchingNextPage,
   });
 
   const movies: Movie[] = useMemo(() => {
@@ -89,15 +97,11 @@ const AppMovieRecommendedPage = () => {
     <div className={styles.page}>
       {renderHeader()}
       <MovieDisplayGrid
-        fetchNextPage={fetchNextPage}
-        hasNextPage={hasNextPage}
         movies={movies}
         isFetching={isFetching}
-        isFetchingNextPage={isFetchingNextPage}
         error={error}
         sortOptions={sortOptions}
-        searchParams={searchParams}
-        setSearchParams={setSearchParams}
+        ref={loadMoreRef}
       />
     </div>
   );

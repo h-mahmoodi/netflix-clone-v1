@@ -40,7 +40,7 @@ function AppNavbar() {
         />
         <NavLink
           icon="fi fi-rr-play-alt"
-          to="explore"
+          to="watch-list"
           badge={
             watchListMovies.length > 0 ? watchListMovies.length : undefined
           }

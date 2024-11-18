@@ -65,16 +65,9 @@ export const fetchPopularMovies = async () => {
   }
 };
 
-export const fetchSearchedMovies = async ({
-  query,
-  page = 1,
-}: {
-  query: string;
-  page?: number;
-}) => {
+export const fetchSearchedMovies = async (query: string, page = 1) => {
   try {
     // await new Promise((resolve) => setTimeout(resolve, 1000));
-
     const response = await appAxios(search(query, page));
     return response.data;
   } catch (error) {
@@ -104,6 +97,7 @@ export const fetchRecommendedMovies = async (id: string, page = 1) => {
 export const fetchSimilarMovies = async (id: string, page = 1) => {
   try {
     // await new Promise((resolve) => setTimeout(resolve, 2000));
+
     const response = await appAxios(similarMovies(id, page));
     return response.data;
   } catch (error) {

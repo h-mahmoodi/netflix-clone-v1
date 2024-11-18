@@ -8,6 +8,7 @@ import AppMovieRelatedPage from "@src/pages/app/movie-related-page";
 import AppFavoritePage from "@src/pages/app/favorites-page";
 import AppExplorePage from "@src/pages/app/explore-page";
 import AppSearchPage from "@src/pages/app/search-page";
+import AppWatchListPage from "@src/pages/app/watch-list-page";
 
 const Router = () => {
   return (
@@ -27,6 +28,7 @@ const Router = () => {
         <Route path="explore" element={<AppExplorePage />} />
         <Route path="search" element={<AppSearchPage />} />
         <Route path="favorites" element={<AppFavoritePage />} />
+        <Route path="watch-list" element={<AppWatchListPage />} />
         <Route path="*" element={<AppNotFoundPage />} />
       </Route>
     </Routes>
