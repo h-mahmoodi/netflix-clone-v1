@@ -58,7 +58,11 @@ const MovieDisplayGrid = ({
           setSearchParams={setSearchParams}
         />
 
-        <DispalyControl setSelectedGrid={setSelectedGrid} />
+        <DispalyControl
+          setSelectedGrid={setSelectedGrid}
+          searchParams={searchParams}
+          setSearchParams={setSearchParams}
+        />
       </div>
       <div>
         <MovieGrid

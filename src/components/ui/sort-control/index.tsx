@@ -35,22 +35,24 @@ const SortControl = ({
   const [prevMovieCount, setPrevMovieCount] = useState(movies.length);
 
   const sortMovies = useCallback(() => {
-    const { field, direction } = activeSort;
-    if (!field || !direction) {
+    // const { field, direction } = activeSort;
+    if (!activeSort.field || !activeSort.direction) {
       setter(movies);
       return;
     }
 
     const sortedMovies = [...movies].sort((a, b) => {
-      const aValue = a[field];
-      const bValue = b[field];
+      const aValue = a[activeSort.field!];
+      const bValue = b[activeSort.field!];
 
       if (typeof aValue === "number" && typeof bValue === "number") {
-        return direction === "asc" ? aValue - bValue : bValue - aValue;
+        return activeSort.direction === "asc"
+          ? aValue - bValue
+          : bValue - aValue;
       }
 
       if (typeof aValue === "string" && typeof bValue === "string") {
-        return direction === "asc"
+        return activeSort.direction === "asc"
           ? aValue.localeCompare(bValue)
           : bValue.localeCompare(aValue);
       }
@@ -76,7 +78,7 @@ const SortControl = ({
 
       if (newSortState.field && newSortState.direction) {
         setSearchParams({
-          ...Object.fromEntries(searchParams.entries()), // Preserve existing query params
+          ...Object.fromEntries(searchParams.entries()),
           sortBy: newSortState.field,
           sortDir: newSortState.direction,
         });

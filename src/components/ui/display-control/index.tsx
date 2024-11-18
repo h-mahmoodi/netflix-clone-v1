@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { URLSearchParamsInit } from "react-router-dom";
 
 type DisplayOptions = {
   columns: number[];
@@ -12,10 +13,18 @@ const displayOptions: DisplayOptions = {
 
 type DispalyControlProps = {
   setSelectedGrid: (number: number) => void;
+  searchParams: URLSearchParams;
+  setSearchParams: (params: URLSearchParamsInit) => void;
 };
 
-const DispalyControl = ({ setSelectedGrid }: DispalyControlProps) => {
-  const [display, setDisplay] = useState<number>(displayOptions.selectedColumn);
+const DispalyControl = ({
+  setSelectedGrid,
+  searchParams,
+  setSearchParams,
+}: DispalyControlProps) => {
+  const [display, setDisplay] = useState<number>(
+    +(searchParams.get("column") as string) || displayOptions.selectedColumn
+  );
 
   const changeColumnHandler = () => {
     if (displayOptions.columns.length > 1) {
@@ -32,6 +41,10 @@ const DispalyControl = ({ setSelectedGrid }: DispalyControlProps) => {
 
   useEffect(() => {
     setSelectedGrid(display);
+    setSearchParams({
+      ...Object.fromEntries(searchParams.entries()),
+      column: `${display}`,
+    });
   }, [display, setSelectedGrid]);
 
   //   console.log(display);
