@@ -31,20 +31,20 @@ const DispalyControl = ({
       const length = displayOptions.columns.length;
       const selectedIndex = displayOptions.columns.indexOf(display);
       console.log(length, "/", selectedIndex);
-      setDisplay(
+      const newDisplayValue =
         selectedIndex < length - 1
           ? displayOptions.columns[selectedIndex + 1]
-          : displayOptions.columns[0]
-      );
+          : displayOptions.columns[0];
+      setDisplay(newDisplayValue);
+      setSearchParams({
+        ...Object.fromEntries(searchParams.entries()),
+        column: `${newDisplayValue}`,
+      });
     }
   };
 
   useEffect(() => {
     setSelectedGrid(display);
-    setSearchParams({
-      ...Object.fromEntries(searchParams.entries()),
-      column: `${display}`,
-    });
   }, [display, setSelectedGrid]);
 
   //   console.log(display);

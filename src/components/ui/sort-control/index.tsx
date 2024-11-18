@@ -21,16 +21,16 @@ const SortControl = ({
     field: keyof Movie | null;
     direction: "asc" | "desc" | null;
   }>({
-    field: searchParams.get("sortBy") as keyof Movie | null,
-    direction: searchParams.get("sortDir") as "asc" | "desc" | null,
+    field: (searchParams.get("sortBy") as keyof Movie | null) || null,
+    direction: (searchParams.get("sortDir") as "asc" | "desc" | null) || null,
   });
 
-  useEffect(() => {
-    setActiveSort({
-      field: searchParams.get("sortBy") as keyof Movie | null,
-      direction: searchParams.get("sortDir") as "asc" | "desc" | null,
-    });
-  }, [searchParams]);
+  // useEffect(() => {
+  //   setActiveSort({
+  //     field: searchParams.get("sortBy") as keyof Movie | null,
+  //     direction: searchParams.get("sortDir") as "asc" | "desc" | null,
+  //   });
+  // }, [searchParams]);
 
   const [prevMovieCount, setPrevMovieCount] = useState(movies.length);
 
