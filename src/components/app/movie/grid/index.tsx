@@ -13,15 +13,15 @@ type MovieGridProps = {
 
 const MovieGrid = forwardRef<HTMLDivElement, MovieGridProps>(
   ({ movies, isLoading, grid = 5 }, ref) => {
-    const withGenerator = () => {
-      return styles[`width-1-${grid}`];
-    };
     return (
       <div className={styles.container}>
         <div className={styles.gridLayout}>
           {movies?.map((movie, index) => (
-            <div className={withGenerator()}>
-              <MovieCard key={`${movie.id}-${index}`} movie={movie} />
+            <div
+              className={styles[`width-1-${grid}`]}
+              key={`${movie.id}-${index}`}
+            >
+              <MovieCard movie={movie} />
             </div>
           ))}
           {isLoading &&

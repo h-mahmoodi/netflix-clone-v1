@@ -1,0 +1,3 @@
+.containerLayout {
+  @apply container mx-auto my-3 relative;
+}

@@ -59,7 +59,7 @@ const SortControl = ({
     });
 
     setter(sortedMovies);
-  }, [activeSort, movies, setter]);
+  }, [activeSort.field, activeSort.direction, movies, setter]);
 
   const handleSortClick = (field: keyof Movie) => {
     setActiveSort((prev) => {
@@ -94,14 +94,13 @@ const SortControl = ({
   useEffect(() => {
     if (movies.length !== prevMovieCount) {
       setPrevMovieCount(movies.length);
-      sortMovies();
-      //   setActiveSort({ field: null, direction: null });
     }
-  }, [prevMovieCount, sortMovies]);
-
-  useEffect(() => {
     sortMovies();
-  }, [sortMovies]);
+  }, [movies.length, prevMovieCount, sortMovies]);
+
+  // useEffect(() => {
+  //   sortMovies();
+  // }, [sortMovies]);
 
   // console.log("sort");
 
@@ -115,7 +114,7 @@ const SortControl = ({
                     border border-zinc-800 bg-zinc-800
                      rounded-md overflow-hidden"
             onClick={() => handleSortClick(option.field)}
-            key={index}
+            key={`${index}-${option.field}`}
           >
             <span className="flex items-center px-3">
               {activeSort.field === option.field ? (

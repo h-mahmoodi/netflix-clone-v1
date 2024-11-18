@@ -1,15 +1,11 @@
-import MovieGrid from "@src/components/app/movie/grid";
 import { fetchSearchedMovies } from "@src/fetchers";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
-import styles from "./styles.module.css";
 import AppPageHeading from "@src/components/app/page-heading";
-import useInfiniteScroll from "@src/hooks/useInfiniteScroll";
-import SortControl from "@src/components/ui/sort-control";
 import { type Movie, type SortOption } from "@src/types/movie";
-import DispalyControl from "@src/components/ui/display-control";
+import MovieDisplayGrid from "@src/components/app/movie/display-grid";
 
 const sortOptions: SortOption[] = [
   {
@@ -33,9 +29,6 @@ const sortOptions: SortOption[] = [
 const AppSearchPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [query, setQuery] = useState(searchParams.get("query") || "");
-  const [selectedGrid, setSelectedGrid] = useState<number | undefined>(
-    undefined
-  );
   const {
     data,
     isFetching,
@@ -56,18 +49,10 @@ const AppSearchPage = () => {
     enabled: !!query,
   });
 
-  //   console.log(data);
   const movies: Movie[] = useMemo(() => {
+    console.log("yessssssssssssss");
     return data?.pages.flatMap((page) => page.results) || [];
   }, [data]);
-
-  const [sortedMovies, setSortedMovies] = useState(movies);
-
-  const loadMoreRef = useInfiniteScroll({
-    fetchNextPage,
-    hasNextPage: !!hasNextPage,
-    isLoading: isFetchingNextPage,
-  });
 
   useEffect(() => {
     if (searchParams.get("query") !== null) {
@@ -77,50 +62,30 @@ const AppSearchPage = () => {
     }
     window.scroll({ top: 0, left: 0, behavior: "smooth" });
   }, [searchParams]);
-  //   console.log(data);
 
-  const renderMovies = () => {
-    if (error) {
-      return <div>Something went wrong</div>;
-    }
-    return (
-      <MovieGrid
-        movies={sortedMovies}
-        isLoading={isFetching}
-        ref={loadMoreRef}
-        grid={selectedGrid}
-      />
-    );
-  };
   const headerTitle = query
     ? `Search Results for ${query}`
     : "Please search something";
 
-  //   if (isSortLoading) {
-  //     return <div>Sorting</div>;
-  //   }
-  // console.log("page");
+  if (error) {
+    return <div>Something went wrong</div>;
+  }
+
   return (
     <div>
       <AppPageHeading title={headerTitle} />
 
-      <div className={styles.containerLayout}>
-        <div
-          className="flex justify-between items-center 
-         bg-zinc-950 sticky top-16 left-0 z-20 py-2 px-3"
-        >
-          <SortControl
-            options={sortOptions}
-            movies={movies}
-            setter={setSortedMovies}
-            searchParams={searchParams}
-            setSearchParams={setSearchParams}
-          />
-
-          <DispalyControl setSelectedGrid={setSelectedGrid} />
-        </div>
-        <div>{renderMovies()}</div>
-      </div>
+      <MovieDisplayGrid
+        fetchNextPage={fetchNextPage}
+        hasNextPage={hasNextPage}
+        movies={movies}
+        isFetching={isFetching}
+        isFetchingNextPage={isFetchingNextPage}
+        error={error}
+        sortOptions={sortOptions}
+        searchParams={searchParams}
+        setSearchParams={setSearchParams}
+      />
     </div>
   );
 };
