@@ -3,7 +3,6 @@ import { lazy } from "react";
 import Suspender from "@src/components/global/suspender/Suspender";
 
 import AppLayout from "../layouts/app-layout";
-import AppNowPlayingMovies from "@src/pages/app/now-playing-page";
 
 const AppHomePage = lazy(() => import("@src/pages/app/home-page"));
 const AppMoviePage = lazy(() => import("@src/pages/app/movie-page"));
@@ -18,6 +17,10 @@ const AppSearchPage = lazy(() => import("@src/pages/app/search-page"));
 const AppFavoritePage = lazy(() => import("@src/pages/app/favorites-page"));
 const AppWatchListPage = lazy(() => import("@src/pages/app/watch-list-page"));
 const AppRecentPage = lazy(() => import("@src/pages/app/recent-list-page"));
+const AppNowPlayingMovies = lazy(
+  () => import("@src/pages/app/now-playing-page")
+);
+const AppTopRatedMovies = lazy(() => import("@src/pages/app/top-rated"));
 
 const AppNotFoundPage = lazy(() => import("@src/pages/app/not-found-page"));
 
@@ -49,6 +52,10 @@ const Router = () => {
         <Route
           path="now-playing"
           element={<Suspender component={<AppNowPlayingMovies />} />}
+        />
+        <Route
+          path="top-rated"
+          element={<Suspender component={<AppTopRatedMovies />} />}
         />
 
         <Route
