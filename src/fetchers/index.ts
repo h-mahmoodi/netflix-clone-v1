@@ -10,6 +10,7 @@ const {
   nowPlaying,
   topRated,
   popular,
+  upComing,
   search,
 } = RequestEndPoints;
 
@@ -59,6 +60,16 @@ export const fetchPopularMovies = async (page = 1) => {
   try {
     // await new Promise((resolve) => setTimeout(resolve, 1000));
     const response = await appAxios(popular(page));
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const fetchUpComingMovies = async (page = 1) => {
+  try {
+    // await new Promise((resolve) => setTimeout(resolve, 1000));
+    const response = await appAxios(upComing(page));
     return response.data;
   } catch (error) {
     console.log(error);

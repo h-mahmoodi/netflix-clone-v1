@@ -45,11 +45,14 @@ export const RequestEndPoints: RequestEndPointsTypes = {
   nowPlaying: (page?: number) => {
     return `/movie/now_playing?page=${page}`;
   },
-  topRated: (page?: number) => {
+  topRated: (page: number = 1) => {
     return `/movie/top_rated?page=${page}`;
   },
-  popular: (page?: number) => {
+  popular: (page: number = 1) => {
     return `/movie/popular?page=${page}`;
+  },
+  upComing: (page: number = 1) => {
+    return `/movie/upcoming?page=${page}`;
   },
 };
 

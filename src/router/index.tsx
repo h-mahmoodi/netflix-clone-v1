@@ -22,6 +22,7 @@ const AppNowPlayingMovies = lazy(
 );
 const AppTopRatedMovies = lazy(() => import("@src/pages/app/top-rated"));
 const AppPopularMovies = lazy(() => import("@src/pages/app/popular-page"));
+const AppUpComingMovies = lazy(() => import("@src/pages/app/upcoming-page"));
 
 const AppNotFoundPage = lazy(() => import("@src/pages/app/not-found-page"));
 
@@ -61,6 +62,10 @@ const Router = () => {
         <Route
           path="popular"
           element={<Suspender component={<AppPopularMovies />} />}
+        />
+        <Route
+          path="up-coming"
+          element={<Suspender component={<AppUpComingMovies />} />}
         />
 
         <Route

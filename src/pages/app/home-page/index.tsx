@@ -15,12 +15,15 @@ const AppHomePage = () => {
       <div className="container mx-auto">
         <MovieCarousel
           title="Now Playing Movies"
-          fetcher={fetchNowPlayingMovies}
+          fetcher={() => fetchNowPlayingMovies(1)}
         />
-        <MovieCarousel title="Top Rated Movies" fetcher={fetchTopRatedMovies} />
+        <MovieCarousel
+          title="Top Rated Movies"
+          fetcher={() => fetchTopRatedMovies(1)}
+        />
         <MovieCarousel
           title="Most Popular Movies"
-          fetcher={fetchPopularMovies}
+          fetcher={() => fetchPopularMovies(1)}
         />
       </div>
     </div>

@@ -61,7 +61,7 @@ const AppSidebarMenu = () => {
             <AppSideBarNavLink
               title="Upcoming"
               icon="fi-rr-time-forward"
-              to="/upcoming"
+              to="/up-coming"
             />
           </div>
           <div className={styles.drawerMenuContainer}>

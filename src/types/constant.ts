@@ -28,4 +28,5 @@ export type RequestEndPointsTypes = {
   nowPlaying: (page?: number) => string;
   topRated: (page?: number) => string;
   popular: (page?: number) => string;
+  upComing: (page?: number) => string;
 };
