@@ -4,6 +4,7 @@ import { watchListReducer } from "./watch-list-slice";
 import { favoriteListReducer } from "./favorite-list-slice";
 import { toastReducer } from "./toast-slice";
 import { searchReducer } from "./search-slice";
+import { recentListReducer } from "./recent-list-slice";
 
 export const store = configureStore({
   reducer: {
@@ -12,6 +13,7 @@ export const store = configureStore({
     watchList: watchListReducer,
     favoriteList: favoriteListReducer,
     search: searchReducer,
+    recentList: recentListReducer,
   },
 });
 
