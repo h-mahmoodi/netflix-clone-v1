@@ -31,14 +31,7 @@ const AppSearchPage = () => {
   const [searchParams] = useSearchParams();
   const [query, setQuery] = useState(searchParams.get("query") || "");
 
-  const {
-    data,
-    isFetching,
-    error,
-    fetchNextPage,
-    hasNextPage,
-    isFetchingNextPage,
-  } = useInfiniteQuery({
+  const { data, isFetching, error, fetchNextPage, hasNextPage, isFetchingNextPage } = useInfiniteQuery({
     queryKey: ["searchPage", query],
     queryFn: ({ pageParam }) => fetchSearchedMovies(query, pageParam),
     getNextPageParam: (lastPage) => {
@@ -69,9 +62,7 @@ const AppSearchPage = () => {
     return data?.pages.flatMap((page) => page.results) || [];
   }, [data]);
 
-  const headerTitle = query
-    ? `Search Results for ${query}`
-    : "Please search something";
+  const headerTitle = query ? `Search Results for ${query}` : "Please search something";
 
   return (
     <div>
