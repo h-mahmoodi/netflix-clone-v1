@@ -1,4 +1,8 @@
-import { FirebaseConfigTypes, RequestEndPointsTypes, TmdbConfigTypes } from "@src/types/constant";
+import {
+  FirebaseConfigTypes,
+  RequestEndPointsTypes,
+  TmdbConfigTypes,
+} from "@src/types/constant";
 
 export const TMDB_CONFIGS: TmdbConfigTypes = {
   apiKey: import.meta.env.VITE_APP_TMDB_API_KEY,
@@ -27,7 +31,10 @@ export const RequestEndPoints: RequestEndPointsTypes = {
   },
   movieDetails: "/movie",
   recommendedMovies: (id?: string, page?: number) => {
-    return `/movie/<Movie_ID>/recommendations?page=${page}`.replace("<Movie_ID>", id!);
+    return `/movie/<Movie_ID>/recommendations?page=${page}`.replace(
+      "<Movie_ID>",
+      id!
+    );
   },
   similarMovies: (id?: string, page?: number) => {
     return `/movie/<Movie_ID>/similar?page=${page}`.replace("<Movie_ID>", id!);
@@ -35,9 +42,14 @@ export const RequestEndPoints: RequestEndPointsTypes = {
   movieTrailer: (id: string) => {
     return "/movie/<Movie_ID>/videos".replace("<Movie_ID>", id);
   },
-  nowPalying: "/movie/now_playing",
-  topRated:
-    "/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=vote_count.desc",
+  nowPlaying: (page?: number) => {
+    return `/movie/now_playing?page=${page}`;
+  },
+  topRated: (page?: number) => {
+    return `/movie/top_rated?page=${page}`;
+  },
+  // topRated1:
+  //   "/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=vote_count.desc",
   popular:
     "/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=revenue.desc",
 };

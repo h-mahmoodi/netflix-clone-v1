@@ -25,7 +25,7 @@ export type RequestEndPointsTypes = {
   recommendedMovies: (id: string, page?: number) => string;
   similarMovies: (id?: string, page?: number) => string;
   movieTrailer: (id: string) => string;
-  nowPalying: string;
-  topRated: string;
+  nowPlaying: (page?: number) => string;
+  topRated: (page?: number) => string;
   popular: string;
 };

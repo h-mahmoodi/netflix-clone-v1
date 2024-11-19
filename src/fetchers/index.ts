@@ -7,7 +7,7 @@ const {
   recommendedMovies,
   similarMovies,
   movieTrailer,
-  nowPalying,
+  nowPlaying,
   topRated,
   popular,
   search,
@@ -35,20 +35,20 @@ export const fetchSliderMovies = async () => {
   }
 };
 
-export const fetchNowPlayingMovies = async () => {
+export const fetchNowPlayingMovies = async (page = 1) => {
   try {
     // await new Promise((resolve) => setTimeout(resolve, 1000));
-    const response = await appAxios(nowPalying);
+    const response = await appAxios(nowPlaying(page));
     return response.data;
   } catch (error) {
     console.log(error);
   }
 };
 
-export const fetchTopRatedMovies = async () => {
+export const fetchTopRatedMovies = async (page = 1) => {
   try {
     // await new Promise((resolve) => setTimeout(resolve, 1000));
-    const response = await appAxios(topRated);
+    const response = await appAxios(topRated(page));
     return response.data;
   } catch (error) {
     console.log(error);

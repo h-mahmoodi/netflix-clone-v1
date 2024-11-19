@@ -3,17 +3,23 @@ import { lazy } from "react";
 import Suspender from "@src/components/global/suspender/Suspender";
 
 import AppLayout from "../layouts/app-layout";
+import AppNowPlayingMovies from "@src/pages/app/now-playing-page";
 
 const AppHomePage = lazy(() => import("@src/pages/app/home-page"));
 const AppMoviePage = lazy(() => import("@src/pages/app/movie-page"));
-const AppNotFoundPage = lazy(() => import("@src/pages/app/not-found-page"));
-const AppMovieRecommendedPage = lazy(() => import("@src/pages/app/movie-recommended-page"));
-const AppMovieRelatedPage = lazy(() => import("@src/pages/app/movie-related-page"));
+const AppMovieRecommendedPage = lazy(
+  () => import("@src/pages/app/movie-recommended-page")
+);
+const AppMovieRelatedPage = lazy(
+  () => import("@src/pages/app/movie-related-page")
+);
 const AppExplorePage = lazy(() => import("@src/pages/app/explore-page"));
 const AppSearchPage = lazy(() => import("@src/pages/app/search-page"));
 const AppFavoritePage = lazy(() => import("@src/pages/app/favorites-page"));
 const AppWatchListPage = lazy(() => import("@src/pages/app/watch-list-page"));
 const AppRecentPage = lazy(() => import("@src/pages/app/recent-list-page"));
+
+const AppNotFoundPage = lazy(() => import("@src/pages/app/not-found-page"));
 
 const Router = () => {
   return (
@@ -26,16 +32,45 @@ const Router = () => {
           <Route path="most-popular" element={<p>Most Popular</p>} />
           <Route path=":id">
             <Route index element={<Suspender component={<AppMoviePage />} />} />
-            <Route path="recommended" element={<Suspender component={<AppMovieRecommendedPage />} />} />
-            <Route path="related" element={<Suspender component={<AppMovieRelatedPage />} />} />
+            <Route
+              path="recommended"
+              element={<Suspender component={<AppMovieRecommendedPage />} />}
+            />
+            <Route
+              path="related"
+              element={<Suspender component={<AppMovieRelatedPage />} />}
+            />
           </Route>
         </Route>
-        <Route path="explore" element={<Suspender component={<AppExplorePage />} />} />
-        <Route path="search" element={<Suspender component={<AppSearchPage />} />} />
-        <Route path="recent-list" element={<Suspender component={<AppRecentPage />} />} />
-        <Route path="favorite-list" element={<Suspender component={<AppFavoritePage />} />} />
-        <Route path="watch-list" element={<Suspender component={<AppWatchListPage />} />} />
-        <Route path="*" element={<AppNotFoundPage />} />
+        <Route
+          path="explore"
+          element={<Suspender component={<AppExplorePage />} />}
+        />
+        <Route
+          path="now-playing"
+          element={<Suspender component={<AppNowPlayingMovies />} />}
+        />
+
+        <Route
+          path="search"
+          element={<Suspender component={<AppSearchPage />} />}
+        />
+        <Route
+          path="recent-list"
+          element={<Suspender component={<AppRecentPage />} />}
+        />
+        <Route
+          path="favorite-list"
+          element={<Suspender component={<AppFavoritePage />} />}
+        />
+        <Route
+          path="watch-list"
+          element={<Suspender component={<AppWatchListPage />} />}
+        />
+        <Route
+          path="*"
+          element={<Suspender component={<AppNotFoundPage />} />}
+        />
       </Route>
     </Routes>
   );

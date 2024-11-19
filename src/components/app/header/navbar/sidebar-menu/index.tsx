@@ -32,7 +32,7 @@ const AppSidebarMenu = () => {
           <div className={styles.drawerMenuContainer}>
             <AppSideBarNavLink title="Home Page" icon="fi-rr-home" to="/" />
             <AppSideBarNavLink title="Explore All Movies" icon="fi-rr-apps" to="/explore" />
-            <AppSideBarNavLink title="Search For Movies" icon="fi-rr-search" to="/search" />
+            {/* <AppSideBarNavLink title="Search For Movies" icon="fi-rr-search" to="/search" /> */}
           </div>
           <div className={styles.drawerMenuContainer}>
             <AppSideBarNavLink title="Now Playing" icon="fi-rr-video-duration" to="/now-playing" />

@@ -43,25 +43,19 @@ const AppMovieRecommendedPage = () => {
     staleTime: 5 * 60 * 1000,
   });
 
-  const {
-    data,
-    isFetching,
-    error,
-    fetchNextPage,
-    hasNextPage,
-    isFetchingNextPage,
-  } = useInfiniteQuery({
-    queryKey: ["MovieRecommendedPage", id],
-    queryFn: ({ pageParam }) => fetchRecommendedMovies(id as string, pageParam),
-    getNextPageParam: (lastPage) => {
-      if (lastPage.page < lastPage.total_pages) {
-        return lastPage.page + 1;
-      }
-      return undefined;
-    },
-    initialPageParam: 1,
-    enabled: !!id,
-  });
+  const { data, isFetching, error, fetchNextPage, hasNextPage, isFetchingNextPage } =
+    useInfiniteQuery({
+      queryKey: ["MovieRecommendedPage", id],
+      queryFn: ({ pageParam }) => fetchRecommendedMovies(id as string, pageParam),
+      getNextPageParam: (lastPage) => {
+        if (lastPage.page < lastPage.total_pages) {
+          return lastPage.page + 1;
+        }
+        return undefined;
+      },
+      initialPageParam: 1,
+      enabled: !!id,
+    });
 
   const loadMoreRef = useInfiniteScroll({
     fetchNextPage,
