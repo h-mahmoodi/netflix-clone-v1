@@ -5,6 +5,8 @@ import styles from "./styles.module.css";
 import MovieCarousel from "@src/components/app/movie/carousel";
 import { useLayoutEffect } from "react";
 import MoviePageDetails from "./components/page";
+import { useAppDispatch } from "@src/hooks/useAppDispatch";
+import { addToRecentList } from "@src/redux/recent-list-slice";
 
 const AppMoviePage = () => {
   const { id } = useParams<{ id: string }>();

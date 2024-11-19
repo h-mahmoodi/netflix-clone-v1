@@ -34,9 +34,9 @@ const AppSidebarMenu = () => {
             <AppSideBarNavLink title="Upcoming" icon="fi-rr-time-forward" to="/upcoming" />
           </div>
           <div className={styles.drawerMenuContainer}>
-            <AppSideBarNavLink title="Favorite Movies" icon="fi-rr-heart" to="/favorites" badge={5} />
+            <AppSideBarNavLink title="Favorite Movies" icon="fi-rr-heart" to="/favorite-list" badge={5} />
             <AppSideBarNavLink title="Watch List" icon="fi-rr-play-alt" to="/watch-list" badge={5} />
-            <AppSideBarNavLink title="Recent Views" icon="fi-rr-time-past" to="/recent-views" badge={5} />
+            <AppSideBarNavLink title="Recent Views" icon="fi-rr-time-past" to="/recent-list" badge={5} />
           </div>
           <div className={styles.drawerMenuContainer}>
             <AppSideBarNavLink title="Profile" icon="fi-rr-user" to="/profile" />

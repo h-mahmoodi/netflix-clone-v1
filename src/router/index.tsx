@@ -13,6 +13,7 @@ const AppExplorePage = lazy(() => import("@src/pages/app/explore-page"));
 const AppSearchPage = lazy(() => import("@src/pages/app/search-page"));
 const AppFavoritePage = lazy(() => import("@src/pages/app/favorites-page"));
 const AppWatchListPage = lazy(() => import("@src/pages/app/watch-list-page"));
+const AppRecentPage = lazy(() => import("@src/pages/app/recent-list-page"));
 
 const Router = () => {
   return (
@@ -31,7 +32,8 @@ const Router = () => {
         </Route>
         <Route path="explore" element={<Suspender component={<AppExplorePage />} />} />
         <Route path="search" element={<Suspender component={<AppSearchPage />} />} />
-        <Route path="favorites" element={<Suspender component={<AppFavoritePage />} />} />
+        <Route path="recent-list" element={<Suspender component={<AppRecentPage />} />} />
+        <Route path="favorite-list" element={<Suspender component={<AppFavoritePage />} />} />
         <Route path="watch-list" element={<Suspender component={<AppWatchListPage />} />} />
         <Route path="*" element={<AppNotFoundPage />} />
       </Route>

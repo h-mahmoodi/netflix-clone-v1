@@ -9,6 +9,8 @@ import MovieTrailer from "@src/components/app/movie/trailer";
 import MovieCardFavoriteListButton from "@src/components/app/movie/card/favorite-list-button";
 import MovieCardWatchListButton from "@src/components/app/movie/card/watch-list-button";
 import MoviePageSkeleton from "../skeleton";
+import { useEffect } from "react";
+import { addToRecentList } from "@src/redux/recent-list-slice";
 
 type MoviePageDetailsProps = {
   id: string | number;
@@ -35,6 +37,12 @@ const MoviePageDetails = ({ id }: MoviePageDetailsProps) => {
       })
     );
   };
+
+  useEffect(() => {
+    if (movie) {
+      dispatch(addToRecentList(movie));
+    }
+  }, [dispatch, movie]);
 
   if (isFetching) {
     return <MoviePageSkeleton />;
@@ -80,16 +88,10 @@ const MoviePageDetails = ({ id }: MoviePageDetailsProps) => {
               <span>IMDb {movie?.vote_average?.toFixed(1)}</span>
             </div>
             <div className={styles.info}>
-              <span>
-                {new Date(movie?.release_date as string).getFullYear()}
-              </span>
+              <span>{new Date(movie?.release_date as string).getFullYear()}</span>
             </div>
             <div className={styles.info}>
-              <span>
-                {movie?.spoken_languages?.map(
-                  (lang) => `${lang.english_name} `
-                )}
-              </span>
+              <span>{movie?.spoken_languages?.map((lang) => `${lang.english_name} `)}</span>
             </div>
           </div>
           <div className={styles.tagline}>{movie?.tagline}</div>

@@ -11,12 +11,14 @@ import { selectFavoriteList } from "@src/redux/favorite-list-slice";
 import NavSearch from "./search";
 import AppLogo from "../logo";
 import AppSidebarMenu from "./sidebar-menu";
+import { selectRecentList } from "@src/redux/recent-list-slice";
 
 // import Search from "../explore";
 
 function AppNavbar() {
   const { movies: watchListMovies } = useAppSelector(selectWatchList);
   const { movies: favoriteListMovies } = useAppSelector(selectFavoriteList);
+  const { movies: recentListMovies } = useAppSelector(selectRecentList);
   return (
     <div className={styles.navbar}>
       <div className="flex items-center gap-3">
@@ -31,36 +33,24 @@ function AppNavbar() {
         {/* <NavDropDown icon="fi fi-rr-search">jjjjj</NavDropDown> */}
         <NavLink
           icon="fi fi-rr-heart"
-          to="favorites"
-          badge={
-            favoriteListMovies.length > 0
-              ? favoriteListMovies.length
-              : undefined
-          }
+          to="favorite-list"
+          badge={favoriteListMovies.length > 0 ? favoriteListMovies.length : undefined}
         />
         <NavLink
           icon="fi fi-rr-play-alt"
           to="watch-list"
-          badge={
-            watchListMovies.length > 0 ? watchListMovies.length : undefined
-          }
+          badge={watchListMovies.length > 0 ? watchListMovies.length : undefined}
         />
 
         <NavLink
           icon="fi fi-rr-time-past"
-          to="explore"
-          badge={
-            watchListMovies.length > 0 ? watchListMovies.length : undefined
-          }
+          to="recent-list"
+          badge={recentListMovies.length > 0 ? recentListMovies.length : undefined}
         />
 
         <NavDropDown icon="fi fi-rr-user">
           <NavDropDownLink title="Favorites" icon="fi fi-rr-heart" count={5} />
-          <NavDropDownLink
-            title="Watch list"
-            icon="fi fi-rr-clapperboard-play"
-            count={5}
-          />
+          <NavDropDownLink title="Watch list" icon="fi fi-rr-clapperboard-play" count={5} />
           <NavDropDownLink title="Settings" icon="fi fi-rr-settings" />
           <NavDropDownLink title="Log out" icon="fi fi-rr-exit" />
         </NavDropDown>
