@@ -70,7 +70,7 @@
 }
 
 .dropDownRecentContainer {
-  @apply flex flex-wrap gap-2 max-h-[70px] overflow-y-scroll;
+  @apply flex flex-wrap gap-2 max-h-[85px] overflow-y-scroll;
 }
 .dropDownRecentContainer::-webkit-scrollbar {
   display: none;

@@ -3,6 +3,7 @@ import NavLink from "../nav-link";
 
 import styles from "./styles.module.css";
 import useClickOutSide from "@src/hooks/useClickOutSide";
+import AppSideBarNavLink from "./nav-link";
 
 const AppSidebarMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,89 +16,31 @@ const AppSidebarMenu = () => {
   return (
     <div className={styles.sidebar} ref={drowerRef}>
       <NavLink icon="fi fi-rr-menu-burger" onClick={handleToggleIsOpen} />
-      <div
-        className={`${styles.drawer} ${
-          isOpen ? styles.drawerOpen : styles.drawerClose
-        }`}
-      >
+      <div className={`${styles.drawer} ${isOpen ? styles.drawerOpen : styles.drawerClose}`}>
         <div className={styles.drawerHeader}>
           <span className={styles.drawerHeaderTitle}>NETFLIX</span>
           <NavLink icon="fi fi-rr-menu-burger" onClick={handleToggleIsOpen} />
         </div>
         <div>
           <div className={styles.drawerMenuContainer}>
-            <div className={styles.drawerMenuItem}>
-              <i className="flex fi fi-rr-home"></i>
-              <span>Home Page</span>
-            </div>
-            <div className={styles.drawerMenuItem}>
-              <i className="flex fi fi-rr-apps"></i>
-              <span>Explore All Movies</span>
-            </div>
-            <div className={styles.drawerMenuItem}>
-              <i className="flex fi fi-rr-search"></i>
-              <span>Search For Movies</span>
-            </div>
+            <AppSideBarNavLink title="Home Page" icon="fi-rr-home" to="/" />
+            <AppSideBarNavLink title="Explore All Movies" icon="fi-rr-apps" to="/explore" />
+            <AppSideBarNavLink title="Search For Movies" icon="fi-rr-search" to="/search" />
           </div>
           <div className={styles.drawerMenuContainer}>
-            <div className={styles.drawerMenuItem}>
-              <i className="flex fi fi-rr-video-duration"></i>
-              <span>Now Playing</span>
-            </div>
-            <div className={styles.drawerMenuItem}>
-              <i className="flex fi fi-rr-fire-flame-curved"></i>
-              <span>Popular</span>
-            </div>
-            <div className={styles.drawerMenuItem}>
-              <i className="flex fi fi-rr-star-comment-alt"></i>
-              <span>Top Rated</span>
-            </div>
-            <div className={styles.drawerMenuItem}>
-              <i className="flex fi fi-rr-time-forward"></i>
-              <span>Upcoming</span>
-            </div>
+            <AppSideBarNavLink title="Now Playing" icon="fi-rr-video-duration" to="/now-playing" />
+            <AppSideBarNavLink title="Popular" icon="fi-rr-fire-flame-curved" to="/popular" />
+            <AppSideBarNavLink title="Top Rated" icon="fi-rr-star-comment-alt" to="/top-rated" />
+            <AppSideBarNavLink title="Upcoming" icon="fi-rr-time-forward" to="/upcoming" />
           </div>
           <div className={styles.drawerMenuContainer}>
-            <div className={styles.drawerMenuItem}>
-              <i className="flex fi fi-rr-heart"></i>
-              <span>Favorite Movies</span>
-              <span
-                className="absolute right-3 bg-red-700 rounded-full
-              size-5 flex items-center justify-center text-sm leading-none pb-0.5"
-              >
-                1
-              </span>
-            </div>
-            <div className={styles.drawerMenuItem}>
-              <i className="flex fi fi-rr-play-alt"></i>
-              <span>Watch List</span>
-              <span
-                className="absolute right-3 bg-red-700 rounded-full
-              size-5 flex items-center justify-center text-sm leading-none pb-0.5"
-              >
-                1
-              </span>
-            </div>
-            <div className={styles.drawerMenuItem}>
-              <i className="flex fi fi-rr-time-past"></i>
-              <span>Recent Views</span>
-              <span
-                className="absolute right-3 bg-red-700 rounded-full
-              size-5 flex items-center justify-center text-sm leading-none pb-0.5"
-              >
-                15
-              </span>
-            </div>
+            <AppSideBarNavLink title="Favorite Movies" icon="fi-rr-heart" to="/favorites" badge={5} />
+            <AppSideBarNavLink title="Watch List" icon="fi-rr-play-alt" to="/watch-list" badge={5} />
+            <AppSideBarNavLink title="Recent Views" icon="fi-rr-time-past" to="/recent-views" badge={5} />
           </div>
           <div className={styles.drawerMenuContainer}>
-            <div className={styles.drawerMenuItem}>
-              <i className="flex fi fi-rr-user"></i>
-              <span>Profile</span>
-            </div>
-            <div className={styles.drawerMenuItem}>
-              <i className="flex fi fi-rr-exit"></i>
-              <span>LogOut</span>
-            </div>
+            <AppSideBarNavLink title="Profile" icon="fi-rr-user" to="/profile" />
+            <AppSideBarNavLink title="LogOut" icon="fi-rr-exit" to="/logout" />
           </div>
         </div>
         sidebar menu
