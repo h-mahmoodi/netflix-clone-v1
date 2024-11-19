@@ -20,7 +20,6 @@ export const addToRecentList = createAsyncThunk<
   { rejectValue: { id: number; error: string } }
 >("recentList/add", async (movie: Movie, { rejectWithValue }) => {
   try {
-    await new Promise((resolve) => setTimeout(resolve, 500));
     const recentList: Movie[] = JSON.parse(localStorage.getItem("recent-list") || "[]");
     const isExist = recentList.find((item) => item.id === movie.id);
     console.log(isExist);
@@ -40,7 +39,6 @@ export const removeFromRecentList = createAsyncThunk<number, Movie, { rejectValu
   "recentList/remove",
   async (movie: Movie, { rejectWithValue }) => {
     try {
-      await new Promise((resolve) => setTimeout(resolve, 500));
       const recentList = JSON.parse(localStorage.getItem("recent-list") || "[]");
       const newRecentList = recentList.filter((item: Movie) => item.id !== movie.id);
       localStorage.setItem("recent-list", JSON.stringify(newRecentList));

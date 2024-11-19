@@ -4,17 +4,24 @@ import NavLink from "../nav-link";
 import styles from "./styles.module.css";
 import useClickOutSide from "@src/hooks/useClickOutSide";
 import AppSideBarNavLink from "./nav-link";
+import { useAppSelector } from "@src/hooks/useAppSelector";
+import { selectWatchList } from "@src/redux/watch-list-slice";
+import { selectFavoriteList } from "@src/redux/favorite-list-slice";
+import { selectRecentList } from "@src/redux/recent-list-slice";
 
 const AppSidebarMenu = () => {
+  const { movies: favoriteListMovies } = useAppSelector(selectFavoriteList);
+  const { movies: watchListMovies } = useAppSelector(selectWatchList);
+  const { movies: recentListMovies } = useAppSelector(selectRecentList);
   const [isOpen, setIsOpen] = useState(false);
 
-  const drowerRef = useClickOutSide(() => setIsOpen(false));
+  const drawerRef = useClickOutSide(() => setIsOpen(false));
 
   const handleToggleIsOpen = () => {
     setIsOpen((prev) => !prev);
   };
   return (
-    <div className={styles.sidebar} ref={drowerRef}>
+    <div className={styles.sidebar} ref={drawerRef}>
       <NavLink icon="fi fi-rr-menu-burger" onClick={handleToggleIsOpen} />
       <div className={`${styles.drawer} ${isOpen ? styles.drawerOpen : styles.drawerClose}`}>
         <div className={styles.drawerHeader}>
@@ -34,9 +41,24 @@ const AppSidebarMenu = () => {
             <AppSideBarNavLink title="Upcoming" icon="fi-rr-time-forward" to="/upcoming" />
           </div>
           <div className={styles.drawerMenuContainer}>
-            <AppSideBarNavLink title="Favorite Movies" icon="fi-rr-heart" to="/favorite-list" badge={5} />
-            <AppSideBarNavLink title="Watch List" icon="fi-rr-play-alt" to="/watch-list" badge={5} />
-            <AppSideBarNavLink title="Recent Views" icon="fi-rr-time-past" to="/recent-list" badge={5} />
+            <AppSideBarNavLink
+              title="Favorite Movies"
+              icon="fi-rr-heart"
+              to="/favorite-list"
+              badge={favoriteListMovies.length > 0 ? favoriteListMovies.length : undefined}
+            />
+            <AppSideBarNavLink
+              title="Watch List"
+              icon="fi-rr-play-alt"
+              to="/watch-list"
+              badge={watchListMovies.length > 0 ? watchListMovies.length : undefined}
+            />
+            <AppSideBarNavLink
+              title="Recent Views"
+              icon="fi-rr-time-past"
+              to="/recent-list"
+              badge={recentListMovies.length > 0 ? recentListMovies.length : undefined}
+            />
           </div>
           <div className={styles.drawerMenuContainer}>
             <AppSideBarNavLink title="Profile" icon="fi-rr-user" to="/profile" />

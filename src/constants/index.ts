@@ -1,8 +1,4 @@
-import {
-  FirebaseConfigTypes,
-  RequestEndPointsTypes,
-  TmdbConfigTypes,
-} from "@src/types/constant";
+import { FirebaseConfigTypes, RequestEndPointsTypes, TmdbConfigTypes } from "@src/types/constant";
 
 export const TMDB_CONFIGS: TmdbConfigTypes = {
   apiKey: import.meta.env.VITE_APP_TMDB_API_KEY,
@@ -26,18 +22,15 @@ export const FIREBASE_CONFIGS: FirebaseConfigTypes = {
 
 export const RequestEndPoints: RequestEndPointsTypes = {
   discover: "/discover/movie",
-  search: (query: string, page: number) => {
+  search: (query?: string, page?: number) => {
     return `/search/movie?query=${query}&page=${page}`;
   },
   movieDetails: "/movie",
-  recommendedMovies: (id: string, page: number) => {
-    return `/movie/<Movie_ID>/recommendations?page=${page}`.replace(
-      "<Movie_ID>",
-      id
-    );
+  recommendedMovies: (id?: string, page?: number) => {
+    return `/movie/<Movie_ID>/recommendations?page=${page}`.replace("<Movie_ID>", id!);
   },
-  similarMovies: (id: string, page: number) => {
-    return `/movie/<Movie_ID>/similar?page=${page}`.replace("<Movie_ID>", id);
+  similarMovies: (id?: string, page?: number) => {
+    return `/movie/<Movie_ID>/similar?page=${page}`.replace("<Movie_ID>", id!);
   },
   movieTrailer: (id: string) => {
     return "/movie/<Movie_ID>/videos".replace("<Movie_ID>", id);

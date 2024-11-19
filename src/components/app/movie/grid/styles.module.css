@@ -25,3 +25,7 @@
 .width-1-6 {
   @apply w-1/6 h-[372px];
 }
+
+.moreButton {
+  @apply h-20;
+}
