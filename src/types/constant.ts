@@ -27,5 +27,5 @@ export type RequestEndPointsTypes = {
   movieTrailer: (id: string) => string;
   nowPlaying: (page?: number) => string;
   topRated: (page?: number) => string;
-  popular: string;
+  popular: (page?: number) => string;
 };

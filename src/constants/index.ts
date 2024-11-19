@@ -48,10 +48,9 @@ export const RequestEndPoints: RequestEndPointsTypes = {
   topRated: (page?: number) => {
     return `/movie/top_rated?page=${page}`;
   },
-  // topRated1:
-  //   "/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=vote_count.desc",
-  popular:
-    "/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=revenue.desc",
+  popular: (page?: number) => {
+    return `/movie/popular?page=${page}`;
+  },
 };
 
 // type EndPoint = "discover" | "search" | "trailer";

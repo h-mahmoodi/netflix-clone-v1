@@ -55,10 +55,10 @@ export const fetchTopRatedMovies = async (page = 1) => {
   }
 };
 
-export const fetchPopularMovies = async () => {
+export const fetchPopularMovies = async (page = 1) => {
   try {
     // await new Promise((resolve) => setTimeout(resolve, 1000));
-    const response = await appAxios(popular);
+    const response = await appAxios(popular(page));
     return response.data;
   } catch (error) {
     console.log(error);
