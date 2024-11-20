@@ -12,6 +12,7 @@ const {
   popular,
   upComing,
   search,
+  discoverMovies,
 } = RequestEndPoints;
 
 export const fetchMovies = async (searchQuery = "") => {
@@ -121,6 +122,16 @@ export const fetchMovieTrailers = async (id: string) => {
     // await new Promise((resolve) => setTimeout(resolve, 1000));
     const response = await appAxios(movieTrailer(id));
     return response.data.results;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const fetchDiscoverMovies = async (page = 1) => {
+  try {
+    // await new Promise((resolve) => setTimeout(resolve, 1000));
+    const response = await appAxios(discoverMovies(page));
+    return response.data;
   } catch (error) {
     console.log(error);
   }

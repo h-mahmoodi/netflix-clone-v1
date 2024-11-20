@@ -12,14 +12,15 @@ type MovieDisplayGridProps = {
   isFetching: boolean;
   error: Error | null;
   sortOptions: SortOption[];
+  defaultGrid?: number;
 };
 
 const MovieDisplayGrid = forwardRef<HTMLDivElement, MovieDisplayGridProps>(
-  ({ movies, isFetching, error, sortOptions }, ref) => {
+  ({ movies, isFetching, error, sortOptions, defaultGrid }, ref) => {
     const [sortedMovies, setSortedMovies] = useState(movies);
     const [searchParams, setSearchParams] = useSearchParams();
     const [selectedGrid, setSelectedGrid] = useState<number | undefined>(
-      undefined
+      defaultGrid
     );
 
     useEffect(() => {
@@ -39,7 +40,7 @@ const MovieDisplayGrid = forwardRef<HTMLDivElement, MovieDisplayGridProps>(
       <div className={styles.containerLayout}>
         <div
           className="flex justify-between items-center 
-         bg-zinc-950 sticky top-16 left-0 z-20 py-4 px-3"
+         bg-zinc-950 sticky top-[78px] left-0 z-20 py-4 px-3 rounded-md"
         >
           <SortControl
             options={sortOptions}
@@ -50,6 +51,7 @@ const MovieDisplayGrid = forwardRef<HTMLDivElement, MovieDisplayGridProps>(
           />
 
           <DispalyControl
+            defaultGrid={defaultGrid}
             setSelectedGrid={setSelectedGrid}
             searchParams={searchParams}
             setSearchParams={setSearchParams}

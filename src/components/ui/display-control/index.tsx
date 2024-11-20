@@ -12,18 +12,22 @@ const displayOptions: DisplayOptions = {
 };
 
 type DispalyControlProps = {
+  defaultGrid?: number;
   setSelectedGrid: (number: number) => void;
   searchParams: URLSearchParams;
   setSearchParams: (params: URLSearchParamsInit) => void;
 };
 
 const DispalyControl = ({
+  defaultGrid,
   setSelectedGrid,
   searchParams,
   setSearchParams,
 }: DispalyControlProps) => {
   const [display, setDisplay] = useState<number>(
-    +(searchParams.get("column") as string) || displayOptions.selectedColumn
+    +(searchParams.get("column") as string) ||
+      defaultGrid ||
+      displayOptions.selectedColumn
   );
 
   const changeColumnHandler = () => {

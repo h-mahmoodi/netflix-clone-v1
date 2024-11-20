@@ -1,10 +1,10 @@
 .main {
-  @apply bg-zinc-950;
+  @apply bg-black;
 }
 
 .main > div {
   animation: animation 0.3s linear;
-  @apply bg-zinc-950 min-h-dvh;
+  @apply bg-black min-h-dvh;
 }
 
 @keyframes animation {
