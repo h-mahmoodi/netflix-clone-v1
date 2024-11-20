@@ -13,6 +13,14 @@ export default defineConfig(() => {
         "@hooks": "/src/hooks",
       },
     },
+    build: {
+      rollupOptions: {
+        input: {
+          main: "index.html",
+          fallback: "404.html", // Ensure the fallback is included in the build
+        },
+      },
+    },
   };
 });
 
