@@ -23,7 +23,7 @@ const MovieDisplayGrid = forwardRef<HTMLDivElement, MovieDisplayGridProps>(
     );
 
     useEffect(() => {
-      window.scroll({ top: 0, left: 0, behavior: "smooth" });
+      window.scroll({ top: 280, left: 0, behavior: "smooth" });
     }, [searchParams]);
 
     if (error) {

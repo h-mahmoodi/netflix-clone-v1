@@ -5,6 +5,7 @@ import { selectFavoriteList } from "@src/redux/favorite-list-slice";
 import styles from "./styles.module.css";
 import MovieDisplayGrid from "@src/components/app/movie/display-grid";
 import { SortOption } from "@src/types/movie";
+import { useEffect } from "react";
 
 const sortOptions: SortOption[] = [
   {
@@ -26,6 +27,10 @@ const sortOptions: SortOption[] = [
 ];
 const AppFavoritePage = () => {
   const { movies } = useAppSelector(selectFavoriteList);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  }, []);
   return (
     <div className={styles.page}>
       <AppPageHeading title="My Favorite Movies" />

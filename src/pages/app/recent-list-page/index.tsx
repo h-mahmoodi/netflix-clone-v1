@@ -5,6 +5,7 @@ import styles from "./styles.module.css";
 import MovieDisplayGrid from "@src/components/app/movie/display-grid";
 import { SortOption } from "@src/types/movie";
 import { selectRecentList } from "@src/redux/recent-list-slice";
+import { useEffect } from "react";
 
 const sortOptions: SortOption[] = [
   {
@@ -26,11 +27,19 @@ const sortOptions: SortOption[] = [
 ];
 const AppRecentPage = () => {
   const { movies } = useAppSelector(selectRecentList);
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  }, []);
   return (
     <div className={styles.page}>
       <AppPageHeading title="Recent view Movies" />
       <div className="container mx-auto mt-10">
-        <MovieDisplayGrid movies={movies} isFetching={false} error={null} sortOptions={sortOptions} />
+        <MovieDisplayGrid
+          movies={movies}
+          isFetching={false}
+          error={null}
+          sortOptions={sortOptions}
+        />
       </div>
     </div>
   );
