@@ -9,6 +9,24 @@
     <meta name="description" content="Netflix in a different view by Hesam" />
     <link rel="preconnect" href="themoviedb.org" />
     <link rel="preconnect" href="https://api.themoviedb.org" />
+    <script type="text/javascript">
+      (function (l) {
+        if (l.search[1] === "/") {
+          var decoded = l.search
+            .slice(1)
+            .split("&")
+            .map(function (s) {
+              return s.replace(/~and~/g, "&");
+            })
+            .join("?");
+          window.history.replaceState(
+            null,
+            null,
+            l.pathname.slice(0, -1) + decoded + l.hash
+          );
+        }
+      })(window.location);
+    </script>
   </head>
   <body>
     <div id="root" class="bg-zinc-950 root"></div>

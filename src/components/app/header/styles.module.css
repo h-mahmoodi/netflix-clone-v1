@@ -7,5 +7,5 @@
 }
 
 .headerScrolled {
-  @apply bg-zinc-950 border-b-4 border-red-700;
+  @apply bg-zinc-950 border-b-4 border-zinc-900;
 }

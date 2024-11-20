@@ -33,7 +33,7 @@ jobs:
 
       # 5. Build the project
       - name: Build project
-        run: npm run build
+        run: npm run build && cp ./404.html ./build
 
       # 6. Deploy to GitHub Pages
       - name: Deploy to GitHub Pages

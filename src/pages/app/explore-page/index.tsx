@@ -60,7 +60,7 @@ const AppExplorePage = () => {
   return (
     <div>
       <AppPageHeading title="Explore Movies" />
-      <div className="container mx-auto mt-10 flex gap-3">
+      <div className="container mx-auto mt-5 flex gap-3">
         <MovieDisplayGrid
           movies={movies}
           isFetching={isFetching}
@@ -69,7 +69,12 @@ const AppExplorePage = () => {
           defaultGrid={4}
           ref={loadMoreRef}
         />
-        <div className="w-96 bg-zinc-950">asdadads</div>
+        <div
+          className="w-96 bg-zinc-950 mt-2 rounded-md h-60 sticky top-[81px]
+        p-3"
+        >
+          asdadads
+        </div>
       </div>
     </div>
   );

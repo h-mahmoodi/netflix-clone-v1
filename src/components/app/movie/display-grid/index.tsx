@@ -40,7 +40,7 @@ const MovieDisplayGrid = forwardRef<HTMLDivElement, MovieDisplayGridProps>(
       <div className={styles.containerLayout}>
         <div
           className="flex justify-between items-center 
-         bg-zinc-950 sticky top-[78px] left-0 z-20 py-4 px-3 rounded-md"
+         bg-zinc-950 sticky top-[81px] left-0 z-20 py-4 px-3 rounded-md mx-2"
         >
           <SortControl
             options={sortOptions}
