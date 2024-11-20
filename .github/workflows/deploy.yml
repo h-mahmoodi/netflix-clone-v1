@@ -28,7 +28,8 @@ jobs:
       # 4. Inject environment variables from secrets
       - name: Setup .env file
         run: |
-          echo "VITE_APP_TMDB_API_KEY=${{ secrets.VITE_APP_TMDB_API_KEY }}" > .env
+          echo "VITE_APP_TMDB_API_KEY=${{ secrets.VITE_APP_TMDB_API_KEY }}" >> .env
+          echo "VITE_APP_TMDB_API_TOKEN=${{ secrets.VITE_APP_TMDB_API_TOKEN }}" >> .env
 
       # 5. Build the project
       - name: Build project
