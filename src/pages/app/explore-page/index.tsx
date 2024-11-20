@@ -70,10 +70,18 @@ const AppExplorePage = () => {
           ref={loadMoreRef}
         />
         <div
-          className="w-96 bg-zinc-950 mt-2 rounded-md h-60 sticky top-[81px]
-        p-3"
+          className="w-96 h-screen  mt-2 sticky top-[81px] flex flex-col gap-5
+         "
         >
-          asdadads
+          <div className=" bg-zinc-950 rounded-md h-20 py-4 px-3">
+            <h2 className="text-xl text-zinc-100 mb-4">Filter By Genres</h2>
+          </div>
+          <div className="bg-zinc-950 rounded-md h-20 p-4">
+            <h2 className="text-lg text-zinc-100">Filter By Release Date</h2>
+          </div>
+          <div className="bg-zinc-950 rounded-md h-20 p-4">
+            <h2 className="text-lg text-zinc-100">Filter By IMDb Rate</h2>
+          </div>
         </div>
       </div>
     </div>

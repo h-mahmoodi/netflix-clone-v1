@@ -64,7 +64,9 @@ const DispalyControl = ({
         <span className="flex items-center px-3">
           <i className="flex fi fi-rr-apps"></i>
         </span>
-        <span className="text-lg py-2 px-3 bg-zinc-900">{display} Column</span>
+        <span className="text-base py-2 px-3 bg-zinc-900">
+          Display By {display} Column
+        </span>
       </button>
     </div>
   );
