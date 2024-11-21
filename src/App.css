@@ -1,3 +1,18 @@
 body {
   @apply text-zinc-50;
 }
+#nprogress .bar {
+  background: #de0d0d !important;
+  z-index: 10000 !important;
+  height: 4px !important; /* Replace with your desired color */
+}
+
+#nprogress {
+  z-index: 10000 !important;
+  position: fixed;
+  top: 0;
+}
+
+#nprogress .peg {
+  box-shadow: none !important; /* Match the color */
+}

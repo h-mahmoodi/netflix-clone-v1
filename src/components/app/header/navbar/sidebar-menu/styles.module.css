@@ -28,5 +28,3 @@
 .drawerMenuContainer {
   @apply flex flex-col border-b-2 border-zinc-800 pt-2 pb-3;
 }
-
-

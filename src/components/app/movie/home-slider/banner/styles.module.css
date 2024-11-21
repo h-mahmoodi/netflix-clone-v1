@@ -24,7 +24,7 @@
     180deg,
     rgba(9, 9, 11, 0.9) 20%,
     rgba(9, 9, 11, 0.8) 80%,
-    rgba(9, 9, 11, 1) 100%
+    rgba(9, 9, 11, 0.9) 100%
   );
   @apply absolute top-0 left-0 right-0 bottom-0;
 }
