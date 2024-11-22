@@ -1,4 +1,4 @@
-import { RefAttributes, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import styles from "./styles.module.css";
 import useClickOutSide from "@src/hooks/useClickOutSide";
 
@@ -6,6 +6,18 @@ const mockSelectedOptions = [
   {
     value: "value 1",
     label: "label 1",
+  },
+  {
+    value: "value 2",
+    label: "label 2",
+  },
+  {
+    value: "value 2",
+    label: "label 2",
+  },
+  {
+    value: "value 2",
+    label: "label 2",
   },
   {
     value: "value 2",
