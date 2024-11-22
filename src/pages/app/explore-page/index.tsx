@@ -1,5 +1,6 @@
 import MovieDisplayGrid from "@src/components/app/movie/display-grid";
 import AppPageHeading from "@src/components/app/page-heading";
+import SelectInput from "@src/components/ui/select-input";
 import { fetchDiscoverMovies } from "@src/fetchers";
 import useInfiniteScroll from "@src/hooks/useInfiniteScroll";
 import { Movie, SortOption } from "@src/types/movie";
@@ -73,6 +74,9 @@ const AppExplorePage = () => {
           className="w-96 h-screen  mt-2 sticky top-[81px] flex flex-col gap-5
          "
         >
+          <div className=" bg-zinc-950 rounded-md py-4 px-3">
+            <SelectInput />
+          </div>
           <div className=" bg-zinc-950 rounded-md h-20 py-4 px-3">
             <h2 className="text-xl text-zinc-100 mb-4">Filter By Genres</h2>
           </div>

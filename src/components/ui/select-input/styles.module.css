@@ -1,0 +1,31 @@
+.container {
+}
+
+.inputBox {
+  @apply text-base py-3 px-3
+  bg-black hover:bg-zinc-950 text-zinc-300
+  border border-zinc-800 rounded-md relative min-h-14;
+}
+
+.placeholder {
+  @apply text-zinc-400 absolute text-lg select-none
+   duration-200 top-3;
+}
+
+.placeholderDeactive {
+  @apply -top-3 text-sm;
+}
+
+.selectedOptions {
+  @apply flex gap-2 flex-wrap;
+}
+
+.selectedOption {
+  @apply bg-zinc-900 rounded-md flex text-base
+  text-gray-50 overflow-hidden;
+}
+
+.input {
+  @apply text-zinc-50 bg-transparent outline-none text-lg
+  max-w-64;
+}
