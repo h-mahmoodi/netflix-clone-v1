@@ -2,14 +2,14 @@
 }
 
 .inputBox {
-  @apply text-base py-3 px-3
+  @apply text-base py-[7px] px-3
   bg-black hover:bg-zinc-950 text-zinc-300
-  border border-zinc-800 rounded-md relative min-h-14;
+  border border-zinc-800 rounded-md relative min-h-10;
 }
 
 .placeholder {
   @apply text-zinc-400 absolute text-lg select-none
-   duration-200 top-3;
+   duration-200 top-2;
 }
 
 .placeholderDeactive {
@@ -21,11 +21,11 @@
 }
 
 .selectedOption {
-  @apply bg-zinc-900 rounded-md flex text-base
+  @apply bg-zinc-900 rounded-md flex text-sm
   text-gray-50 overflow-hidden;
 }
 
 .input {
   @apply text-zinc-50 bg-transparent outline-none text-lg
-  max-w-64;
+  max-w-64 px-1;
 }

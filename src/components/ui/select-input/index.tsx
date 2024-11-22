@@ -36,12 +36,17 @@ const SelectInput = ({
 
   const inputRef = useRef<HTMLInputElement | null>(null);
 
-  const clickOutSideRef = useClickOutSide(() => setIsFocused(false));
-
   const handleInputBoxClick = () => {
     inputRef.current?.focus();
     setIsFocused(true);
   };
+
+  const handleInputBoxClickOutSide = () => {
+    inputRef.current?.focus();
+    setInput("");
+    setIsFocused(false);
+  };
+  const clickOutSideRef = useClickOutSide(handleInputBoxClickOutSide);
 
   const handleRemoveSelected = (option: Option) => {
     setSelectedOptions((prev) =>
@@ -67,15 +72,6 @@ const SelectInput = ({
         </span>
 
         <div className={styles.selectedOptions}>
-          <input
-            className={styles.input}
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            ref={inputRef}
-            style={{
-              width: `${(input.length + 1) * 8}px`,
-            }}
-          />
           {selectedOptions.map((option, index) => (
             <div key={index} className={styles.selectedOption}>
               <span className="px-2 py-1">{option.label}</span>
@@ -87,6 +83,15 @@ const SelectInput = ({
               </span>
             </div>
           ))}
+          <input
+            className={styles.input}
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            ref={inputRef}
+            style={{
+              width: `${(input.length + 5) * 8}px`,
+            }}
+          />
         </div>
       </div>
     </div>
