@@ -43,7 +43,7 @@ const SelectInput = ({
   const [selectedOptions, setSelectedOptions] = useState<Option[]>(
     defaultSelected || []
   );
-  const [isOpen, setIsOpen] = useState(false);
+  //   const [isOpen, setIsOpen] = useState(false);
   const [input, setInput] = useState("");
 
   const inputRef = useRef<HTMLInputElement | null>(null);
