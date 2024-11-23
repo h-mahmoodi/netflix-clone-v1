@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useRef, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
 import styles from "./styles.module.css";
 import useClickOutSide from "@src/hooks/useClickOutSide";
 
@@ -25,6 +25,7 @@ const SelectInput = ({
   //   const [isOpen, setIsOpen] = useState(false);
   const [input, setInput] = useState("");
   const inputRef = useRef<HTMLInputElement | null>(null);
+  const [searchedOptions, setSearchedOptions] = useState(options);
   const clickOutSideRef = useClickOutSide(handleInputBoxClickOutSide);
 
   const handleInputBoxClick = () => {
@@ -47,7 +48,17 @@ const SelectInput = ({
     const isExist = selectedOptions.find((opt) => opt.value === option.value);
     if (isExist) return;
     setSelectedOptions((prev) => [option, ...prev]);
+    setInput("");
+    inputRef.current?.focus();
   };
+
+  useEffect(() => {
+    setSearchedOptions(
+      options.filter((opt) =>
+        opt.label.toLocaleLowerCase().includes(input.toLocaleLowerCase().trim())
+      )
+    );
+  }, [input, options]);
 
   return (
     <div className={styles.container} ref={clickOutSideRef}>
@@ -87,12 +98,12 @@ const SelectInput = ({
       </div>
       {isFocused && (
         <div className={styles.modalBox}>
-          {options.map((option) => (
+          {searchedOptions.map((option) => (
             <div
               className={styles.modalBoxOption}
               onClick={() => handleSelectOption(option)}
             >
-              {option.value}
+              {option.label}
             </div>
           ))}
         </div>
