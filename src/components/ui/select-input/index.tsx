@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import styles from "./styles.module.css";
 import useClickOutSide from "@src/hooks/useClickOutSide";
 
-const mockSelectedOptions = [
+const mockOptions = [
   {
     value: "value 1",
     label: "label 1",
@@ -12,16 +12,16 @@ const mockSelectedOptions = [
     label: "label 2",
   },
   {
-    value: "value 2",
-    label: "label 2",
+    value: "value 3",
+    label: "label 3",
   },
   {
-    value: "value 2",
-    label: "label 2",
+    value: "value 4",
+    label: "label 4",
   },
   {
-    value: "value 2",
-    label: "label 2",
+    value: "value 5",
+    label: "label 5",
   },
 ];
 
@@ -37,7 +37,7 @@ type SelectInputProps = {
 
 const SelectInput = ({
   placeholder = "SelectInput",
-  defaultSelected = mockSelectedOptions,
+  defaultSelected,
 }: SelectInputProps) => {
   const [isFocused, setIsFocused] = useState(false);
   const [selectedOptions, setSelectedOptions] = useState<Option[]>(
@@ -45,34 +45,37 @@ const SelectInput = ({
   );
   //   const [isOpen, setIsOpen] = useState(false);
   const [input, setInput] = useState("");
-
   const inputRef = useRef<HTMLInputElement | null>(null);
+  const clickOutSideRef = useClickOutSide(handleInputBoxClickOutSide);
 
   const handleInputBoxClick = () => {
     inputRef.current?.focus();
     setIsFocused(true);
   };
 
-  const handleInputBoxClickOutSide = () => {
+  function handleInputBoxClickOutSide() {
     inputRef.current?.focus();
     setInput("");
     setIsFocused(false);
-  };
-  const clickOutSideRef = useClickOutSide(handleInputBoxClickOutSide);
-
+  }
   const handleRemoveSelected = (option: Option) => {
     setSelectedOptions((prev) =>
       prev.filter((item) => item.value !== option.value)
     );
   };
 
+  const handleSelectOption = (option: Option) => {
+    // const optionsSet = selectedOptions.filter(
+    //   (opt) => opt.value !== option.value
+    // );
+    const isExist = selectedOptions.find((opt) => opt.value === option.value);
+    if (isExist) return;
+    setSelectedOptions((prev) => [option, ...prev]);
+  };
+
   return (
-    <div className={styles.container}>
-      <div
-        className={styles.inputBox}
-        onClick={handleInputBoxClick}
-        ref={clickOutSideRef}
-      >
+    <div className={styles.container} ref={clickOutSideRef}>
+      <div className={styles.inputBox} onClick={handleInputBoxClick}>
         <span
           className={`${styles.placeholder} ${
             selectedOptions.length > 0 || isFocused
@@ -106,6 +109,18 @@ const SelectInput = ({
           />
         </div>
       </div>
+      {isFocused && (
+        <div className={styles.modalBox}>
+          {mockOptions.map((option) => (
+            <div
+              className={styles.modalBoxOption}
+              onClick={() => handleSelectOption(option)}
+            >
+              {option.value}
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 };
