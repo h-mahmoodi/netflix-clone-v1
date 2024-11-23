@@ -1,29 +1,6 @@
-import { useRef, useState } from "react";
+import { Dispatch, SetStateAction, useRef, useState } from "react";
 import styles from "./styles.module.css";
 import useClickOutSide from "@src/hooks/useClickOutSide";
-
-const mockOptions = [
-  {
-    value: "value 1",
-    label: "label 1",
-  },
-  {
-    value: "value 2",
-    label: "label 2",
-  },
-  {
-    value: "value 3",
-    label: "label 3",
-  },
-  {
-    value: "value 4",
-    label: "label 4",
-  },
-  {
-    value: "value 5",
-    label: "label 5",
-  },
-];
 
 type Option = {
   value: string;
@@ -32,17 +9,19 @@ type Option = {
 
 type SelectInputProps = {
   placeholder?: string;
-  defaultSelected?: Option[];
+  options: Option[];
+  selectedOptions: Option[];
+  setSelectedOptions: Dispatch<SetStateAction<Option[]>>;
+  // defaultSelected?: Option[];
 };
 
 const SelectInput = ({
   placeholder = "SelectInput",
-  defaultSelected,
+  options = [],
+  selectedOptions,
+  setSelectedOptions,
 }: SelectInputProps) => {
   const [isFocused, setIsFocused] = useState(false);
-  const [selectedOptions, setSelectedOptions] = useState<Option[]>(
-    defaultSelected || []
-  );
   //   const [isOpen, setIsOpen] = useState(false);
   const [input, setInput] = useState("");
   const inputRef = useRef<HTMLInputElement | null>(null);
@@ -65,9 +44,6 @@ const SelectInput = ({
   };
 
   const handleSelectOption = (option: Option) => {
-    // const optionsSet = selectedOptions.filter(
-    //   (opt) => opt.value !== option.value
-    // );
     const isExist = selectedOptions.find((opt) => opt.value === option.value);
     if (isExist) return;
     setSelectedOptions((prev) => [option, ...prev]);
@@ -111,7 +87,7 @@ const SelectInput = ({
       </div>
       {isFocused && (
         <div className={styles.modalBox}>
-          {mockOptions.map((option) => (
+          {options.map((option) => (
             <div
               className={styles.modalBoxOption}
               onClick={() => handleSelectOption(option)}

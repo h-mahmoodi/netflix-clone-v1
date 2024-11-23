@@ -5,7 +5,7 @@ import { fetchDiscoverMovies } from "@src/fetchers";
 import useInfiniteScroll from "@src/hooks/useInfiniteScroll";
 import { Movie, SortOption } from "@src/types/movie";
 import { useInfiniteQuery } from "@tanstack/react-query";
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 const sortOptions: SortOption[] = [
   {
@@ -26,7 +26,37 @@ const sortOptions: SortOption[] = [
   },
 ];
 
+const mockOptions = [
+  {
+    value: "value 1",
+    label: "label 1",
+  },
+  {
+    value: "value 2",
+    label: "label 2",
+  },
+  {
+    value: "value 3",
+    label: "label 3",
+  },
+  {
+    value: "value 4",
+    label: "label 4",
+  },
+  {
+    value: "value 5",
+    label: "label 5",
+  },
+];
+
+type Option = {
+  value: string;
+  label: string;
+};
+
 const AppExplorePage = () => {
+  const [selectedOptions, setSelectedOptions] = useState<Option[]>([]);
+
   const {
     data,
     isFetching,
@@ -75,7 +105,12 @@ const AppExplorePage = () => {
          "
         >
           <div className=" bg-zinc-950 rounded-md py-4 px-3">
-            <SelectInput />
+            <SelectInput
+              placeholder="Filter By Genres"
+              options={mockOptions}
+              selectedOptions={selectedOptions}
+              setSelectedOptions={setSelectedOptions}
+            />
           </div>
           <div className=" bg-zinc-950 rounded-md h-20 py-4 px-3">
             <h2 className="text-xl text-zinc-100 mb-4">Filter By Genres</h2>
