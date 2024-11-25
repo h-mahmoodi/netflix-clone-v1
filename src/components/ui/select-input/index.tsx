@@ -22,7 +22,7 @@ const SelectInput = ({
   setSelectedOptions,
 }: SelectInputProps) => {
   const [isFocused, setIsFocused] = useState(false);
-  //   const [isOpen, setIsOpen] = useState(false);
+  const [isOpenDropDown, setIsOpenDropDown] = useState(false);
   const [input, setInput] = useState("");
   const inputRef = useRef<HTMLInputElement | null>(null);
   const [searchedOptions, setSearchedOptions] = useState(options);
@@ -31,12 +31,14 @@ const SelectInput = ({
   const handleInputBoxClick = () => {
     inputRef.current?.focus();
     setIsFocused(true);
+    setIsOpenDropDown(true);
   };
 
   function handleInputBoxClickOutSide() {
     inputRef.current?.focus();
     setInput("");
     setIsFocused(false);
+    setIsOpenDropDown(false);
   }
   const handleRemoveSelected = (option: Option) => {
     setSelectedOptions((prev) =>
@@ -53,15 +55,22 @@ const SelectInput = ({
   };
 
   useEffect(() => {
-    setSearchedOptions(
-      options.filter((opt) =>
-        opt.label.toLocaleLowerCase().includes(input.toLocaleLowerCase().trim())
-      )
+    const newOptions = options.filter((opt) =>
+      opt.label.toLocaleLowerCase().includes(input.toLocaleLowerCase().trim())
     );
+    setSearchedOptions(newOptions);
+    if (newOptions.length === 0) {
+      setIsOpenDropDown(false);
+    } else {
+      setIsOpenDropDown(true);
+    }
   }, [input, options]);
 
   return (
     <div className={styles.container} ref={clickOutSideRef}>
+      <span className="flex items-center px-3 text-xl ">
+        <i className="flex fi fi-rr-filter "></i>
+      </span>
       <div className={styles.inputBox} onClick={handleInputBoxClick}>
         <span
           className={`${styles.placeholder} ${
@@ -96,14 +105,23 @@ const SelectInput = ({
           />
         </div>
       </div>
-      {isFocused && (
+      {isOpenDropDown && (
         <div className={styles.modalBox}>
           {searchedOptions.map((option) => (
             <div
-              className={styles.modalBoxOption}
+              className={
+                selectedOptions.find((opt) => opt.value === option.value)
+                  ? styles.modalBoxOptionSelected
+                  : styles.modalBoxOption
+              }
               onClick={() => handleSelectOption(option)}
             >
-              {option.label}
+              <span>{option.label}</span>
+              {selectedOptions.find((opt) => opt.value === option.value) && (
+                <span onClick={() => handleRemoveSelected(option)}>
+                  <i className="flex fi fi-rr-cross-small cursor-pointer"></i>
+                </span>
+              )}
             </div>
           ))}
         </div>
