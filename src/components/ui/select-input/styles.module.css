@@ -1,11 +1,12 @@
 .container {
-  @apply relative;
+  @apply relative flex items-center border border-zinc-800
+  rounded-md bg-zinc-800;
 }
 
 .inputBox {
-  @apply text-base py-2 px-3
-  bg-black  text-zinc-300
-  border border-zinc-800 rounded-md relative min-h-10 cursor-pointer;
+  @apply text-base py-2 px-2 flex-1
+  bg-black  text-zinc-300 rounded-r-md
+   relative min-h-10 cursor-pointer;
 }
 
 .placeholder {
@@ -34,10 +35,14 @@
 .modalBox {
   @apply absolute top-full mt-1 left-0 w-full py-2 px-3
   bg-black text-zinc-300
-  border border-zinc-800 rounded-md;
+  border border-zinc-800 rounded-md flex flex-col gap-1;
 }
 
 .modalBoxOption {
   @apply p-2 text-zinc-50 hover:bg-zinc-950
-  cursor-pointer;
+  cursor-pointer rounded-md;
+}
+
+.modalBoxOptionSelected {
+  @apply p-2 bg-zinc-950 select-none flex justify-between items-center;
 }
