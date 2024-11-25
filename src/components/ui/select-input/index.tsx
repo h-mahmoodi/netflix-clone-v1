@@ -12,6 +12,8 @@ type SelectInputProps = {
   options: Option[];
   selectedOptions: Option[];
   setSelectedOptions: Dispatch<SetStateAction<Option[]>>;
+  icon?: string;
+  loading?: boolean;
   // defaultSelected?: Option[];
 };
 
@@ -20,6 +22,8 @@ const SelectInput = ({
   options = [],
   selectedOptions,
   setSelectedOptions,
+  icon = "fi-rr-filter",
+  loading = false,
 }: SelectInputProps) => {
   const [isFocused, setIsFocused] = useState(false);
   const [isOpenDropDown, setIsOpenDropDown] = useState(false);
@@ -68,9 +72,16 @@ const SelectInput = ({
 
   return (
     <div className={styles.container} ref={clickOutSideRef}>
-      <span className="flex items-center px-3 text-xl ">
-        <i className="flex fi fi-rr-filter "></i>
-      </span>
+      {loading ? (
+        <span className="flex items-center px-3 text-xl animate-spin ">
+          <i className={`flex fi fi-rr-spinner`}></i>
+        </span>
+      ) : (
+        <span className="flex items-center px-3 text-xl ">
+          <i className={`flex fi ${icon}`}></i>
+        </span>
+      )}
+
       <div className={styles.inputBox} onClick={handleInputBoxClick}>
         <span
           className={`${styles.placeholder} ${
