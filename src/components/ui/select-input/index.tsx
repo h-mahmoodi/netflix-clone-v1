@@ -1,4 +1,11 @@
-import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
+import {
+  Dispatch,
+  MouseEvent,
+  SetStateAction,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import styles from "./styles.module.css";
 import useClickOutSide from "@src/hooks/useClickOutSide";
 
@@ -10,17 +17,22 @@ type Option = {
 type SelectInputProps = {
   placeholder?: string;
   options: Option[];
-  selectedOptions: Option[];
-  setSelectedOptions: Dispatch<SetStateAction<Option[]>>;
+  value: Option[];
+  onChange: Dispatch<SetStateAction<Option[]>>;
+  icon?: string;
+  loading?: boolean;
   // defaultSelected?: Option[];
 };
 
 const SelectInput = ({
   placeholder = "SelectInput",
   options = [],
-  selectedOptions,
-  setSelectedOptions,
+  value,
+  onChange,
+  icon = "fi-rr-filter",
+  loading = false,
 }: SelectInputProps) => {
+  const [selectedOptions, setSelectedOptions] = useState<Option[]>(value || []);
   const [isFocused, setIsFocused] = useState(false);
   const [isOpenDropDown, setIsOpenDropDown] = useState(false);
   const [input, setInput] = useState("");
@@ -40,7 +52,8 @@ const SelectInput = ({
     setIsFocused(false);
     setIsOpenDropDown(false);
   }
-  const handleRemoveSelected = (option: Option) => {
+  const handleRemoveSelected = (e: MouseEvent, option: Option) => {
+    e.stopPropagation();
     setSelectedOptions((prev) =>
       prev.filter((item) => item.value !== option.value)
     );
@@ -58,19 +71,34 @@ const SelectInput = ({
     const newOptions = options.filter((opt) =>
       opt.label.toLocaleLowerCase().includes(input.toLocaleLowerCase().trim())
     );
+    console.log("newOptions", newOptions);
     setSearchedOptions(newOptions);
     if (newOptions.length === 0) {
       setIsOpenDropDown(false);
-    } else {
-      setIsOpenDropDown(true);
+      return;
     }
   }, [input, options]);
 
+  useEffect(() => {
+    onChange(selectedOptions);
+  }, [selectedOptions, onChange]);
+
+  useEffect(() => {
+    setSelectedOptions(value);
+  }, [value]);
+
   return (
     <div className={styles.container} ref={clickOutSideRef}>
-      <span className="flex items-center px-3 text-xl ">
-        <i className="flex fi fi-rr-filter "></i>
-      </span>
+      {loading ? (
+        <span className="flex items-center px-3 text-xl animate-spin ">
+          <i className={`flex fi fi-rr-spinner`}></i>
+        </span>
+      ) : (
+        <span className="flex items-center px-3 text-xl ">
+          <i className={`flex fi ${icon}`}></i>
+        </span>
+      )}
+
       <div className={styles.inputBox} onClick={handleInputBoxClick}>
         <span
           className={`${styles.placeholder} ${
@@ -88,7 +116,7 @@ const SelectInput = ({
               <span className="px-2 py-1">{option.label}</span>
               <span
                 className="flex items-center bg-zinc-800 px-1 hover:bg-red-700 cursor-pointer"
-                onClick={() => handleRemoveSelected(option)}
+                onClick={(e) => handleRemoveSelected(e, option)}
               >
                 <i className="flex fi fi-rr-cross-small "></i>
               </span>
@@ -109,6 +137,7 @@ const SelectInput = ({
         <div className={styles.modalBox}>
           {searchedOptions.map((option) => (
             <div
+              key={option.value}
               className={
                 selectedOptions.find((opt) => opt.value === option.value)
                   ? styles.modalBoxOptionSelected
@@ -117,11 +146,6 @@ const SelectInput = ({
               onClick={() => handleSelectOption(option)}
             >
               <span>{option.label}</span>
-              {selectedOptions.find((opt) => opt.value === option.value) && (
-                <span onClick={() => handleRemoveSelected(option)}>
-                  <i className="flex fi fi-rr-cross-small cursor-pointer"></i>
-                </span>
-              )}
             </div>
           ))}
         </div>

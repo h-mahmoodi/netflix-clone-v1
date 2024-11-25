@@ -108,18 +108,25 @@ const AppExplorePage = () => {
             <SelectInput
               placeholder="Filter By Genres"
               options={mockOptions}
-              selectedOptions={selectedOptions}
-              setSelectedOptions={setSelectedOptions}
+              value={selectedOptions}
+              onChange={setSelectedOptions}
             />
           </div>
-          <div className=" bg-zinc-950 rounded-md h-20 py-4 px-3">
-            <h2 className="text-xl text-zinc-100 mb-4">Filter By Genres</h2>
+          <div className="bg-zinc-950 rounded-md h-20 p-4">
+            <SelectInput
+              placeholder="Filter By Release Date"
+              options={mockOptions}
+              value={selectedOptions}
+              onChange={setSelectedOptions}
+            />
           </div>
           <div className="bg-zinc-950 rounded-md h-20 p-4">
-            <h2 className="text-lg text-zinc-100">Filter By Release Date</h2>
-          </div>
-          <div className="bg-zinc-950 rounded-md h-20 p-4">
-            <h2 className="text-lg text-zinc-100">Filter By IMDb Rate</h2>
+            <SelectInput
+              placeholder="Filter By IMDb Rate"
+              options={mockOptions}
+              value={selectedOptions}
+              onChange={setSelectedOptions}
+            />
           </div>
         </div>
       </div>
