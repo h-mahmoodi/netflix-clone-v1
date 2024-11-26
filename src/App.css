@@ -1,5 +1,5 @@
 body {
-  @apply text-zinc-50;
+  @apply text-zinc-50 bg-black;
 }
 #nprogress .bar {
   background: #de0d0d !important;
@@ -15,4 +15,31 @@ body {
 
 #nprogress .peg {
   box-shadow: none !important; /* Match the color */
+}
+
+/* body,
+div,
+html {
+  scrollbar-width: 10px;
+  scrollbar-color: #18181b #474747;
+} */
+
+::-webkit-scrollbar {
+  width: 17px;
+  padding: 5px;
+  border-radius: 10px !important;
+}
+
+::-webkit-scrollbar-track {
+  background: #18181b;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #27272a;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3f3f46;
 }

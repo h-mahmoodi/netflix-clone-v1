@@ -49,13 +49,13 @@
   @apply font-semibold text-zinc-50 text-lg;
 }
 .movie {
-  @apply flex flex-col gap-2 max-h-[350px] overflow-y-scroll;
+  @apply flex flex-col gap-2 max-h-[350px] overflow-y-scroll pr-3;
 }
 
-.movie::-webkit-scrollbar {
+/* .movie::-webkit-scrollbar {
   display: none;
   scrollbar-width: none;
-}
+} */
 
 .moreButton {
   @apply bg-red-800 hover:bg-red-700 text-zinc-50 p-3 rounded-md text-center
