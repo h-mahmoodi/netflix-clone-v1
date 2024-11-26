@@ -4,8 +4,9 @@ import { fetchDiscoverMovies } from "@src/fetchers";
 import useInfiniteScroll from "@src/hooks/useInfiniteScroll";
 import { Movie, SortOption } from "@src/types/movie";
 import { useInfiniteQuery } from "@tanstack/react-query";
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import ExplorePageSelectGenre from "./components/select-genre";
+import { SelectInputOption } from "@src/types/general";
 
 const sortOptions: SortOption[] = [
   {
@@ -27,6 +28,9 @@ const sortOptions: SortOption[] = [
 ];
 
 const AppExplorePage = () => {
+  const [selectedOptions, setSelectedOptions] = useState<SelectInputOption[]>(
+    []
+  );
   const {
     data,
     isFetching,
@@ -35,8 +39,15 @@ const AppExplorePage = () => {
     hasNextPage,
     isFetchingNextPage,
   } = useInfiniteQuery({
-    queryKey: ["PopularMoviesPage"],
-    queryFn: ({ pageParam }) => fetchDiscoverMovies(pageParam),
+    queryKey: [
+      "ExploreMoviesPage",
+      `&with_genres=${selectedOptions.map((item) => item.value).join(",")}`,
+    ],
+    queryFn: ({ pageParam }) =>
+      fetchDiscoverMovies(
+        pageParam,
+        `&with_genres=${selectedOptions.map((item) => item.value).join(",")}`
+      ),
     getNextPageParam: (lastPage) => {
       if (lastPage.page < lastPage.total_pages) {
         return lastPage.page + 1;
@@ -75,7 +86,10 @@ const AppExplorePage = () => {
          "
         >
           <div className=" bg-zinc-950 rounded-md py-4 px-3">
-            <ExplorePageSelectGenre />
+            <ExplorePageSelectGenre
+              selectedOptions={selectedOptions}
+              setSelectedOptions={setSelectedOptions}
+            />
           </div>
         </div>
       </div>

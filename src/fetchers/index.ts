@@ -129,10 +129,10 @@ export const fetchMovieTrailers = async (id: string) => {
   }
 };
 
-export const fetchDiscoverMovies = async (page = 1) => {
+export const fetchDiscoverMovies = async (page = 1, searchParams = "") => {
   try {
     // await new Promise((resolve) => setTimeout(resolve, 1000));
-    const response = await appAxios(discoverMovies(page));
+    const response = await appAxios(discoverMovies(page, searchParams));
     return response.data;
   } catch (error) {
     console.log(error);

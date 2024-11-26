@@ -54,8 +54,8 @@ export const RequestEndPoints: RequestEndPointsTypes = {
   upComing: (page: number = 1) => {
     return `/movie/upcoming?page=${page}`;
   },
-  discoverMovies: (page: number = 1) => {
-    return `/discover/movie?page=${page}`;
+  discoverMovies: (page: number = 1, searchParams?: string) => {
+    return `/discover/movie?page=${page}${searchParams}`;
   },
   movieGenres: "/genre/movie/list",
 };

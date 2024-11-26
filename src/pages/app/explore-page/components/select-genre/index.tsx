@@ -1,16 +1,28 @@
 import SelectInput from "@src/components/ui/select-input";
 import useGetGenres from "@src/hooks/useGetGenres";
 import { SelectInputOption } from "@src/types/general";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import {
+  Dispatch,
+  SetStateAction,
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 import { useSearchParams } from "react-router-dom";
 
-const ExplorePageSelectGenre = () => {
+type ExplorePageSelectGenreProps = {
+  selectedOptions: SelectInputOption[];
+  setSelectedOptions: Dispatch<SetStateAction<SelectInputOption[]>>;
+};
+
+const ExplorePageSelectGenre = ({
+  selectedOptions,
+  setSelectedOptions,
+}: ExplorePageSelectGenreProps) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [options, setOptions] = useState<SelectInputOption[]>([]);
 
-  const [selectedOptions, setSelectedOptions] = useState<SelectInputOption[]>(
-    []
-  );
   const { data, isFetching, error } = useGetGenres();
 
   const initialSearchOptionParams: SelectInputOption[] = useMemo(() => {

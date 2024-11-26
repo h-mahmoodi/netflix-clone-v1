@@ -29,6 +29,6 @@ export type RequestEndPointsTypes = {
   topRated: (page?: number) => string;
   popular: (page?: number) => string;
   upComing: (page?: number) => string;
-  discoverMovies: (page?: number) => string;
+  discoverMovies: (page?: number, searchParams?: string) => string;
   movieGenres: string;
 };
