@@ -1,5 +1,6 @@
 import { appAxios } from "@src/configs/axios";
 import { RequestEndPoints } from "@src/constants";
+import { GenreResponseData } from "@src/types/genre";
 
 const {
   discover,
@@ -13,6 +14,7 @@ const {
   upComing,
   search,
   discoverMovies,
+  movieGenres,
 } = RequestEndPoints;
 
 export const fetchMovies = async (searchQuery = "") => {
@@ -134,5 +136,15 @@ export const fetchDiscoverMovies = async (page = 1) => {
     return response.data;
   } catch (error) {
     console.log(error);
+  }
+};
+
+export const fetchGenres = async (): Promise<GenreResponseData> => {
+  try {
+    const response = await appAxios(movieGenres);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    throw new Error("Failed to fetch genres");
   }
 };

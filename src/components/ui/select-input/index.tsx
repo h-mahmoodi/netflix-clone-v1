@@ -1,26 +1,15 @@
-import {
-  Dispatch,
-  MouseEvent,
-  SetStateAction,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import { MouseEvent, useEffect, useRef, useState } from "react";
 import styles from "./styles.module.css";
 import useClickOutSide from "@src/hooks/useClickOutSide";
-
-type Option = {
-  value: string;
-  label: string;
-};
+import { SelectInputOption } from "@src/types/general";
 
 type SelectInputProps = {
   placeholder?: string;
-  options: Option[];
-  value: Option[];
-  onChange: Dispatch<SetStateAction<Option[]>>;
+  options: SelectInputOption[];
+  value: SelectInputOption[];
+  onChange: (options: SelectInputOption[]) => void;
   icon?: string;
-  loading?: boolean;
+  isLoading?: boolean;
   // defaultSelected?: Option[];
 };
 
@@ -30,9 +19,11 @@ const SelectInput = ({
   value,
   onChange,
   icon = "fi-rr-filter",
-  loading = false,
+  isLoading = false,
 }: SelectInputProps) => {
-  const [selectedOptions, setSelectedOptions] = useState<Option[]>(value || []);
+  const [selectedOptions, setSelectedOptions] = useState<SelectInputOption[]>(
+    value || []
+  );
   const [isFocused, setIsFocused] = useState(false);
   const [isOpenDropDown, setIsOpenDropDown] = useState(false);
   const [input, setInput] = useState("");
@@ -52,17 +43,21 @@ const SelectInput = ({
     setIsFocused(false);
     setIsOpenDropDown(false);
   }
-  const handleRemoveSelected = (e: MouseEvent, option: Option) => {
+  const handleRemoveSelected = (e: MouseEvent, option: SelectInputOption) => {
     e.stopPropagation();
-    setSelectedOptions((prev) =>
-      prev.filter((item) => item.value !== option.value)
-    );
+    setSelectedOptions((prev) => {
+      onChange(prev.filter((item) => item.value !== option.value));
+      return prev.filter((item) => item.value !== option.value);
+    });
   };
 
-  const handleSelectOption = (option: Option) => {
+  const handleSelectOption = (option: SelectInputOption) => {
     const isExist = selectedOptions.find((opt) => opt.value === option.value);
     if (isExist) return;
-    setSelectedOptions((prev) => [option, ...prev]);
+    setSelectedOptions((prev) => {
+      onChange([...prev, option]);
+      return [...prev, option];
+    });
     setInput("");
     inputRef.current?.focus();
   };
@@ -80,16 +75,12 @@ const SelectInput = ({
   }, [input, options]);
 
   useEffect(() => {
-    onChange(selectedOptions);
-  }, [selectedOptions, onChange]);
-
-  useEffect(() => {
     setSelectedOptions(value);
   }, [value]);
 
   return (
     <div className={styles.container} ref={clickOutSideRef}>
-      {loading ? (
+      {isLoading ? (
         <span className="flex items-center px-3 text-xl animate-spin ">
           <i className={`flex fi fi-rr-spinner`}></i>
         </span>

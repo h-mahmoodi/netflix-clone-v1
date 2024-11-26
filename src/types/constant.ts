@@ -30,4 +30,5 @@ export type RequestEndPointsTypes = {
   popular: (page?: number) => string;
   upComing: (page?: number) => string;
   discoverMovies: (page?: number) => string;
+  movieGenres: string;
 };
