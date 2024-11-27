@@ -29,16 +29,22 @@ const AppSidebarMenu = () => {
         }`}
       >
         <div className={styles.drawerHeader}>
-          <span className={styles.drawerHeaderTitle}>NETFLIX</span>
+          {isOpen && <span className={styles.drawerHeaderTitle}>NETFLIX</span>}
           <NavLink icon="fi fi-rr-menu-burger" onClick={handleToggleIsOpen} />
         </div>
         <div>
           <div className={styles.drawerMenuContainer}>
-            <AppSideBarNavLink title="Home Page" icon="fi-rr-home" to="/" />
+            <AppSideBarNavLink
+              title="Home Page"
+              icon="fi-rr-home"
+              to="/"
+              isOpen={isOpen}
+            />
             <AppSideBarNavLink
               title="Explore All Movies"
               icon="fi-rr-apps"
               to="/explore"
+              isOpen={isOpen}
             />
             {/* <AppSideBarNavLink title="Search For Movies" icon="fi-rr-search" to="/search" /> */}
           </div>
@@ -47,21 +53,25 @@ const AppSidebarMenu = () => {
               title="Now Playing"
               icon="fi-rr-video-duration"
               to="/now-playing"
+              isOpen={isOpen}
             />
             <AppSideBarNavLink
               title="Popular"
               icon="fi-rr-fire-flame-curved"
               to="/popular"
+              isOpen={isOpen}
             />
             <AppSideBarNavLink
               title="Top Rated"
               icon="fi-rr-star-comment-alt"
               to="/top-rated"
+              isOpen={isOpen}
             />
             <AppSideBarNavLink
               title="Upcoming"
               icon="fi-rr-time-forward"
               to="/up-coming"
+              isOpen={isOpen}
             />
           </div>
           <div className={styles.drawerMenuContainer}>
@@ -69,6 +79,7 @@ const AppSidebarMenu = () => {
               title="Favorite Movies"
               icon="fi-rr-heart"
               to="/favorite-list"
+              isOpen={isOpen}
               badge={
                 favoriteListMovies.length > 0
                   ? favoriteListMovies.length
@@ -79,6 +90,7 @@ const AppSidebarMenu = () => {
               title="Watch List"
               icon="fi-rr-play-alt"
               to="/watch-list"
+              isOpen={isOpen}
               badge={
                 watchListMovies.length > 0 ? watchListMovies.length : undefined
               }
@@ -87,6 +99,7 @@ const AppSidebarMenu = () => {
               title="Recent Views"
               icon="fi-rr-time-past"
               to="/recent-list"
+              isOpen={isOpen}
               badge={
                 recentListMovies.length > 0
                   ? recentListMovies.length
@@ -99,8 +112,14 @@ const AppSidebarMenu = () => {
               title="Profile"
               icon="fi-rr-user"
               to="/profile"
+              isOpen={isOpen}
             />
-            <AppSideBarNavLink title="LogOut" icon="fi-rr-exit" to="/logout" />
+            <AppSideBarNavLink
+              title="LogOut"
+              icon="fi-rr-exit"
+              to="/logout"
+              isOpen={isOpen}
+            />
           </div>
         </div>
         sidebar menu
