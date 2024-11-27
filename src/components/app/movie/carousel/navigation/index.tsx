@@ -30,6 +30,7 @@ function CarouselNavigation({
         }`}
         onClick={() => setStartIndex((prev) => prev - 1)}
         aria-label="previous slide"
+        disabled={startIndex === 0}
       >
         <i className="fi fi-br-angle-left"></i>
       </button>
@@ -39,6 +40,7 @@ function CarouselNavigation({
         }`}
         onClick={() => setStartIndex((prev) => prev + 1)}
         aria-label="next slide"
+        disabled={startIndex + viewCount === itemsCount}
       >
         <i className="fi fi-br-angle-right"></i>
       </button>

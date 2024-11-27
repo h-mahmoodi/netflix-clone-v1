@@ -31,11 +31,6 @@ const MovieDisplayGrid = forwardRef<HTMLDivElement, MovieDisplayGridProps>(
       return <div>Something went wrong</div>;
     }
 
-    if (movies.length === 0) {
-      return (
-        <div className={styles.containerLayout}>There is nothing to show</div>
-      );
-    }
     return (
       <div className={styles.containerLayout}>
         <div

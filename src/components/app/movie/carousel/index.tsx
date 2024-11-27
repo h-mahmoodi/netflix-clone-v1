@@ -65,6 +65,13 @@ function MovieCarousel({
     <div className={styles.carousel}>
       <div className={styles.header}>
         <CarouselHeader title={title} link={link} />
+        <div className={styles.navigation}>
+          <CarouselNavigation
+            itemsCount={countMovies}
+            viewCount={grid}
+            handlerFn={handleNavigate}
+          />
+        </div>
       </div>
       <div
         className={styles.movies}
@@ -74,14 +81,6 @@ function MovieCarousel({
         }}
       >
         {renderMovies()}
-      </div>
-
-      <div className={styles.navigation}>
-        <CarouselNavigation
-          itemsCount={countMovies}
-          viewCount={grid}
-          handlerFn={handleNavigate}
-        />
       </div>
     </div>
   );

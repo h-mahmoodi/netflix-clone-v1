@@ -1,5 +1,5 @@
 .main {
-  @apply bg-black;
+  @apply bg-black pl-20;
 }
 
 .main > div {

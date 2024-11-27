@@ -6,9 +6,23 @@ type AppSideBarNavLinkProps = {
   icon: string;
   badge?: number;
   to: string;
+  isOpen?: boolean;
 };
 
-const AppSideBarNavLink = ({ title, icon, badge, to }: AppSideBarNavLinkProps) => {
+const AppSideBarNavLink = ({
+  title,
+  icon,
+  badge,
+  to,
+  isOpen = false,
+}: AppSideBarNavLinkProps) => {
+  if (!isOpen) {
+    return (
+      <Link className={styles.menuClose} to={to}>
+        <div>{icon && <i className={`flex fi ${icon}`}></i>}</div>
+      </Link>
+    );
+  }
   return (
     <Link className={styles.menu} to={to}>
       <div>

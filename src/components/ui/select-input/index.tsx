@@ -82,7 +82,7 @@ const SelectInput = ({
     <div className={styles.container} ref={clickOutSideRef}>
       {isLoading ? (
         <span className="flex items-center px-3 text-xl animate-spin ">
-          <i className={`flex fi fi-rr-spinner`}></i>
+          <i className="flex fi fi-rr-spinner"></i>
         </span>
       ) : (
         <span className="flex items-center px-3 text-xl ">
