@@ -5,6 +5,9 @@ import react from "@vitejs/plugin-react";
 export default defineConfig(() => {
   return {
     base: "/netflix-clone-v1",
+    server: {
+      https: true,
+    },
     plugins: [react()],
     resolve: {
       alias: {
